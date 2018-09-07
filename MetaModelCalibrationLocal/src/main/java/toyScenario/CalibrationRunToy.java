@@ -33,12 +33,12 @@ public class CalibrationRunToy {
 		Config initialConfig=ConfigGenerator.generateToyConfig();
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,25, 4);
-		
 		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {30,30});
-		
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
+		
+		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,25, 4);
+		
 		SimRun simRun=new SimRunImplToy();
 		
 		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
@@ -47,6 +47,7 @@ public class CalibrationRunToy {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
 			AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
 			sue.setDefaultParameters(pReader.getDefaultParam());
+			sue.setFileLoc("toyScenario/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 			
 			
