@@ -38,6 +38,7 @@ public class CalibrationRunToy {
 		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {30,30});
 		
 		LinkedHashMap<String,Double>params=initialParams;
+		pReader.setInitialParam(initialParams);
 		SimRun simRun=new SimRunImplToy();
 		
 		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
@@ -103,4 +104,5 @@ public class CalibrationRunToy {
 			e.printStackTrace();
 		}
 	}
+	
 }
