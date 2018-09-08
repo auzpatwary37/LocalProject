@@ -181,12 +181,18 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/jcool-core.jar</systemPath>
 		</dependency>
-<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
-<dependency>
-    <groupId>org.apache.poi</groupId>
-    <artifactId>poi</artifactId>
-    <version>4.0.0</version>
-</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.matsim.contrib/cadytsIntegration -->
+		<dependency>
+		    <groupId>org.matsim.contrib</groupId>
+		    <artifactId>cadytsIntegration</artifactId>
+		    <version>0.10.1</version>
+		</dependency>
 
 	</dependencies>
 </project>
