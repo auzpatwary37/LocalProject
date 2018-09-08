@@ -28,6 +28,8 @@
 				</executions>
 			</plugin>
 		</plugins>
+		
+		
 	</build>
 	<repositories>
 		<!--Note that in general repositories are not transitive, so they need 
@@ -179,6 +181,12 @@
 			<scope>system</scope>
 			<systemPath>${project.basedir}/src/main/resources/jcool-core.jar</systemPath>
 		</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>4.0.0</version>
+</dependency>
 
 	</dependencies>
 </project>

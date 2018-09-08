@@ -6,8 +6,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.matsim.core.config.Config;
-import org.matsim.core.utils.collections.Tuple;
 
 import toyScenarioGeneration.ConfigGenerator;
 import toyScenarioGeneration.SimRunImplToy;
@@ -17,7 +18,6 @@ import ust.hk.praisehk.metamodelcalibration.calibrator.Calibrator;
 import ust.hk.praisehk.metamodelcalibration.calibrator.CalibratorImpl;
 import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
 import ust.hk.praisehk.metamodelcalibration.matamodels.MetaModel;
-import ust.hk.praisehk.metamodelcalibration.matamodels.SimAndAnalyticalGradientCalculator;
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.MeasurementsStorage;
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
@@ -26,6 +26,10 @@ import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 public class CalibrationRunToy {
 
 	public static void main(String[] args) {
+		
+		//logger.warn("warning!!!");
+		PropertyConfigurator.configure("src/main/resources/log4j.properties");
+		
 		final boolean internalCalibration=false;
 		
 		
@@ -33,7 +37,7 @@ public class CalibrationRunToy {
 		Config initialConfig=ConfigGenerator.generateToyConfig();
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {30,30});
+		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-30,-30});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
@@ -96,7 +100,7 @@ public class CalibrationRunToy {
 			fw.append("MinMetaChangeReq,"+calibrator.getMinMetaParamChange()+"\n");
 			fw.append("ObjectiveType,"+calibrator.getObjectiveType()+"\n");
 			
-			fw.append("StrtingTime,"+LocalDateTime.now().toString());
+			fw.append("StrtingTime,"+LocalDateTime.now().toString()+"\n");
 			
 			fw.flush();
 			fw.close();

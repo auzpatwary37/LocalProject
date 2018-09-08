@@ -2,7 +2,6 @@ package toyScenarioGeneration;
 
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
-import org.matsim.core.config.ConfigWriter;
 
 
 
