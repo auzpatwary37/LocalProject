@@ -129,7 +129,7 @@ public class CadytsRun {
 		config.addModule(cadytsConfig);
 		
 		//general Run Configuration
-		config.counts().setInputFile("data/ATC2016Counts.xml");
+		config.counts().setInputFile("data/ATCCountsPeakHourLink.xml");
 		config.controler().setLastIteration(100);
 		config.controler().setOutputDirectory("output_CadytsTry");	
 

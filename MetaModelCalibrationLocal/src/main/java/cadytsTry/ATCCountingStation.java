@@ -31,14 +31,43 @@ import org.matsim.core.network.NetworkUtils;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.Tuple;
 import org.matsim.counts.Counts;
+import org.matsim.counts.CountsWriter;
 
+import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurement;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
+import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsWriter;
 
 
 
 public class ATCCountingStation{
 	
+	/**
+	 * This method will basically create a new Measurements from the given measurements based on given timeBean
+	 * Volumes will be based on the provided timeBean 
+	 * All time Bean ids will be inserted in the volumes and the volumes for each time Bean will be assumed Zero.
+	 * The Measurements file will be written in the provided File Location
+	 * 
+	 * This is basically needed for toyScenario Large Case
+	 * 
+	 * @param m
+	 * @param desiredtimeBean
+	 */
+	public static Measurements createEmptyTimeMeasurement(Measurements mOld, Map<String,Tuple<Double,Double>>desiredtimeBean,String fileLoc) {
+		Measurements m=Measurements.createMeasurements(desiredtimeBean);
+		for(Measurement mm:mOld.getMeasurements().values()) {
+			m.createAnadAddMeasurement(mm.getId().toString());
+			for(String timeBeanId:desiredtimeBean.keySet()) {
+				m.getMeasurements().get(mm.getId()).addVolume(timeBeanId, 0.);
+			}
+			m.getMeasurements().get(mm.getId()).setAttribute(mm.linkListAttributeName, new ArrayList<Id<Link>>((ArrayList<Id<Link>>)mm.getAttribute(mm.linkListAttributeName)));
+		}
+		
+		new MeasurementsWriter(m).write(fileLoc);
+		return m;
+	}
+	
+@SuppressWarnings("unchecked")
 public static void main(String[] args) throws IOException {
 		
 		boolean takeCoreStationsOnly=true;
@@ -46,9 +75,9 @@ public static void main(String[] args) throws IOException {
 		String fileLoc="data/ATC2016/StationDetailsATC2016.txt";
 		String stationDetailsFolderLoc="data/ATC2016/ATC_TRAFFIC_DATA";
 		HashMap<Id<ATCCountingStation>,ATCCountingStation>stations=new HashMap<>();
-		Config config=ConfigUtils.createConfig();
-		ConfigUtils.loadConfig(config,"data/config_clean.xml");
-		Network network=ScenarioUtils.loadScenario(config).getNetwork();
+//		Config config=ConfigUtils.createConfig();
+//		ConfigUtils.loadConfig(config,"data/config_clean.xml");
+//		Network network=ScenarioUtils.loadScenario(config).getNetwork();
 		BufferedReader bf=new BufferedReader(new FileReader(new File(fileLoc)));
 		String line;
 		bf.readLine();
@@ -67,7 +96,7 @@ public static void main(String[] args) throws IOException {
 		if(takeCoreStationsOnly==true) {
 			for(ATCCountingStation station:stations.values()) {
 				if(station.isDetailsInfoAvailable==true) {
-					station.matchNetworkAndExtractLinkIDs(network);
+					//station.matchNetworkAndExtractLinkIDs(network);
 					coreStations.put(station.getCountingStaionId(), station);
 					
 				}
@@ -84,24 +113,38 @@ public static void main(String[] args) throws IOException {
 		
 		Map<String,Tuple<Double,Double>>timeBean = null;
 		Set<String> timeBeanIds = null;
+		timeBeanIds=new HashSet<>();
 		int i=0;
+		int noOfMeasurementVolume=0;
 		for(Measurement m:measurements) {
 			if (i==0) {
 				timeBean=m.getTimeBean();
 				i=1;
 			}
-			timeBeanIds=new HashSet<>();
+			
 			timeBeanIds.addAll(m.getVolumes().keySet());
+			noOfMeasurementVolume+=m.getVolumes().size();
 		}
-		
+		Map<String,Tuple<Double,Double>> reducedTimeBean=new HashMap<>(timeBean);
 		for(String s:timeBean.keySet()) {
 			if(!timeBeanIds.contains(s)) {
-				timeBean.remove(s);
+				reducedTimeBean.remove(s);
 			}
 		}
 		
-		Measurements m=Measurements.createMeasurements(timeBean);
-		//TODO:create new minimized measurements with leass time beans. Not required for Cadyts
+		Measurements m=Measurements.createMeasurements(reducedTimeBean);
+		
+		for(Measurement mm:measurements) {
+			m.createAnadAddMeasurement(mm.getId().toString());
+			for(String timeBeanId:mm.getVolumes().keySet()) {
+				m.getMeasurements().get(mm.getId()).addVolume(timeBeanId, mm.getVolumes().get(timeBeanId));
+			}
+			m.getMeasurements().get(mm.getId()).setAttribute(mm.linkListAttributeName, new ArrayList<Id<Link>>((ArrayList<Id<Link>>)mm.getAttribute(mm.linkListAttributeName)));
+		}
+		
+		new MeasurementsWriter(m).write("data/ATCMeasurementsPeak.xml");
+		
+		if(timeBeanIds.size()!=1) {
 		Counts<Measurement> counts=new Counts<Measurement>();
 		for(Measurement mm:measurements) {
 			counts.createAndAddCount(Id.create(mm.getId().toString(), Measurement.class), mm.getId().toString());
@@ -110,19 +153,49 @@ public static void main(String[] args) throws IOException {
 			}
 			
 		}
+		counts.setYear(2016);
+		new CountsWriter(counts).write("data/ATCCountsPeakHour.xml");
 		
+		Config config=ConfigUtils.createConfig();
+		config.network().setInputFile("data/network.xml");
+		Scenario scenario=ScenarioUtils.loadScenario(config);
+		Network network=scenario.getNetwork();
 		
-		FileWriter fw=new FileWriter(new File("ATC2016/coreStationsHKIDetails.csv"));
-		fw.append("StationId,directionLink1,directionLink2,MatchedLink1,MatchedLink2,isoneWay,isRandomlyAssigned\n");
-		for(Id<ATCCountingStation> stationId:coreStations.keySet()) {
-			ATCCountingStation station=coreStations.get(stationId);
-			fw.append(stationId.toString()+","+station.holder1.getDirection()+","+station.holder2.getDirection()+","+station.holder1.getMatsimLinkId()+","+station.holder2.getMatsimLinkId()+","+
-		Boolean.toString(station.isOneWay)+","+station.isRandomLinkAssignment()+"\n");
+		Counts<Link> countsLink=new Counts<Link>();
+		for(Measurement mm:measurements) {
+			if(((ArrayList<Id<Link>>)mm.getAttribute(mm.linkListAttributeName)).size()>1) {
+				continue;
+			}
+			Id<Link> linkId=((ArrayList<Id<Link>>)mm.getAttribute(mm.linkListAttributeName)).get(0);
+			if(countsLink.getCounts().keySet().contains(linkId)){
+				System.out.println("Warning!!! duplicate link found for two different stations. Check link id; "+linkId.toString() 
+						+" and station id: "+mm.getId().toString()+ " and "+countsLink.getCounts().get(linkId).getCsLabel());
+				continue;
+			}
+			if(!network.getLinks().keySet().contains(linkId)) {
+				System.out.println("Netowrk does not contain the link "+ linkId+". Ignoring the station. ");
+				continue;
+			}
+			
+			countsLink.createAndAddCount(linkId, mm.getId().toString());
+			for(String s:mm.getVolumes().keySet()) {
+				countsLink.getCount(linkId).createVolume(Integer.parseInt(s), mm.getVolumes().get(s));
+			}
+			
 		}
-		fw.flush();
-		fw.close();
-		System.out.println("testLine");
+		countsLink.setYear(2016);
+		new CountsWriter(countsLink).write("data/ATCCountsPeakHourLink.xml");
+		System.out.println("Total single Links stations = "+countsLink.getCounts().size()*2);
+		}
+		
+		//For Large Scale Toy Scenario
+		createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeEmptyATCMeasurements.xml");
+		
+		System.out.println("Total Measurement Volume = "+noOfMeasurementVolume);
+		
 	}
+	
+
 	private boolean isRandomLinkAssignment=false;
 	private boolean isOneWay=false;
 	private boolean isDetailsInfoAvailable=false;
@@ -491,7 +564,7 @@ public static void main(String[] args) throws IOException {
 	
 	public ArrayList<Measurement> getDirectionSpecificMeasurement(Network network, boolean matchLinks,String type) {
 		
-		if(this.isDetailsInfoAvailable==false) {
+		if(this.isDetailsInfoAvailable==false || this.holder1.getMatsimLinkIds().size()==0) {
 			return new ArrayList<Measurement>();
 		}
 		
@@ -520,6 +593,7 @@ public static void main(String[] args) throws IOException {
 				cs.addVolume(this.AADTTypeName,holder1.getAADTVolume().get("MonToFri"));
 			}else {
 				cs.addVolume(Integer.toString(holder1.getAMPeak().get("MonToFri")),holder1.getAMPeakVolume().get("MonToFri"));
+				cs.addVolume(Integer.toString(holder1.getPMPeak().get("MonToFri")), holder1.getPMPeakVolume().get("MonToFri"));
 			}
 			
 			cs.setAttribute(cs.linkListAttributeName, new ArrayList<Id<Link>>(holder1.getMatsimLinkIds()));
@@ -533,6 +607,7 @@ public static void main(String[] args) throws IOException {
 				cs.addVolume(this.AADTTypeName,holder1.getAADTVolume().get("MonToFri"));
 			}else {
 				cs.addVolume(Integer.toString(holder1.getAMPeak().get("MonToFri")),holder1.getAMPeakVolume().get("MonToFri"));
+				cs.addVolume(Integer.toString(holder1.getPMPeak().get("MonToFri")),holder1.getPMPeakVolume().get("MonToFri"));
 			}
 			cs.setAttribute(cs.linkListAttributeName, new ArrayList<Id<Link>>(holder1.getMatsimLinkIds()));
 			countingStations.add(cs);
@@ -544,6 +619,7 @@ public static void main(String[] args) throws IOException {
 				cs1.addVolume(this.AADTTypeName,holder2.getAADTVolume().get("MonToFri"));
 			}else {
 				cs1.addVolume(Integer.toString(holder2.getAMPeak().get("MonToFri")),holder2.getAMPeakVolume().get("MonToFri"));
+				cs1.addVolume(Integer.toString(holder2.getPMPeak().get("MonToFri")),holder2.getPMPeakVolume().get("MonToFri"));
 			}
 			cs1.setAttribute(cs1.linkListAttributeName, new ArrayList<Id<Link>>(holder2.getMatsimLinkIds()));
 			countingStations.add(cs1);
