@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 
-import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.matsim.core.config.Config;
 
@@ -27,7 +26,6 @@ public class CalibrationRunToy {
 
 	public static void main(String[] args) {
 		
-		//logger.warn("warning!!!");
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
 		
 		final boolean internalCalibration=false;
@@ -42,6 +40,9 @@ public class CalibrationRunToy {
 		pReader.setInitialParam(initialParams);
 		
 		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,25, 4);
+		calibrator.setTrRadius(10.0);
+		calibrator.setMaxTrRadius(25.0);
+	
 		
 		SimRun simRun=new SimRunImplToy();
 		
@@ -50,7 +51,7 @@ public class CalibrationRunToy {
 		for(int i=0;i<50;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
 			AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
-			sue.setDefaultParameters(pReader.getDefaultParam());
+			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
 			sue.setFileLoc("toyScenario/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 			

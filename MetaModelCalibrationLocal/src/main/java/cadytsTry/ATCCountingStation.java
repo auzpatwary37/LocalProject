@@ -173,7 +173,7 @@ public static void main(String[] args) throws IOException {
 				continue;
 			}
 			if(!network.getLinks().keySet().contains(linkId)) {
-				System.out.println("Netowrk does not contain the link "+ linkId+". Ignoring the station. ");
+				System.out.println("Netowrk does not contain the link "+ linkId+". Ignoring the station "+mm.getId().toString());
 				continue;
 			}
 			
