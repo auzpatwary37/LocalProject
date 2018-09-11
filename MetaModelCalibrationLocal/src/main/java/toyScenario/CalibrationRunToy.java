@@ -28,7 +28,7 @@ public class CalibrationRunToy {
 		
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
 		
-		final boolean internalCalibration=false;
+		final boolean internalCalibration=true;
 		
 		
 		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/toyMeasurements.xml");
@@ -39,8 +39,8 @@ public class CalibrationRunToy {
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
-		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,25, 4);
-		calibrator.setTrRadius(10.0);
+		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,10, 4);
+		
 		calibrator.setMaxTrRadius(25.0);
 	
 		
