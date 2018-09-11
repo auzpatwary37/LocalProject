@@ -47,10 +47,11 @@ public class CalibrationRunToy {
 		SimRun simRun=new SimRunImplToy();
 		
 		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
+		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
 		
 		for(int i=0;i<50;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
-			AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
+			
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
 			sue.setFileLoc("toyScenario/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
