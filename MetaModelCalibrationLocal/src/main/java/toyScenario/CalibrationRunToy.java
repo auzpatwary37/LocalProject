@@ -17,6 +17,7 @@ import ust.hk.praisehk.metamodelcalibration.calibrator.Calibrator;
 import ust.hk.praisehk.metamodelcalibration.calibrator.CalibratorImpl;
 import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
 import ust.hk.praisehk.metamodelcalibration.matamodels.MetaModel;
+import ust.hk.praisehk.metamodelcalibration.matamodels.SimAndAnalyticalGradientCalculator;
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.MeasurementsStorage;
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
@@ -58,9 +59,9 @@ public class CalibrationRunToy {
 			
 			
 			//Insert Gradient Calculator
-//			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config,storage,simRun, params,calibrator.getTrRadius(), "FD", pReader.getDefaultParam(), i, false);
-//			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
-			//
+			//SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius(), "FD", i, false, pReader);
+			//params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
+			
 			
 			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), null, null, MetaModel.AnalyticalLinearMetaModelName);
 						
