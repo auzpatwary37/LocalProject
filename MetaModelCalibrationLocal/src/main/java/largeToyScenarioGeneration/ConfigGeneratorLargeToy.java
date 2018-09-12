@@ -32,23 +32,7 @@ public class ConfigGeneratorLargeToy {
 		
 		config.vehicles().setVehiclesFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
 		config.transit().setUseTransit(true);
-		config.plansCalcRoute().setInsertingAccessEgressWalk(false);
-		config.qsim().setUsePersonIdForMissingVehicleId(true);
-		config.global().setCoordinateSystem("arbitrary");
-		config.parallelEventHandling().setNumberOfThreads(5);
-		config.controler().setWritePlansInterval(50);
-		config.global().setNumberOfThreads(4);
-		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
-		config.controler().setWriteEventsInterval(50);
 		
-		config.strategy().addParam("ModuleProbability_1", "0.8");
-		config.strategy().addParam("Module_1", "ChangeExpBeta");
-		config.strategy().addParam("ModuleProbability_2", "0.05");
-		config.strategy().addParam("Module_2", "ReRoute");
-		config.strategy().addParam("ModuleProbability_3", "0.1");
-		config.strategy().addParam("Module_3", "TimeAllocationMutator");
-		config.strategy().addParam("ModuleProbability_4", "0.05");
-		config.strategy().addParam("Module_4", "ChangeTripMode");
 		
 		Scenario scenario=ScenarioUtils.loadScenario(config);
 		
@@ -96,6 +80,16 @@ public class ConfigGeneratorLargeToy {
 		configMod.strategy().addParam("Module_3", "TimeAllocationMutator");
 		configMod.strategy().addParam("ModuleProbability_4", "0.05");
 		configMod.strategy().addParam("Module_4", "ChangeTripMode");
+		
+		configMod.plansCalcRoute().setInsertingAccessEgressWalk(false);
+		configMod.qsim().setUsePersonIdForMissingVehicleId(true);
+		configMod.global().setCoordinateSystem("arbitrary");
+		configMod.parallelEventHandling().setNumberOfThreads(5);
+		configMod.controler().setWritePlansInterval(50);
+		configMod.global().setNumberOfThreads(4);
+		configMod.strategy().setFractionOfIterationsToDisableInnovation(0.8);
+		configMod.controler().setWriteEventsInterval(50);
+		configMod.qsim().setUsingFastCapacityUpdate(false);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		

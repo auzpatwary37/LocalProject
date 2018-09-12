@@ -47,6 +47,7 @@ public class ConfgGeneratorLargeScale {
 		config.transit().setTransitScheduleFile("data/LargeScaleScenario/transitSchedule.xml");
 		config.transit().setVehiclesFile("data/LargeScaleScenario/transitVehicles.xml");
 		config.vehicles().setVehiclesFile("data/LargeScaleScenario/VehiclesHKI.xml");
+		config.qsim().setUsingFastCapacityUpdate(false);
 		
 		SignalSystemsConfigGroup cs=new SignalSystemsConfigGroup();
 		cs.setSignalControlFile("data/LargeScaleScenario/signal_control.xml");
