@@ -17,6 +17,7 @@ import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
+import org.matsim.core.config.groups.QSimConfigGroup.LinkDynamics;
 import org.matsim.core.config.groups.StrategyConfigGroup.StrategySettings;
 import org.matsim.core.replanning.strategies.DefaultPlanStrategiesModule;
 import org.matsim.core.scenario.ScenarioUtils;
@@ -99,7 +100,8 @@ public class ConfgGeneratorLargeScale {
 		
 		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		config.controler().setWriteEventsInterval(50);
-		
+		config.qsim().setUseLanes(true);
+		config.qsim().setLinkDynamics(LinkDynamics.PassingQ);
 		//saveNetworkTransitAndVehicleInformation("data/LargeScaleScenario/modeDetails.txt",config);
 		
 		new ConfigWriter(config).write("data/LargeScaleScenario/configFinal.xml");

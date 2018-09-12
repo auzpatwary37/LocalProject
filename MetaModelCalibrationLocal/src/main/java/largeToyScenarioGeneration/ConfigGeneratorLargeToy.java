@@ -9,6 +9,7 @@ import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
+import org.matsim.core.config.groups.QSimConfigGroup.LinkDynamics;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.lanes.data.Lane;
 import org.matsim.lanes.data.LanesToLinkAssignment;
@@ -90,6 +91,8 @@ public class ConfigGeneratorLargeToy {
 		configMod.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		configMod.controler().setWriteEventsInterval(50);
 		configMod.qsim().setUsingFastCapacityUpdate(false);
+		config.qsim().setUseLanes(true);
+		config.qsim().setLinkDynamics(LinkDynamics.PassingQ);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		
