@@ -81,7 +81,7 @@ public class MeasurementsCreator {
 		}
 		config=preader.SetParamToConfig(config, originalParam);
 		
-		new ConfigWriter(config).write("src/main/resources/toyScenarioData/originalParamConfig.xml");
+		new ConfigWriter(config).write("data/toyScenarioLargeData/originalParamConfig.xml");
 		
 		MeasurementsStorage ms=new MeasurementsStorage(emptyMeasurements);
 		
