@@ -1,4 +1,4 @@
-package toyScenario;
+package largeToyScenarioGeneration;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -8,9 +8,9 @@ import java.util.LinkedHashMap;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 
-import toyScenarioGeneration.ConfigGenerator;
-import toyScenarioGeneration.SimRunImplToy;
+
 import ust.hk.praisehk.metamodelcalibration.analyticalModel.AnalyticalModel;
 import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModel;
 import ust.hk.praisehk.metamodelcalibration.calibrator.Calibrator;
@@ -23,7 +23,7 @@ import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
 import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 
-public class CalibrationRunToy {
+public class CalibrationRunToyLarge {
 
 	public static void main(String[] args) {
 		
@@ -32,35 +32,36 @@ public class CalibrationRunToy {
 		final boolean internalCalibration=true;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/toyMeasurements.xml");
-		Config initialConfig=ConfigGenerator.generateToyConfig();
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/toyMeasurements.xml");
+		Config initialConfig=ConfigUtils.createConfig();
+		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
 		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-30,-30});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
-		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,10, 4);
+		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenarioLarge/Calibration/", internalCalibration, pReader,10, 4);
 		
 		calibrator.setMaxTrRadius(25.0);
 	
 		
-		SimRun simRun=new SimRunImplToy();
+		SimRun simRun=new SimRunImplToyLarge();
 		
-		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
+		writeRunParam(calibrator, "toyScenarioLarge/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
 		
 		for(int i=0;i<50;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
 			
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
-			sue.setFileLoc("toyScenario/");
+			sue.setFileLoc("toyScenarioLarge/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 			
 			
 			//Insert Gradient Calculator
-			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
-			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
+			//SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
+			//params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
 			
 			
 			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), null, null, MetaModel.AnalyticalLinearMetaModelName);

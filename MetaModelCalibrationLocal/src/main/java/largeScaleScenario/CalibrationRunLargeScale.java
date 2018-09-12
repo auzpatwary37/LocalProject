@@ -1,4 +1,4 @@
-package toyScenario;
+package largeScaleScenario;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,8 +23,7 @@ import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
 import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 
-public class CalibrationRunToy {
-
+public class CalibrationRunLargeScale {
 	public static void main(String[] args) {
 		
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
