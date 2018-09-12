@@ -38,8 +38,8 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=1.0;
-	private static final double weightFactorTCS=1.0;
+	private static final double weightFactorgvtcs=0.1;
+	private static final double weightFactorTCS=0.1;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -59,8 +59,8 @@ public class SubPopulationTry {
 		HashMap<Id<TPUSB>,TPUSB> tpusbs=gvtcsConverter.tpusbCreator(tpusbCoord,tpusb11);
 		HashMap<Double,String> activityDetailsTCS=new HashMap<>();
 		HashMap<Double,TCSMode> modesDetails=new HashMap<>();
-		String activityFileLoc="TCS/ActivityManual.csv";
-		String modeFileLoc="TCS/ModeManual.csv";
+		String activityFileLoc="data/TCSDatabase/ActivityManual.csv";
+		String modeFileLoc="data/TCSDatabase/ModeManual.csv";
 		
 		TCSExtractor.readModeAndActivityTypeManual(activityFileLoc, modeFileLoc, activityDetailsTCS, modesDetails);
 		
@@ -151,7 +151,7 @@ public class SubPopulationTry {
 		}
 		
 		
-		ActivityAnalyzer.ActivitySplitter(population, config, "Usual place of work", 60*30.);
+		//ActivityAnalyzer.ActivitySplitter(population, config, "Usual place of work", 60*30.);
 		
 		
 		ConfigWriter configWriter=new ConfigWriter(config);
@@ -159,10 +159,10 @@ public class SubPopulationTry {
 		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
 		
 		
-		popWriter.write("data/FinalHKITCSandGVTCS/populationHKI.xml");
-		vehWriter.writeFile("data/FinalHKITCSandGVTCS/VehiclesHKI.xml");
-		configWriter.write("data/FinalHKITCSandGVTCS/config.xml");
-		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/FinalHKITCSandGVTCS/personAttributesHKI.xml");
+		popWriter.write("data/FinalHKITCSandGVTCS/populationHKIPaper.xml");
+		vehWriter.writeFile("data/FinalHKITCSandGVTCS/VehiclesHKIPaper.xml");
+		configWriter.write("data/FinalHKITCSandGVTCS/configPaperactivityParam.xml");
+		//new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/FinalHKITCSandGVTCS/personAttributesHKI.xml");
 		
 		System.out.println("total Population = "+population.getPersons().size());
 		System.out.println("total Vehicles = "+vehicles.getVehicles().size());
