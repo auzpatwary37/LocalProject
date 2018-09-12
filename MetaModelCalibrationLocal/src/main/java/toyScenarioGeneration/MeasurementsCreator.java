@@ -13,9 +13,11 @@ import java.util.Map;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
 import org.matsim.core.utils.collections.Tuple;
 
+import largeToyScenarioGeneration.SimRunImplToyLarge;
 import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModel;
 import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.MeasurementsStorage;
@@ -138,15 +140,22 @@ public class MeasurementsCreator {
 	}
 	
 	public static void main(String[] args) {
-		Measurements emptyMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/emptyMeasurements.xml");
-		Measurements toyScenarioMeasurements=loadWrittenMeasurements(emptyMeasurements,"src/main/resources/toyScenarioData/fabricatedCountData.csv");
-		new MeasurementsWriter(toyScenarioMeasurements).write("src/main/resources/toyScenarioData/toyScenarioMeasurements.xml");
-		Config config=ConfigGenerator.generateToyConfig();
-		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
-		pReader.ScaleDown(getOriginalParamSimplified());
-		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToy(), pReader.ScaleDown(getOriginalParamSimplified()), "src/main/resources/toyScenarioData/toyScenarioMeasurementsTrial1.xml",true);
-		System.out.println("Done till toyMeasurements");
+		//Measurements emptyMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/emptyMeasurements.xml");
+		//Measurements toyScenarioMeasurements=loadWrittenMeasurements(emptyMeasurements,"src/main/resources/toyScenarioData/fabricatedCountData.csv");
+		//new MeasurementsWriter(toyScenarioMeasurements).write("src/main/resources/toyScenarioData/toyScenarioMeasurements.xml");
+		//Config config=ConfigGenerator.generateToyConfig();
+		//ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
+		//pReader.ScaleDown(getOriginalParamSimplified());
+		//Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToy(), pReader.ScaleDown(getOriginalParamSimplified()), "src/main/resources/toyScenarioData/toyScenarioMeasurementsTrial1.xml",true);
 		
+		
+		Measurements emptyMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/toyScenarioLargeEmptyATCMeasurements.xml");
+		Config config=ConfigUtils.createConfig();
+		ConfigUtils.loadConfig(config, "data/toyScenarioLargeData/configToyLargeMod.xml");
+		config.global().setNumberOfThreads(3);
+		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
+		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToyLarge(), pReader.ScaleDown(getOriginalParamSimplified()), "toyScenarioLarge/fabricatedCount.xml",true);
+		System.out.println("Done till toyMeasurements");
 	}
 	
 }
