@@ -1,5 +1,8 @@
 package largeToyScenarioGeneration;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.network.Link;
 import org.matsim.api.core.v01.network.Network;
@@ -95,6 +98,21 @@ public class ConfigGeneratorLargeToy {
 		configMod.qsim().setLinkDynamics(LinkDynamics.PassingQ);
 		configMod.qsim().setStartTime(0.0);
 		configMod.qsim().setEndTime(28*3600);
+		configMod.qsim().setStuckTime(1000);
+		configMod.qsim().setNodeOffset(20.);
+		HashSet<String> modes=new HashSet<>();
+		modes.add("pt");
+		modes.add("train");
+		modes.add("tram");
+		configMod.transit().setTransitModes(modes);
+		configMod.controler().setLinkToLinkRoutingEnabled(true);
+		configMod.transit().setUseTransit(true);
+		configMod.transitRouter().setAdditionalTransferTime(2.0);
+		configMod.transitRouter().setDirectWalkFactor(100.);
+		configMod.transitRouter().setMaxBeelineWalkConnectionDistance(200.);
+		configMod.transitRouter().setExtensionRadius(200);
+		configMod.transitRouter().setSearchRadius(500);
+		configMod.travelTimeCalculator().setCalculateLinkToLinkTravelTimes(true);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		

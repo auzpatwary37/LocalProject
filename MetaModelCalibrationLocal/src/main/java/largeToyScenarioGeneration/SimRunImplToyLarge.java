@@ -37,7 +37,7 @@ public class SimRunImplToyLarge implements SimRun{
 		config.transit().setUseTransit(true);
 		config.plansCalcRoute().setInsertingAccessEgressWalk(false);
 		config.qsim().setUsePersonIdForMissingVehicleId(true);
-		config.global().setCoordinateSystem("arbitrary");
+		
 		config.parallelEventHandling().setNumberOfThreads(12);
 		config.controler().setWritePlansInterval(50);
 		config.qsim().setStartTime(0.0);
