@@ -52,6 +52,7 @@ public class ConfgGeneratorLargeScale {
 		cs.setSignalControlFile("data/LargeScaleScenario/signal_control.xml");
 		cs.setSignalGroupsFile("data/LargeScaleScenario/signal_groups.xml");
 		cs.setSignalSystemFile("data/LargeScaleScenario/signal_systems.xml");
+		cs.setUseSignalSystems(true);
 		
 		config.addModule(cs);
 		

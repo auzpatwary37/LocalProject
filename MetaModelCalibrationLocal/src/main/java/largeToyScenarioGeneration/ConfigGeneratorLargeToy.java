@@ -29,7 +29,6 @@ public class ConfigGeneratorLargeToy {
 		ConfigUtils.loadConfig(configPlanParam, "data/toyScenarioLargeData/configPaperactivityParam.xml");
 		
 		
-		SignalSystemsConfigGroup csg;
 		
 		config.vehicles().setVehiclesFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
 		config.transit().setUseTransit(true);
@@ -78,6 +77,7 @@ public class ConfigGeneratorLargeToy {
 		cs.setSignalControlFile("data/toyScenarioLargeData/signal_control.xml");
 		cs.setSignalGroupsFile("data/toyScenarioLargeData/signal_groups.xml");
 		cs.setSignalSystemFile("data/toyScenarioLargeData/signal_systems.xml");
+		cs.setUseSignalSystems(true);
 		
 		configMod.addModule(cs);
 		
