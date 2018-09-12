@@ -38,11 +38,11 @@ public class SimRunImplToyLarge implements SimRun{
 		config.plansCalcRoute().setInsertingAccessEgressWalk(false);
 		config.qsim().setUsePersonIdForMissingVehicleId(true);
 		config.global().setCoordinateSystem("arbitrary");
-		config.parallelEventHandling().setNumberOfThreads(3);
+		config.parallelEventHandling().setNumberOfThreads(12);
 		config.controler().setWritePlansInterval(50);
 		config.qsim().setStartTime(0.0);
 		config.qsim().setEndTime(93600.0);
-		config.global().setNumberOfThreads(4);
+		config.global().setNumberOfThreads(12);
 		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		config.controler().setWriteEventsInterval(50);
 		Scenario scenario = ScenarioUtils.loadScenario(config);

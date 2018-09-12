@@ -139,7 +139,7 @@
 		<!-- Estimated number of events during mobsim run. An optional optimization hint for the framework. -->
 		<param name="estimatedNumberOfEvents" value="null" />
 		<!-- Number of threads for parallel events handler. _null_ means the framework decides by itself. 0 is currently not possible. -->
-		<param name="numberOfThreads" value="5" />
+		<param name="numberOfThreads" value="12" />
 		<!-- If enabled, each event handler is assigned to its own thread. Note that enabling this feature disabled the numberOfThreads option! This feature is still experimental! -->
 		<param name="oneThreadPerHandler" value="false" />
 		<!-- If enabled, it is ensured that all events that are created during a time step of the mobility simulation are processed before the next time step is simulated. E.g. neccessary when within-day replanning is used. -->
