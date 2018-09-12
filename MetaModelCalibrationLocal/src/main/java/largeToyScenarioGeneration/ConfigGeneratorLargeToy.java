@@ -84,9 +84,9 @@ public class ConfigGeneratorLargeToy {
 		configMod.plansCalcRoute().setInsertingAccessEgressWalk(false);
 		configMod.qsim().setUsePersonIdForMissingVehicleId(true);
 		configMod.global().setCoordinateSystem("arbitrary");
-		configMod.parallelEventHandling().setNumberOfThreads(5);
+		configMod.parallelEventHandling().setNumberOfThreads(12);
 		configMod.controler().setWritePlansInterval(50);
-		configMod.global().setNumberOfThreads(4);
+		configMod.global().setNumberOfThreads(12);
 		configMod.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		configMod.controler().setWriteEventsInterval(50);
 		configMod.qsim().setUsingFastCapacityUpdate(false);
