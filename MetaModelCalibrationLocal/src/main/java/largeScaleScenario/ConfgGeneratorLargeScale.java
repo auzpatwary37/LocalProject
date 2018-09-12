@@ -102,6 +102,8 @@ public class ConfgGeneratorLargeScale {
 		config.controler().setWriteEventsInterval(50);
 		config.qsim().setUseLanes(true);
 		config.qsim().setLinkDynamics(LinkDynamics.PassingQ);
+		config.qsim().setStartTime(0.0);
+		config.qsim().setEndTime(28*3600);
 		//saveNetworkTransitAndVehicleInformation("data/LargeScaleScenario/modeDetails.txt",config);
 		
 		new ConfigWriter(config).write("data/LargeScaleScenario/configFinal.xml");

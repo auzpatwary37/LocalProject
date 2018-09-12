@@ -91,8 +91,10 @@ public class ConfigGeneratorLargeToy {
 		configMod.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		configMod.controler().setWriteEventsInterval(50);
 		configMod.qsim().setUsingFastCapacityUpdate(false);
-		config.qsim().setUseLanes(true);
-		config.qsim().setLinkDynamics(LinkDynamics.PassingQ);
+		configMod.qsim().setUseLanes(true);
+		configMod.qsim().setLinkDynamics(LinkDynamics.PassingQ);
+		configMod.qsim().setStartTime(0.0);
+		configMod.qsim().setEndTime(28*3600);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		

@@ -2001,7 +2001,7 @@
 	<module name="qsim" >
 		<!-- If set to true, creates a vehicle for each person corresponding to every network mode. However, this will be overridden if vehicle source is fromVehiclesData. -->
 		<param name="creatingVehiclesForAllNetworkModes" value="true" />
-		<param name="endTime" value="undefined" />
+		<param name="endTime" value="28:00:00" />
 		<param name="flowCapacityFactor" value="1.0" />
 		<!-- decides if waiting vehicles enter the network after or before the already driving vehicles were moved. Default: false -->
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="false" />
@@ -2010,7 +2010,7 @@
 		<!-- If link dynamics is set as SeepageQ, set to true if seep mode do not consumes any space on the link. Default is false. -->
 		<param name="isSeepModeStorageFree" value="false" />
 		<!-- default: FIFO; options: FIFO PassingQ SeepageQ -->
-		<param name="linkDynamics" value="FIFO" />
+		<param name="linkDynamics" value="PassingQ" />
 		<!-- The (initial) width of the links of the network. Use positive floating point values. This is used only for visualisation. -->
 		<param name="linkWidth" value="30.0" />
 		<!-- [comma-separated list] Defines which modes are congested modes. Technically, these are the modes that the departure handler of the netsimengine handles.  Effective cell size, effective lane width, flow capacity factor, and storage capacity factor need to be set with diligence.  Need to be vehicular modes to make sense. -->
@@ -2030,7 +2030,7 @@
 		<!-- snapshotStyle. One of: equiDist queue withHoles withHolesAndShowHoles kinematicWaves  -->
 		<param name="snapshotStyle" value="equiDist" />
 		<param name="snapshotperiod" value="00:00:00" />
-		<param name="startTime" value="undefined" />
+		<param name="startTime" value="00:00:00" />
 		<param name="storageCapacityFactor" value="1.0" />
 		<!-- time in seconds.  Time after which the frontmost vehicle on a link is called `stuck' if it does not move. -->
 		<param name="stuckTime" value="10.0" />
@@ -2038,7 +2038,7 @@
 		<!-- options: queue withHoles kinematicWaves  -->
 		<param name="trafficDynamics" value="queue" />
 		<!-- Set this parameter to true if lanes should be used, false if not. -->
-		<param name="useLanes" value="false" />
+		<param name="useLanes" value="true" />
 		<!-- If a route does not reference a vehicle, agents will use the vehicle with the same id as their own. -->
 		<param name="usePersonIdForMissingVehicleId" value="true" />
 		<!-- If false, the qsim accumulates fractional flows up to one flow unit in every time step.  If true, flows are updated only if an agent wants to enter the link or an agent is added to buffer. Default is true. -->

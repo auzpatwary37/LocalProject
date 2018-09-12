@@ -8,11 +8,10 @@ import java.util.LinkedHashMap;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.matsim.core.config.Config;
+import org.matsim.core.config.ConfigUtils;
 
-import toyScenarioGeneration.ConfigGenerator;
-import toyScenarioGeneration.SimRunImplToy;
 import ust.hk.praisehk.metamodelcalibration.analyticalModel.AnalyticalModel;
-import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModel;
+import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModelSubPop;
 import ust.hk.praisehk.metamodelcalibration.calibrator.Calibrator;
 import ust.hk.praisehk.metamodelcalibration.calibrator.CalibratorImpl;
 import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
@@ -28,38 +27,38 @@ public class CalibrationRunLargeScale {
 		
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
 		
-		final boolean internalCalibration=true;
+		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/toyMeasurements.xml");
-		Config initialConfig=ConfigGenerator.generateToyConfig();
-		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/Output/ATCMeasurementsPeak.xml");
+		Config initialConfig=ConfigUtils.createConfig();
+		ConfigUtils.loadConfig(initialConfig,"data/LargeScaleScenario/configFinal.xml");
+		ParamReader pReader=new ParamReader("data/LargeScaleScenario/subPopParamAndLimit.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-30,-30});
+		LinkedHashMap<String,Double>initialParams=pReader.getInitialParam();
 		LinkedHashMap<String,Double>params=initialParams;
-		pReader.setInitialParam(initialParams);
 		
-		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"toyScenario/Calibration/", internalCalibration, pReader,10, 4);
+		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"LargeScaleOutput/Calibration/", internalCalibration, pReader,25, 4);
 		
-		calibrator.setMaxTrRadius(25.0);
+		calibrator.setMaxTrRadius(75);
 	
 		
-		SimRun simRun=new SimRunImplToy();
+		SimRun simRun=new SimRunHKI();
 		
 		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
-		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
+		AnalyticalModel sue=new CNLSUEModelSubPop(calibrationMeasurements.getTimeBean(),pReader);
 		
 		for(int i=0;i<50;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
 			
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
-			sue.setFileLoc("toyScenario/");
+			sue.setFileLoc("LargeScaleOutput/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 			
 			
 			//Insert Gradient Calculator
-			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
-			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
+			//SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
+			//params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
 			
 			
 			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), null, null, MetaModel.AnalyticalLinearMetaModelName);
@@ -68,20 +67,6 @@ public class CalibrationRunLargeScale {
 		
 		
 		
-	}
-	
-	public static LinkedHashMap<String,Double> loadInitialParam(ParamReader pReader,double[] paramList) {
-		LinkedHashMap<String,Double> initialParam=new LinkedHashMap<>(pReader.getInitialParam());
-		if(initialParam.size()!=paramList.length) {
-			throw new IllegalArgumentException("Dimension MissMatch! Could not load the param.");
-		}
-		int i=0;
-		for(String s:initialParam.keySet()) {
-			initialParam.put(s, paramList[i]);
-			i++;
-		}
-		
-		return initialParam;
 	}
 	
 	public static void writeRunParam(Calibrator calibrator,String fileWriteLoc,LinkedHashMap<String,Double>params,ParamReader pReader) {
