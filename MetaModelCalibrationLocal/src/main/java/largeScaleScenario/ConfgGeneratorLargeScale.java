@@ -96,8 +96,9 @@ public class ConfgGeneratorLargeScale {
 		createStrategies(config, GVFixed_NAME, 0.03, 0.03, 0, 450);
 		
 		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
+		config.controler().setWriteEventsInterval(50);
 		
-		saveNetworkTransitAndVehicleInformation("data/LargeScaleScenario/modeDetails.txt",config);
+		//saveNetworkTransitAndVehicleInformation("data/LargeScaleScenario/modeDetails.txt",config);
 		
 		new ConfigWriter(config).write("data/LargeScaleScenario/configFinal.xml");
 	}
