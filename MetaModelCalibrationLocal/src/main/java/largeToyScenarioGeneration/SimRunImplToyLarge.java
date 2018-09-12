@@ -46,8 +46,9 @@ public class SimRunImplToyLarge implements SimRun{
 		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		config.controler().setWriteEventsInterval(50);
 		Scenario scenario = ScenarioUtils.loadScenario(config);
-		Controler controler = new Controler(scenario);
+		
 		scenario.addScenarioElement(SignalsData.ELEMENT_NAME, new SignalsDataLoader(config).loadSignalsData());	
+		Controler controler = new Controler(scenario);
 		ZonalFareXMLParser busFareGetter = new ZonalFareXMLParser(scenario.getTransitSchedule());
 		SAXParser saxParser;
 		
