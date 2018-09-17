@@ -52,10 +52,28 @@ public class ATCCountingStation{
 	 * 
 	 * @param m
 	 * @param desiredtimeBean
+	 * @param networkFileLoc 
 	 */
-	public static Measurements createEmptyTimeMeasurement(Measurements mOld, Map<String,Tuple<Double,Double>>desiredtimeBean,String fileLoc) {
+	public static Measurements createEmptyTimeMeasurement(Measurements mOld, Map<String,Tuple<Double,Double>>desiredtimeBean,String fileLoc, String networkFileLoc) {
+		Config config=ConfigUtils.createConfig();
+		config.network().setInputFile(networkFileLoc);
+		Network network=ScenarioUtils.loadScenario(config).getNetwork();
 		Measurements m=Measurements.createMeasurements(desiredtimeBean);
+		
+		
 		for(Measurement mm:mOld.getMeasurements().values()) {
+			boolean containsAllLink=true;
+			for(Id<Link>LinkId:(ArrayList<Id<Link>>)mm.getAttribute(Measurement.linkListAttributeName)) {
+				if(!network.getLinks().containsKey(LinkId)) {
+					containsAllLink=false;
+					break;
+				}
+			}
+			
+			if(containsAllLink=false) {
+				continue;
+			}
+			
 			m.createAnadAddMeasurement(mm.getId().toString());
 			for(String timeBeanId:desiredtimeBean.keySet()) {
 				m.getMeasurements().get(mm.getId()).addVolume(timeBeanId, 0.);
@@ -189,7 +207,25 @@ public static void main(String[] args) throws IOException {
 		}
 		
 		//For Large Scale Toy Scenario
-		createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeEmptyATCMeasurements.xml");
+		Config config=ConfigUtils.createConfig();
+		config.network().setInputFile("data/toyScenarioLargeData/network.xml");
+		Network networkToyLarge=ScenarioUtils.loadScenario(config).getNetwork();
+		Measurements toyLargeMeasurement=Measurements.createMeasurements(m.getTimeBean());
+		for(Measurement mm:m.getMeasurements().values()) {
+			boolean allLinksAvailable=true;
+			for(Id<Link> lId:(ArrayList<Id<Link>>)mm.getAttribute(Measurement.linkListAttributeName)) {
+				if(!networkToyLarge.getLinks().containsKey(lId)) {
+					allLinksAvailable=false;
+					break;
+				}
+			}
+			if(allLinksAvailable==true) {
+				toyLargeMeasurement.createAnadAddMeasurement(mm.getId().toString());
+				
+			}
+		}
+		
+		createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeEmptyATCMeasurements.xml","data/toyScenarioLargeData/network.xml");
 		
 		System.out.println("Total Measurement Volume = "+noOfMeasurementVolume);
 		

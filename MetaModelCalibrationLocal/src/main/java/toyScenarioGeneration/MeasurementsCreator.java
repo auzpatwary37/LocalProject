@@ -152,7 +152,8 @@ public class MeasurementsCreator {
 		Measurements emptyMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/toyScenarioLargeEmptyATCMeasurements.xml");
 		Config config=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(config, "data/toyScenarioLargeData/configToyLargeMod.xml");
-		config.global().setNumberOfThreads(3);
+		config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
+		config.global().setNumberOfThreads(15);
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToyLarge(), pReader.ScaleDown(getOriginalParamSimplified()), "toyScenarioLarge/fabricatedCount.xml",true);
 		System.out.println("Done till toyMeasurements");
