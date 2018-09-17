@@ -33,7 +33,7 @@
 		<!-- true if at the end of a run, plans, network, config etc should be dumped to a file -->
 		<param name="dumpDataAtEnd" value="true" />
 		<!-- Default=false. If enabled, the router takes travel times needed for turning moves into account. Cannot be used if the (Fast)AStarLandmarks routing or TravelTimeCalculator.separateModes is enabled. -->
-		<param name="enableLinkToLinkRouting" value="true" />
+		<param name="enableLinkToLinkRouting" value="false" />
 		<!-- Default=xml; Specifies the file format for writing events. Currently supported: xml.
 		Multiple values can be specified separated by commas (','). -->
 		<param name="eventsFileFormat" value="xml" />
@@ -139,7 +139,7 @@
 		<!-- Estimated number of events during mobsim run. An optional optimization hint for the framework. -->
 		<param name="estimatedNumberOfEvents" value="null" />
 		<!-- Number of threads for parallel events handler. _null_ means the framework decides by itself. 0 is currently not possible. -->
-		<param name="numberOfThreads" value="12" />
+		<param name="numberOfThreads" value="5" />
 		<!-- If enabled, each event handler is assigned to its own thread. Note that enabling this feature disabled the numberOfThreads option! This feature is still experimental! -->
 		<param name="oneThreadPerHandler" value="false" />
 		<!-- If enabled, it is ensured that all events that are created during a time step of the mobility simulation are processed before the next time step is simulated. E.g. neccessary when within-day replanning is used. -->
@@ -2001,7 +2001,7 @@
 	<module name="qsim" >
 		<!-- If set to true, creates a vehicle for each person corresponding to every network mode. However, this will be overridden if vehicle source is fromVehiclesData. -->
 		<param name="creatingVehiclesForAllNetworkModes" value="true" />
-		<param name="endTime" value="28:00:00" />
+		<param name="endTime" value="undefined" />
 		<param name="flowCapacityFactor" value="1.0" />
 		<!-- decides if waiting vehicles enter the network after or before the already driving vehicles were moved. Default: false -->
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="false" />
@@ -2010,13 +2010,13 @@
 		<!-- If link dynamics is set as SeepageQ, set to true if seep mode do not consumes any space on the link. Default is false. -->
 		<param name="isSeepModeStorageFree" value="false" />
 		<!-- default: FIFO; options: FIFO PassingQ SeepageQ -->
-		<param name="linkDynamics" value="PassingQ" />
+		<param name="linkDynamics" value="FIFO" />
 		<!-- The (initial) width of the links of the network. Use positive floating point values. This is used only for visualisation. -->
 		<param name="linkWidth" value="30.0" />
 		<!-- [comma-separated list] Defines which modes are congested modes. Technically, these are the modes that the departure handler of the netsimengine handles.  Effective cell size, effective lane width, flow capacity factor, and storage capacity factor need to be set with diligence.  Need to be vehicular modes to make sense. -->
 		<param name="mainMode" value="car" />
 		<!-- Shortens a link in the visualization, i.e. its start and end point are moved into towards the center. Does not affect traffic flow.  -->
-		<param name="nodeOffset" value="20.0" />
+		<param name="nodeOffset" value="0.0" />
 		<!-- Number of threads used for the QSim.  Note that this setting is independent from the "global" threads setting.  In contrast to earlier versions, the non-parallel special version is no longer there. -->
 		<param name="numberOfThreads" value="1" />
 		<!-- Boolean. `true': stuck vehicles are removed, aborting the plan; `false': stuck vehicles are forced into the next link. `false' is probably the better choice. -->
@@ -2030,15 +2030,15 @@
 		<!-- snapshotStyle. One of: equiDist queue withHoles withHolesAndShowHoles kinematicWaves  -->
 		<param name="snapshotStyle" value="equiDist" />
 		<param name="snapshotperiod" value="00:00:00" />
-		<param name="startTime" value="00:00:00" />
+		<param name="startTime" value="undefined" />
 		<param name="storageCapacityFactor" value="1.0" />
 		<!-- time in seconds.  Time after which the frontmost vehicle on a link is called `stuck' if it does not move. -->
-		<param name="stuckTime" value="1000.0" />
+		<param name="stuckTime" value="10.0" />
 		<param name="timeStepSize" value="00:00:01" />
 		<!-- options: queue withHoles kinematicWaves  -->
 		<param name="trafficDynamics" value="queue" />
 		<!-- Set this parameter to true if lanes should be used, false if not. -->
-		<param name="useLanes" value="true" />
+		<param name="useLanes" value="false" />
 		<!-- If a route does not reference a vehicle, agents will use the vehicle with the same id as their own. -->
 		<param name="usePersonIdForMissingVehicleId" value="true" />
 		<!-- If false, the qsim accumulates fractional flows up to one flow unit in every time step.  If true, flows are updated only if an agent wants to enter the link or an agent is added to buffer. Default is true. -->
@@ -2144,26 +2144,26 @@
 		<!-- Optional input file containing additional attributes for transit lines, stored as ObjectAttributes. -->
 		<param name="transitLinesAttributesFile" value="null" />
 		<!-- Comma-separated list of transportation modes that are handled as transit. Defaults to 'pt'. -->
-		<param name="transitModes" value="pt,tram,train" />
+		<param name="transitModes" value="pt" />
 		<!-- Input file containing the transit schedule to be simulated. -->
 		<param name="transitScheduleFile" value="data/toyScenarioLargeData/transitSchedule.xml" />
 		<!-- Optional input file containing additional attributes for transit stop facilities, stored as ObjectAttributes. -->
 		<param name="transitStopsAttributesFile" value="null" />
 		<!-- Set this parameter to true if transit should be simulated, false if not. -->
-		<param name="useTransit" value="true" />
+		<param name="useTransit" value="false" />
 		<!-- Input file containing the vehicles used by the departures in the transit schedule. -->
 		<param name="vehiclesFile" value="data/toyScenarioLargeData/transitVehiclesMod.xml" />
 	</module>
 <!-- ====================================================================== -->
 	<module name="transitRouter" >
 		<!-- additional time the router allocates when a line switch happens. Can be interpreted as a 'safety' time that agents need to safely transfer from one line to another -->
-		<param name="additionalTransferTime" value="2.0" />
+		<param name="additionalTransferTime" value="0.0" />
 		<!-- Factor with which direct walk generalized cost is multiplied before it is compared to the pt generalized cost.  Set to a very high value to reduce direct walk results. -->
-		<param name="directWalkFactor" value="100.0" />
+		<param name="directWalkFactor" value="1.0" />
 		<!-- step size to increase searchRadius if no stops are found -->
-		<param name="extensionRadius" value="500.0" />
+		<param name="extensionRadius" value="200.0" />
 		<!-- maximum beeline distance between stops that agents could transfer to by walking -->
-		<param name="maxBeelineWalkConnectionDistance" value="200.0" />
+		<param name="maxBeelineWalkConnectionDistance" value="100.0" />
 		<!-- the radius in which stop locations are searched, given a start or target coordinate -->
 		<param name="searchRadius" value="1000.0" />
 	</module>
@@ -2171,7 +2171,7 @@
 	<module name="travelTimeCalculator" >
 		<!-- Transport modes that will be respected by the travel time collector. 'car' is default, which includes also busses from the pt simulation module. Use this parameter in combination with 'filterModes' = true! -->
 		<param name="analyzedModes" value="car" />
-		<param name="calculateLinkToLinkTravelTimes" value="true" />
+		<param name="calculateLinkToLinkTravelTimes" value="false" />
 		<param name="calculateLinkTravelTimes" value="true" />
 		<!-- If true, link travel times from legs performed on modes not included in the 'analyzedModes' parameter are ignored. -->
 		<param name="filterModes" value="false" />
