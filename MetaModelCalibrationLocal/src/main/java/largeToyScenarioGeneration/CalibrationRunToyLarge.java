@@ -29,10 +29,10 @@ public class CalibrationRunToyLarge {
 		
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
 		
-		final boolean internalCalibration=true;
+		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/toyMeasurements.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
@@ -51,21 +51,19 @@ public class CalibrationRunToyLarge {
 		writeRunParam(calibrator, "toyScenarioLarge/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
 		
-		for(int i=0;i<50;i++) {
+		for(int i=0;i<30;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
-			
+			if(i!=0) {
+				int currentParamNo=calibrator.getCurrentParamNo();
+				config.plans().setInputFile("toyScenarioLarge/output"+Integer.toString(currentParamNo)+"/output_plans.xml.gz");
+			}
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
 			sue.setFileLoc("toyScenarioLarge/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
-			
-			
-			//Insert Gradient Calculator
-			//SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
-			//params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
-			
-			
-			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), null, null, MetaModel.AnalyticalLinearMetaModelName);
-						
+					
+			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
+			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory, MetaModel.AnalyticalLinearMetaModelName);
+
 		}
 		
 		

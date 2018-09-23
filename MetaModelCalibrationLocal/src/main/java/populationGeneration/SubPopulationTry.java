@@ -38,8 +38,8 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=0.1;
-	private static final double weightFactorTCS=0.1;
+	private static final double weightFactorgvtcs=0.05;
+	private static final double weightFactorTCS=0.05;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -159,9 +159,9 @@ public class SubPopulationTry {
 		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
 		
 		
-		popWriter.write("data/FinalHKITCSandGVTCS/populationHKIPaper.xml");
-		vehWriter.writeFile("data/FinalHKITCSandGVTCS/VehiclesHKIPaper.xml");
-		configWriter.write("data/FinalHKITCSandGVTCS/configPaperactivityParam.xml");
+		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
+		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
+		configWriter.write("data/toyScenarioLargeData/configPaperactivityParam.xml");
 		//new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/FinalHKITCSandGVTCS/personAttributesHKI.xml");
 		
 		System.out.println("total Population = "+population.getPersons().size());

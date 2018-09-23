@@ -26,7 +26,7 @@ import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 
 public class SimRunImplToyLarge implements SimRun{
 
-	private final int lastIteration=10;
+	private final int lastIteration=100;
 
 	@Override
 	public void run(AnalyticalModel sue, Config config, LinkedHashMap<String, Double> params, boolean generateOd,
