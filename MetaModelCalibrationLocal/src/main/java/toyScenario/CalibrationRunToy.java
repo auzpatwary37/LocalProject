@@ -29,14 +29,14 @@ public class CalibrationRunToy {
 		
 		PropertyConfigurator.configure("src/main/resources/log4j.properties");
 		
-		final boolean internalCalibration=true;
+		final boolean internalCalibration=false;
 		
 		
 		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("src/main/resources/toyScenarioData/toyMeasurements.xml");
 		Config initialConfig=ConfigGenerator.generateToyConfig();
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-30,-30});
+		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-15,-15});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
@@ -57,13 +57,12 @@ public class CalibrationRunToy {
 			sue.setFileLoc("toyScenario/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 			
+		
+			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
+			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory, MetaModel.AnalyticalQuadraticMetaModelName);
 			
-			//Insert Gradient Calculator
-			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, params, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
-			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory.getSimGradient(), gradientFactory.getAnaGradient(), MetaModel.GradientBased_III_MetaModelName);
 			
 			
-			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), null, null, MetaModel.AnalyticalLinearMetaModelName);
 						
 		}
 		

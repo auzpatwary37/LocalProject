@@ -53,10 +53,13 @@ public class CalibrationRunToyLarge {
 		
 		for(int i=0;i<30;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
-			if(i!=0) {
-				int currentParamNo=calibrator.getCurrentParamNo();
-				config.plans().setInputFile("toyScenarioLarge/output"+Integer.toString(currentParamNo)+"/output_plans.xml.gz");
-			}
+			config.plans().setInputFile("data/toyScenarioLargeData/output_plans.xml.gz");
+			config.global().setNumberOfThreads(7);
+			config.qsim().setNumberOfThreads(7);
+//			if(i!=0) {
+//				int currentParamNo=calibrator.getCurrentParamNo();
+//				config.plans().setInputFile("toyScenarioLarge/output"+Integer.toString(currentParamNo)+"/output_plans.xml.gz");
+//			}
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
 			sue.setFileLoc("toyScenarioLarge/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);

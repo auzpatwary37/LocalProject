@@ -110,7 +110,7 @@
 		<param name="coordinateSystem" value="arbitrary" />
 		<param name="insistingOnDeprecatedConfigVersion" value="true" />
 		<!-- "global" number of threads.  This number is used, e.g., for replanning, but NOT in the mobsim.  This can typically be set to as many cores as you have available, or possibly even slightly more. -->
-		<param name="numberOfThreads" value="3" />
+		<param name="numberOfThreads" value="12" />
 		<param name="randomSeed" value="4711" />
 	</module>
 <!-- ====================================================================== -->
@@ -261,7 +261,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="09:30:18" />
+				<param name="typicalDuration" value="09:30:23" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -275,7 +275,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:42:06" />
+				<param name="typicalDuration" value="04:44:56" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -289,7 +289,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="07:23:06" />
+				<param name="typicalDuration" value="07:22:58" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -303,7 +303,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:43:25" />
+				<param name="typicalDuration" value="01:43:42" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -317,7 +317,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:54:08" />
+				<param name="typicalDuration" value="01:53:08" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -331,7 +331,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:01:34" />
+				<param name="typicalDuration" value="03:01:07" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -345,7 +345,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:00:41" />
+				<param name="typicalDuration" value="03:00:23" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -359,7 +359,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:47:28" />
+				<param name="typicalDuration" value="03:44:30" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -373,7 +373,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:39:45" />
+				<param name="typicalDuration" value="03:39:15" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -387,7 +387,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:07:11" />
+				<param name="typicalDuration" value="03:06:12" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -401,7 +401,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:15:54" />
+				<param name="typicalDuration" value="03:16:06" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -415,7 +415,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:31:29" />
+				<param name="typicalDuration" value="03:28:29" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -429,7 +429,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:48:49" />
+				<param name="typicalDuration" value="03:46:44" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -443,7 +443,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:30:36" />
+				<param name="typicalDuration" value="04:30:39" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -457,7 +457,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="10:25:01" />
+				<param name="typicalDuration" value="10:24:31" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -527,7 +527,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:03:30" />
+				<param name="typicalDuration" value="02:04:02" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -597,7 +597,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:58:29" />
+				<param name="typicalDuration" value="01:58:54" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -681,7 +681,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:40:54" />
+				<param name="typicalDuration" value="00:40:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -709,7 +709,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:45:00" />
+				<param name="typicalDuration" value="03:42:51" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -723,7 +723,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:53:48" />
+				<param name="typicalDuration" value="01:53:49" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -751,7 +751,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:14:14" />
+				<param name="typicalDuration" value="01:16:52" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -933,7 +933,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:19:16" />
+				<param name="typicalDuration" value="02:26:58" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -975,7 +975,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:45:39" />
+				<param name="typicalDuration" value="02:44:59" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -989,7 +989,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:19:22" />
+				<param name="typicalDuration" value="00:21:58" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1045,7 +1045,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:57:45" />
+				<param name="typicalDuration" value="04:56:17" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1059,7 +1059,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:13:55" />
+				<param name="typicalDuration" value="04:13:58" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1073,7 +1073,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:12:57" />
+				<param name="typicalDuration" value="01:12:40" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1087,7 +1087,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:44:44" />
+				<param name="typicalDuration" value="01:42:19" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1101,7 +1101,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:56:50" />
+				<param name="typicalDuration" value="00:55:21" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1115,7 +1115,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:47:39" />
+				<param name="typicalDuration" value="00:48:59" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1129,7 +1129,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:22:28" />
+				<param name="typicalDuration" value="01:24:02" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1143,7 +1143,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:37:35" />
+				<param name="typicalDuration" value="02:33:05" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1157,7 +1157,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:17:55" />
+				<param name="typicalDuration" value="01:16:32" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1171,7 +1171,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:34:04" />
+				<param name="typicalDuration" value="01:37:51" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1213,7 +1213,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:28:14" />
+				<param name="typicalDuration" value="01:29:14" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1227,7 +1227,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:46:21" />
+				<param name="typicalDuration" value="00:33:44" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1269,7 +1269,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:34:20" />
+				<param name="typicalDuration" value="01:39:09" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1297,7 +1297,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:38:41" />
+				<param name="typicalDuration" value="01:40:09" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1311,7 +1311,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:04:30" />
+				<param name="typicalDuration" value="01:06:22" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1325,7 +1325,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:48:07" />
+				<param name="typicalDuration" value="01:49:27" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1339,7 +1339,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:03:26" />
+				<param name="typicalDuration" value="00:59:57" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1353,7 +1353,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:24:15" />
+				<param name="typicalDuration" value="01:29:06" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1367,7 +1367,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:41:14" />
+				<param name="typicalDuration" value="00:42:14" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1381,7 +1381,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="05:09:12" />
+				<param name="typicalDuration" value="05:02:08" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1395,7 +1395,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:54:46" />
+				<param name="typicalDuration" value="01:59:41" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1409,7 +1409,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:29:05" />
+				<param name="typicalDuration" value="00:27:46" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1437,7 +1437,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:43:03" />
+				<param name="typicalDuration" value="02:38:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1451,7 +1451,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:19:40" />
+				<param name="typicalDuration" value="02:22:25" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1465,7 +1465,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:14:20" />
+				<param name="typicalDuration" value="01:17:25" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1479,7 +1479,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:53:40" />
+				<param name="typicalDuration" value="00:52:02" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1507,7 +1507,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:17:29" />
+				<param name="typicalDuration" value="00:19:59" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1521,7 +1521,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:22:37" />
+				<param name="typicalDuration" value="04:19:17" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1535,7 +1535,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:48:25" />
+				<param name="typicalDuration" value="00:54:03" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1549,7 +1549,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:37:20" />
+				<param name="typicalDuration" value="02:33:14" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1591,7 +1591,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:11:12" />
+				<param name="typicalDuration" value="02:07:24" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1605,7 +1605,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:14:26" />
+				<param name="typicalDuration" value="00:16:19" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1647,7 +1647,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:53:45" />
+				<param name="typicalDuration" value="03:31:40" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1689,7 +1689,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:52:48" />
+				<param name="typicalDuration" value="03:55:30" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1731,7 +1731,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:12:37" />
+				<param name="typicalDuration" value="03:01:39" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1787,7 +1787,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:40:30" />
+				<param name="typicalDuration" value="00:42:30" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1815,7 +1815,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:43:37" />
+				<param name="typicalDuration" value="01:41:05" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -1829,7 +1829,7 @@
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:31:09" />
+				<param name="typicalDuration" value="01:30:15" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -2161,11 +2161,11 @@
 		<!-- Factor with which direct walk generalized cost is multiplied before it is compared to the pt generalized cost.  Set to a very high value to reduce direct walk results. -->
 		<param name="directWalkFactor" value="100.0" />
 		<!-- step size to increase searchRadius if no stops are found -->
-		<param name="extensionRadius" value="500.0" />
+		<param name="extensionRadius" value="200.0" />
 		<!-- maximum beeline distance between stops that agents could transfer to by walking -->
 		<param name="maxBeelineWalkConnectionDistance" value="200.0" />
 		<!-- the radius in which stop locations are searched, given a start or target coordinate -->
-		<param name="searchRadius" value="1000.0" />
+		<param name="searchRadius" value="500.0" />
 	</module>
 <!-- ====================================================================== -->
 	<module name="travelTimeCalculator" >

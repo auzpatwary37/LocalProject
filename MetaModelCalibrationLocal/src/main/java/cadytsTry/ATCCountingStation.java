@@ -64,13 +64,17 @@ public class ATCCountingStation{
 		for(Measurement mm:mOld.getMeasurements().values()) {
 			boolean containsAllLink=true;
 			for(Id<Link>LinkId:(ArrayList<Id<Link>>)mm.getAttribute(Measurement.linkListAttributeName)) {
+				if(LinkId.toString().equals(" 206203_201166")) {
+					System.out.println("testing!!!");
+				}
 				if(!network.getLinks().containsKey(LinkId)) {
 					containsAllLink=false;
 					break;
 				}
 			}
 			
-			if(containsAllLink=false) {
+			if(containsAllLink==false) {
+				System.out.println("Measurement Id = "+mm.getId().toString());
 				continue;
 			}
 			
@@ -225,8 +229,8 @@ public static void main(String[] args) throws IOException {
 			}
 		}
 		
-		createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeEmptyATCMeasurements.xml","data/toyScenarioLargeData/network.xml");
-		
+		Measurements largeMeasurements=createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeData/toyScenarioLargeEmptyATCMeasurements.xml","data/toyScenarioLargeData/network.xml");
+		//new MeasurementsWriter(largeMeasurements).write("measurementsLargeToyEmpty.xml");
 		System.out.println("Total Measurement Volume = "+noOfMeasurementVolume);
 		
 	}
