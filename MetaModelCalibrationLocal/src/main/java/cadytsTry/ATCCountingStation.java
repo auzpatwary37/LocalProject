@@ -3,9 +3,7 @@ package cadytsTry;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,12 +11,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.poifs.filesystem.POIFSFileSystem;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
@@ -74,7 +69,9 @@ public class ATCCountingStation{
 			}
 			
 			if(containsAllLink==false) {
+
 				System.out.println("Measurement Id = "+mm.getId().toString());
+
 				continue;
 			}
 			
@@ -228,9 +225,12 @@ public static void main(String[] args) throws IOException {
 				
 			}
 		}
-		
 		Measurements largeMeasurements=createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeData/toyScenarioLargeEmptyATCMeasurements.xml","data/toyScenarioLargeData/network.xml");
 		//new MeasurementsWriter(largeMeasurements).write("measurementsLargeToyEmpty.xml");
+
+		createEmptyTimeMeasurement(m,ParamReader.getDefaultTimeBean(),"data/toyScenarioLargeData/toyScenarioLargeEmptyATCMeasurements.xml","data/toyScenarioLargeData/network.xml");
+		
+
 		System.out.println("Total Measurement Volume = "+noOfMeasurementVolume);
 		
 	}
