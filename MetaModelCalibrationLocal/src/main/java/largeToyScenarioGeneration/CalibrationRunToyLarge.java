@@ -32,7 +32,7 @@ public class CalibrationRunToyLarge {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/fabricatedCount.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
@@ -53,9 +53,9 @@ public class CalibrationRunToyLarge {
 		
 		for(int i=0;i<30;i++) {
 			Config config=pReader.SetParamToConfig(initialConfig, params);
-			config.plans().setInputFile("data/toyScenarioLargeData/output_plans.xml.gz");
-			config.global().setNumberOfThreads(7);
-			config.qsim().setNumberOfThreads(7);
+			//config.plans().setInputFile("data/toyScenarioLargeData/output_plans.xml.gz");
+			config.global().setNumberOfThreads(8);
+			config.qsim().setNumberOfThreads(8);
 //			if(i!=0) {
 //				int currentParamNo=calibrator.getCurrentParamNo();
 //				config.plans().setInputFile("toyScenarioLarge/output"+Integer.toString(currentParamNo)+"/output_plans.xml.gz");

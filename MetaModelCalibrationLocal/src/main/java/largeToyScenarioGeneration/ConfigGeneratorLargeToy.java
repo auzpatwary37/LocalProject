@@ -40,8 +40,8 @@ public class ConfigGeneratorLargeToy {
 		
 		Scenario scenario=ScenarioUtils.loadScenario(config);
 		
-		reducePTCapacity(scenario.getTransitVehicles(),.05);
-		reduceLinkCapacity(scenario.getNetwork(),.05);
+		reducePTCapacity(scenario.getTransitVehicles(),.1);
+		reduceLinkCapacity(scenario.getNetwork(),.1);
 		for(LanesToLinkAssignment l2l:scenario.getLanes().getLanesToLinkAssignments().values()) {
 			for(Lane l: l2l.getLanes().values()) {
 				
@@ -126,7 +126,13 @@ public class ConfigGeneratorLargeToy {
 			vt.setPcuEquivalents(vt.getPcuEquivalents()*factor);
 			VehicleCapacity vc=vt.getCapacity();
 			if(vc.getSeats()!=null) {
-				vc.setSeats((int)Math.ceil(vc.getSeats()*factor));
+				int seats=(int)Math.ceil(vc.getSeats()*factor);
+				if(seats>0) {
+					vc.setSeats(seats);
+				}else {
+					vc.setSeats(1);
+				}
+				
 			}
 			if(vc.getStandingRoom()!=null) {
 				vc.setStandingRoom((int)Math.ceil(vc.getStandingRoom()*factor));
