@@ -26,8 +26,16 @@ import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 
 public class SimRunImplToyLarge implements SimRun{
 
-	private final int lastIteration=200;
-
+	private final int lastIteration;
+	
+	public SimRunImplToyLarge() {
+		this.lastIteration=200;
+	}
+	
+	public SimRunImplToyLarge(int lastIter) {
+		this.lastIteration=lastIter;
+	}
+	
 	@Override
 	public void run(AnalyticalModel sue, Config config, LinkedHashMap<String, Double> params, boolean generateOd,
 			String threadNo, MeasurementsStorage storage) {
@@ -41,10 +49,10 @@ public class SimRunImplToyLarge implements SimRun{
 		config.parallelEventHandling().setNumberOfThreads(12);
 		config.controler().setWritePlansInterval(50);
 		config.qsim().setStartTime(0.0);
-		config.qsim().setEndTime(93600.0);
+		config.qsim().setEndTime(28*3600);
 		config.global().setNumberOfThreads(12);
-		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
-		config.controler().setWriteEventsInterval(50);
+		config.strategy().setFractionOfIterationsToDisableInnovation(0.95);
+		config.controler().setWriteEventsInterval(20);
 		Scenario scenario = ScenarioUtils.loadScenario(config);
 		
 		scenario.addScenarioElement(SignalsData.ELEMENT_NAME, new SignalsDataLoader(config).loadSignalsData());	

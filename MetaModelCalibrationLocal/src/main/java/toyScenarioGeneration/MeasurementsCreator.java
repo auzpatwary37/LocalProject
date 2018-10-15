@@ -153,18 +153,18 @@ public class MeasurementsCreator {
 
 		ConfigUtils.loadConfig(config, "data/toyScenarioLargeData/configToyLargeMod.xml");
 
+		//config.plans().setInputFile("data/toyScenarioLargeData/150.plans.xml.gz");
+		config.global().setNumberOfThreads(7);
+
+		config.qsim().setNumberOfThreads(7);
 		//config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
-		config.global().setNumberOfThreads(15);
 
-
-		//config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
-
-		config.global().setNumberOfThreads(3);
+		config.global().setNumberOfThreads(7);
 
 
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 
-		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToyLarge(), pReader.ScaleDown(getOriginalParamSimplified()), "toyScenarioLarge/fabricatedCount.xml",true);
+		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()), "toyScenarioLarge/fabricatedCount.xml",true);
 
 		System.out.println("Done till toyMeasurements");
 	}

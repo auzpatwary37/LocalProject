@@ -60,7 +60,7 @@ public class SubPopulationTry {
 		HashMap<Double,String> activityDetailsTCS=new HashMap<>();
 		HashMap<Double,TCSMode> modesDetails=new HashMap<>();
 		String activityFileLoc="data/TCSDatabase/ActivityManual.csv";
-		String modeFileLoc="data/TCSDatabase/ModeManual.csv";
+		String modeFileLoc="data/TCSDatabase/ModeManualPaper.csv";
 		
 		TCSExtractor.readModeAndActivityTypeManual(activityFileLoc, modeFileLoc, activityDetailsTCS, modesDetails);
 		
