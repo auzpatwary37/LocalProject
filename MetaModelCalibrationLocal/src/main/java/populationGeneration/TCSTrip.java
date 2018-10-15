@@ -35,7 +35,8 @@ public class TCSTrip {
 	private HashMap<Integer,TaxiTripLeg> taxiTripLegs=new HashMap<>();
 	private HashMap<Integer,CarTripLeg> carTripLegs=new HashMap<>();
 	
-	private double TCStimeConverter(Double time) {
+
+	private static double TCStimeConverter(Double time) {
 		return (3600*(time.intValue()/100)+60*(time%100));
 	}
 	
