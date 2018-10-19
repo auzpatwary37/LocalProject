@@ -22,6 +22,7 @@ import ust.hk.praisehk.metamodelcalibration.matsimIntegration.MeasurementsStorag
 import ust.hk.praisehk.metamodelcalibration.matsimIntegration.SimRun;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
 import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
+import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsWriter;
 
 public class CalibrationRunToyLarge {
 
@@ -32,12 +33,12 @@ public class CalibrationRunToyLarge {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/toyScenarioLargeData/fabricatedCount.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_2.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-30,-30});
+		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-25,-20});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
@@ -46,7 +47,7 @@ public class CalibrationRunToyLarge {
 		calibrator.setMaxTrRadius(25.0);
 	
 		
-		SimRun simRun=new SimRunImplToyLarge();
+		SimRun simRun=new SimRunImplToyLarge(100);
 		
 		writeRunParam(calibrator, "toyScenarioLarge/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
@@ -66,7 +67,7 @@ public class CalibrationRunToyLarge {
 					
 			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
 			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory, MetaModel.AnalyticalLinearMetaModelName);
-
+			new MeasurementsWriter(storage.getSimMeasurement(params)).write("toyScenarioLarge/Calibration/Measurement_"+i+".xml");
 		}
 		
 		

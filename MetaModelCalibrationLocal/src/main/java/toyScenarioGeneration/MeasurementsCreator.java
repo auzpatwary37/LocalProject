@@ -72,7 +72,7 @@ public class MeasurementsCreator {
 	 * @param writeOrReadLocation
 	 * @return
 	 */
-	public static Measurements generateSyntheticMeasurements(Measurements emptyMeasurements,Config config, ParamReader preader,SimRun simrun,LinkedHashMap<String,Double>originalParam, String writeOrReadLocation, boolean reWrite) {
+	public static Measurements generateSyntheticMeasurements(Measurements emptyMeasurements,Config config, ParamReader preader,SimRun simrun,LinkedHashMap<String,Double>originalParam, String writeOrReadLocation, boolean reWrite,String toadd) {
 		Measurements m=null;
 		File file =new File(writeOrReadLocation);
 		if(file.exists()&& reWrite==false) {
@@ -85,7 +85,7 @@ public class MeasurementsCreator {
 		
 		MeasurementsStorage ms=new MeasurementsStorage(emptyMeasurements);
 		
-		simrun.run(new CNLSUEModel(emptyMeasurements.getTimeBean()), config, originalParam, false,"fabricated",ms);
+		simrun.run(new CNLSUEModel(emptyMeasurements.getTimeBean()), config, originalParam, false,toadd,ms);
 		
 		m=ms.getSimMeasurement(originalParam);
 		
@@ -163,10 +163,75 @@ public class MeasurementsCreator {
 
 
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
-
-		Measurements newMEasurements=generateSyntheticMeasurements(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()), "toyScenarioLarge/fabricatedCount.xml",true);
-
+		HashMap<Integer,Thread> creators=new HashMap<>();
+//		
+//		for(int i=0;i<2;i++) {
+//			Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+i,"toyScenarioLarge/fabricatedCount__"+i+".xml", true));
+//			creators.put(i, t);
+//		}
+//		
+//		for(int i=0;i<creators.size();i++) {
+//			creators.get(i).start();
+//		}
+//		
+//		for(int i=0;i<creators.size();i++) {
+//			try {
+//				creators.get(i).join();
+//			} catch (InterruptedException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
+		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+3,"toyScenarioLarge/fabricatedCount__"+3+".xml", true));
+		t.start();
+		try {
+			t.join();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println("Done till toyMeasurements");
+	}
+	
+	
+}
+
+class VCreator implements Runnable{
+	
+	private Measurements m;
+	private Config config;
+	private ParamReader pReader;
+	private SimRun simrun;
+	private LinkedHashMap<String, Double> startPoint;
+	private String fabricatedCountWriteLocation;
+	private boolean overrite;
+	private String toadd;
+	
+	public VCreator(Measurements m,
+	Config configOld,
+	ParamReader pReader,
+	SimRun simrun,
+	LinkedHashMap<String, Double> startPoint,
+	String MatsimWriteLoc,
+	String fabricatedCountWriteLocation,
+	boolean overrite) {
+		new ConfigWriter(configOld).write("interConfig.xml");
+		this.config= ConfigUtils.createConfig();
+		ConfigUtils.loadConfig(config,"interConfig.xml");
+		new MeasurementsWriter(m).write("interMeasurements.xml");
+		this.m=new MeasurementsReader().readMeasurements("interMeasurements.xml");
+		this.toadd=MatsimWriteLoc;
+		this.startPoint=new LinkedHashMap<>(startPoint);
+		this.simrun=simrun;
+		this.fabricatedCountWriteLocation=fabricatedCountWriteLocation;
+		this.pReader=pReader;
+		this.overrite=overrite;
+	}
+	
+	
+	@Override
+	public void run() {
+		MeasurementsCreator.generateSyntheticMeasurements(this.m, this.config, pReader, simrun, this.startPoint, this.fabricatedCountWriteLocation, this.overrite,this.toadd);
 	}
 	
 }
