@@ -110,7 +110,7 @@
 		<param name="coordinateSystem" value="arbitrary" />
 		<param name="insistingOnDeprecatedConfigVersion" value="true" />
 		<!-- "global" number of threads.  This number is used, e.g., for replanning, but NOT in the mobsim.  This can typically be set to as many cores as you have available, or possibly even slightly more. -->
-		<param name="numberOfThreads" value="7" />
+		<param name="numberOfThreads" value="10" />
 		<param name="randomSeed" value="4711" />
 	</module>
 <!-- ====================================================================== -->
@@ -253,235 +253,235 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Usual place of work" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:47:18" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:32:18" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="09:30:23" />
+				<param name="typicalDuration" value="09:19:42" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Other places of work" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:56:40" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:41:40" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:44:56" />
+				<param name="typicalDuration" value="04:39:25" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="School/educational institution that oneself studied" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:32:39" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:17:39" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="07:22:58" />
+				<param name="typicalDuration" value="07:14:17" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="School/educational institution that other people studied" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:23:12" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:08:12" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:43:42" />
+				<param name="typicalDuration" value="01:35:21" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Bank" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:12:56" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:57:56" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:53:08" />
+				<param name="typicalDuration" value="01:50:51" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Market/shopping arcade/shops/ supermarket (excluding restaurant cinema karaoke)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:32:55" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:17:55" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:01:07" />
+				<param name="typicalDuration" value="02:51:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Food premise: restaurant caf pub etc." />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="16:07:22" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:52:22" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:00:23" />
+				<param name="typicalDuration" value="02:50:48" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Cinema/concert karaoke and other entertainment facilities (includindg nightclubs / bathhouses / massage establishments" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="17:56:14" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="16:41:14" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:44:30" />
+				<param name="typicalDuration" value="03:38:36" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Park/playground/sports ground/court/gym centre/swimming pool/beach" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:20:15" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:05:15" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:39:15" />
+				<param name="typicalDuration" value="03:29:32" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Hospital / medical center / clinic" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:15:20" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:00:20" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:06:12" />
+				<param name="typicalDuration" value="03:00:59" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Cultural / community center library and arts / museum" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:29:45" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:14:45" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:16:06" />
+				<param name="typicalDuration" value="03:07:43" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Church / temple" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:31:20" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:16:20" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:28:29" />
+				<param name="typicalDuration" value="03:21:11" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Elderly homes" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:11:45" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:56:45" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:46:44" />
+				<param name="typicalDuration" value="03:41:34" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Home of family member/relative/friend" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:59:31" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:44:31" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:30:39" />
+				<param name="typicalDuration" value="04:21:16" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Boundary Control Point (departure)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="10:43:39" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="09:28:39" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="10:24:31" />
+				<param name="typicalDuration" value="10:14:30" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Boundary Control Point (arrival)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="20:02:08" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="18:47:08" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:00:01" />
+				<param name="typicalDuration" value="08:00:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Anywhere in the Mainland" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="07:45:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="06:30:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -491,11 +491,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Anywhere in the overseas" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -505,11 +505,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Another home / second home (occassional)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="18:25:42" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="17:10:42" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -519,53 +519,53 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Police station / immigration department / other government offices" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:03:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:48:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:04:02" />
+				<param name="typicalDuration" value="01:11:09" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Post office" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:30:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:15:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:00:01" />
+				<param name="typicalDuration" value="00:25:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Petrol station (please specify purpose)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="22:35:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="21:20:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:00:01" />
+				<param name="typicalDuration" value="00:05:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Parking lot" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -575,53 +575,53 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Bus / public light bus terminal / stop / MTR / LRT station / pier (non-transport purpose e.g. settle/get things)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="17:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="16:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:00:00" />
+				<param name="typicalDuration" value="02:05:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Places of work of other people (non-work purpose)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:48:30" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:33:30" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:58:54" />
+				<param name="typicalDuration" value="01:51:11" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Industrial and commercial buildings (non-work purpose)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:30:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:15:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:00:00" />
+				<param name="typicalDuration" value="03:30:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Betting branches" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -631,53 +631,25 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Others" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:10:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="07:55:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:30:00" />
+				<param name="typicalDuration" value="04:05:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Securities company / investment center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="10:05:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
-				<param name="priority" value="1.0" />
-				<param name="scoringThisActivityAtAll" value="true" />
-				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:00:00" />
-				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
-				<param name="typicalDurationScoreComputation" value="relative" />
-			</parameterset>
-			<parameterset type="activityParams" >
-				<param name="activityType" value="Travel agent" />
-				<param name="closingTime" value="undefined" />
-				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
-				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
-				<param name="priority" value="1.0" />
-				<param name="scoringThisActivityAtAll" value="true" />
-				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:00:00" />
-				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
-				<param name="typicalDurationScoreComputation" value="relative" />
-			</parameterset>
-			<parameterset type="activityParams" >
-				<param name="activityType" value="Funeral home / cemetery / crematorium / bone ash space" />
-				<param name="closingTime" value="undefined" />
-				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
-				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:50:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -686,82 +658,110 @@
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
-				<param name="activityType" value="Labor organization/association" />
-				<param name="closingTime" value="undefined" />
+				<param name="activityType" value="Travel agent" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:30:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:15:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:00:00" />
+				<param name="typicalDuration" value="01:45:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Funeral home / cemetery / crematorium / bone ash space" />
+				<param name="closingTime" value="26:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="13:46:32" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="12:31:32" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:26:40" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Labor organization/association" />
+				<param name="closingTime" value="26:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="11:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:45:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:45:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Learning center / learning center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:51:50" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:36:50" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="03:42:51" />
+				<param name="typicalDuration" value="03:15:42" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Tutorial center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="17:08:24" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="15:53:24" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:53:49" />
+				<param name="typicalDuration" value="01:47:12" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Examination venue" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="18:35:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="17:20:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:00:00" />
+				<param name="typicalDuration" value="02:25:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Beauty salon/Barber shop" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:11:53" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:56:53" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:16:52" />
+				<param name="typicalDuration" value="00:59:22" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Hotel (for residence)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -771,11 +771,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Hotel (visiting relatives/friends)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -785,11 +785,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Barbecue venue" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -799,11 +799,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Country park / countryside area" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -813,11 +813,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Farmland" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -827,11 +827,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Fishing site" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -841,11 +841,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Holiday camp" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="10:29:45" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="09:14:45" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -855,11 +855,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Pet Shop" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -869,11 +869,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Volunteer center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -883,11 +883,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Tourist attractions" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:07:30" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:52:30" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -897,25 +897,25 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Chek Lap Kok Airport (non-departure or arrival)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:23:46" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:08:46" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:00:00" />
+				<param name="typicalDuration" value="02:20:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Law firm" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:45:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:30:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -925,25 +925,25 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Garage / car repair center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:51:43" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:36:43" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:26:58" />
+				<param name="typicalDuration" value="02:21:04" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Driving center" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -953,11 +953,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Waterfront (for recreation)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -967,109 +967,109 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Viewing property" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:42:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:27:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:44:59" />
+				<param name="typicalDuration" value="02:48:45" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Carrying/meeting family" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:21:50" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:06:50" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:21:58" />
+				<param name="typicalDuration" value="00:09:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Driving / taking a ride" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="16:37:13" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="15:22:13" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="01:30:00" />
+				<param name="typicalDuration" value="01:12:30" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Place nearby to home / downstairs (please specify purpose)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="11:45:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:30:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:00:01" />
+				<param name="typicalDuration" value="08:00:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="On street / roaming the street / no particular destination" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="08:12:09" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="06:57:09" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:32:54" />
+				<param name="typicalDuration" value="02:41:54" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="other" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:50:07" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:35:07" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:56:17" />
+				<param name="typicalDuration" value="04:37:46" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Home" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="18:05:14" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="16:50:14" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="04:13:58" />
+				<param name="typicalDuration" value="04:09:18" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Factory" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:26:18" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:11:18" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1079,11 +1079,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Warehouse" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:41:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:26:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1093,11 +1093,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Shop / Restaurant" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:23:36" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:08:36" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1107,11 +1107,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Hotel" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:40:38" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:25:38" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1121,11 +1121,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Office" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:51:12" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:36:12" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1135,11 +1135,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Construction site" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:59:34" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:44:34" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1149,11 +1149,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Government and Community organization" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:23:18" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:08:18" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1163,11 +1163,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Kwai Tsing container terminals" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:24:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:09:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1177,11 +1177,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Cargo working area" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1191,11 +1191,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Airport / Rail freight terminal" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1205,11 +1205,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Logistics centers" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:09:21" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:54:21" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1219,11 +1219,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Open storage and Port back-up facilities" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:51:55" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:36:55" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1233,11 +1233,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Landfill sites / Barging points" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1247,11 +1247,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Market / Wholesale market" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1261,11 +1261,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Public parking area" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="16:13:37" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:58:37" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1275,11 +1275,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Clinic and Hospital" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:22:29" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:07:29" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1289,11 +1289,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Petrol station / Oil depots / LPG filling station" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:33:38" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:18:38" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1303,11 +1303,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="School" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:03:49" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:48:49" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1317,11 +1317,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Park / Theme park" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:46:12" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:31:12" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1331,11 +1331,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Public transport stations / stops / piers" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:13:30" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:58:30" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1345,11 +1345,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Depot / Ship repair yards" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:43:52" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:28:52" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1359,11 +1359,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Public refuse collection Points / Refuse transfer stations / Refuse collection stations" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:16:12" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:01:12" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1373,11 +1373,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Farms / Fishing grounds / Horticultural sites" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:25:12" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:10:12" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1387,11 +1387,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Power plants / Electric substations / Bulk infeed substations" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:30:35" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:15:35" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1401,11 +1401,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Funeral parlors" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:47:51" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:32:51" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1415,11 +1415,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Slaughterhouses" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="07:25:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="06:10:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1429,11 +1429,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Convention centers / Showrooms" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:24:38" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:09:38" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1443,11 +1443,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Telephone exchange buildings" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:38:13" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:23:13" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1457,11 +1457,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Vehicle repair centers / Vehicle examination centers / Garage / Vehicle cleansing services sites" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:52:23" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:37:23" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1471,11 +1471,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Tunnels / Bridges / Tolls / Roads / Roadside" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:04:20" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:49:20" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1485,11 +1485,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Refuse sorting facilities" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:29:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:14:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1499,11 +1499,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Churches" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="10:16:39" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="09:01:39" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1513,11 +1513,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Cemeteries / crematoria" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="11:43:23" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:28:23" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1527,11 +1527,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Clubhouses / Yacht clubs / Golf clubs" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:52:54" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:37:54" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1541,25 +1541,25 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Racecourse" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:34:36" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:19:36" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="02:33:14" />
+				<param name="typicalDuration" value="02:10:14" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Swimming pools" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:51:39" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:36:39" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1569,11 +1569,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Beaches" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="00:15:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="00:00:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1583,11 +1583,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Sports centers / Sports grounds / Pitches / Courts" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:46:47" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:31:47" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1597,11 +1597,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Homes for the aged / Nursing homes" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:11:13" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:56:13" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1611,11 +1611,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Newspaper stands" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="06:16:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="05:01:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1625,11 +1625,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Dormitory" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:21:40" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:06:40" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1639,11 +1639,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Holiday villages / Holiday camp" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="12:29:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="11:14:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1653,11 +1653,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Television stations" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="09:29:17" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:14:17" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1667,11 +1667,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Ambulance depot" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:05:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:50:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1681,11 +1681,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Water treatment works" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="11:32:57" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:17:57" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1695,25 +1695,25 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Barbecue sites" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="17:45:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="16:30:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
-				<param name="typicalDuration" value="00:00:01" />
+				<param name="typicalDuration" value="08:00:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Vehicle scrap yard" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="10:04:59" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="08:49:59" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1723,11 +1723,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Sewage treatment plants" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="11:48:34" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="10:33:34" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1737,11 +1737,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Recorder house" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="14:19:22" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:04:22" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1751,11 +1751,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Test centers" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="20:05:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="18:50:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1765,11 +1765,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Temple" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="19:18:19" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="18:03:19" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1779,11 +1779,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Other container terminals (i.e. River trade terminal / Mid-stream site / Private wharf)" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="13:38:55" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="12:23:55" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1793,11 +1793,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Pumping station" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="17:45:00" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="16:30:00" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1807,11 +1807,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Airport passenger terminal" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:41:42" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="14:26:42" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -1821,11 +1821,11 @@
 			</parameterset>
 			<parameterset type="activityParams" >
 				<param name="activityType" value="Residential" />
-				<param name="closingTime" value="undefined" />
+				<param name="closingTime" value="26:00:00" />
 				<param name="earliestEndTime" value="undefined" />
-				<param name="latestStartTime" value="undefined" />
+				<param name="latestStartTime" value="15:05:20" />
 				<param name="minimalDuration" value="undefined" />
-				<param name="openingTime" value="undefined" />
+				<param name="openingTime" value="13:50:20" />
 				<param name="priority" value="1.0" />
 				<param name="scoringThisActivityAtAll" value="true" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
@@ -2018,7 +2018,7 @@
 		<!-- Shortens a link in the visualization, i.e. its start and end point are moved into towards the center. Does not affect traffic flow.  -->
 		<param name="nodeOffset" value="20.0" />
 		<!-- Number of threads used for the QSim.  Note that this setting is independent from the "global" threads setting.  In contrast to earlier versions, the non-parallel special version is no longer there. -->
-		<param name="numberOfThreads" value="7" />
+		<param name="numberOfThreads" value="10" />
 		<!-- Boolean. `true': stuck vehicles are removed, aborting the plan; `false': stuck vehicles are forced into the next link. `false' is probably the better choice. -->
 		<param name="removeStuckVehicles" value="false" />
 		<!-- If link dynamics is set as SeepageQ, set a seep mode. Default is bike. -->
@@ -2089,7 +2089,7 @@
 			<!-- subpopulation to which the strategy applies. "null" refers to the default population, that is, the set of persons for which no explicit subpopulation is defined (ie no subpopulation attribute) -->
 			<param name="subpopulation" value="null" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.8" />
+			<param name="weight" value="0.75" />
 		</parameterset>
 		<parameterset type="strategysettings" >
 			<!-- iteration after which strategy will be disabled.  most useful for ``innovative'' strategies (new routes, new times, ...). Normally, better use fractionOfIterationsToDisableInnovation -->
@@ -2101,7 +2101,7 @@
 			<!-- subpopulation to which the strategy applies. "null" refers to the default population, that is, the set of persons for which no explicit subpopulation is defined (ie no subpopulation attribute) -->
 			<param name="subpopulation" value="null" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.05" />
+			<param name="weight" value="0.1" />
 		</parameterset>
 		<parameterset type="strategysettings" >
 			<!-- iteration after which strategy will be disabled.  most useful for ``innovative'' strategies (new routes, new times, ...). Normally, better use fractionOfIterationsToDisableInnovation -->
@@ -2113,7 +2113,7 @@
 			<!-- subpopulation to which the strategy applies. "null" refers to the default population, that is, the set of persons for which no explicit subpopulation is defined (ie no subpopulation attribute) -->
 			<param name="subpopulation" value="null" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.1" />
+			<param name="weight" value="0.05" />
 		</parameterset>
 		<parameterset type="strategysettings" >
 			<!-- iteration after which strategy will be disabled.  most useful for ``innovative'' strategies (new routes, new times, ...). Normally, better use fractionOfIterationsToDisableInnovation -->
@@ -2125,7 +2125,7 @@
 			<!-- subpopulation to which the strategy applies. "null" refers to the default population, that is, the set of persons for which no explicit subpopulation is defined (ie no subpopulation attribute) -->
 			<param name="subpopulation" value="null" />
 			<!-- weight of a strategy: for each agent, a strategy will be selected with a probability proportional to its weight -->
-			<param name="weight" value="0.05" />
+			<param name="weight" value="0.1" />
 		</parameterset>
 	</module>
 <!-- ====================================================================== -->

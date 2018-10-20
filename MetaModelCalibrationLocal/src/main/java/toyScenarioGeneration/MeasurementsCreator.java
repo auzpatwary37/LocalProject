@@ -154,12 +154,12 @@ public class MeasurementsCreator {
 		ConfigUtils.loadConfig(config, "data/toyScenarioLargeData/configToyLargeMod.xml");
 
 		//config.plans().setInputFile("data/toyScenarioLargeData/150.plans.xml.gz");
-		config.global().setNumberOfThreads(7);
+		config.global().setNumberOfThreads(10);
 
-		config.qsim().setNumberOfThreads(7);
+		config.qsim().setNumberOfThreads(10);
 		//config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
 
-		config.global().setNumberOfThreads(7);
+		config.global().setNumberOfThreads(10);
 
 
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
@@ -182,7 +182,7 @@ public class MeasurementsCreator {
 //				e.printStackTrace();
 //			}
 //		}
-		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+3,"toyScenarioLarge/fabricatedCount__"+3+".xml", true));
+		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+5,"toyScenarioLarge/fabricatedCount_"+5+".xml", true));
 		t.start();
 		try {
 			t.join();

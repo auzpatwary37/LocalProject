@@ -66,13 +66,15 @@ public class ActivityAnalyzer {
 			for(PlanElement pe:p.getSelectedPlan().getPlanElements()) {
 				if(pe instanceof Activity) {
 					Activity a=(Activity)pe;
-					if(averageStartingTimeCalculator.containsKey(a.getType())&&a.getStartTime()!=Double.NEGATIVE_INFINITY) {
+					if(a.getStartTime()!=Double.NEGATIVE_INFINITY) {
+					if(averageStartingTimeCalculator.containsKey(a.getType())) {
 						Tuple<Double,Integer>oldTuple=this.averageStartingTimeCalculator.get(a.getType());
 						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getStartTime(),oldTuple.getSecond()+1);
 						this.averageStartingTimeCalculator.put(a.getType(),newTuple);
 					}else {
 						Tuple<Double,Integer>newTuple=new Tuple<>(a.getStartTime(),1);
 						this.averageStartingTimeCalculator.put(a.getType(),newTuple);
+					}
 					}
 				}
 			}
@@ -153,7 +155,7 @@ public class ActivityAnalyzer {
 		}
 		for(String s:activityTypes) {
 			ActivityParams act = new ActivityParams(s);
-			if(typicalDurations.get(s)!=null) {
+			if(typicalDurations.get(s)!=null && typicalDurations.get(s)!=0) {
 				act.setTypicalDuration(typicalDurations.get(s));
 			}else {
 				act.setTypicalDuration(defaultTypicalDuration);

@@ -116,6 +116,7 @@ public class ConfigGeneratorLargeToy {
 		configMod.transitRouter().setExtensionRadius(200);
 		configMod.transitRouter().setSearchRadius(500);
 		configMod.travelTimeCalculator().setCalculateLinkToLinkTravelTimes(true);
+		config.planCalcScore().setLateArrival_utils_hr(-100.);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		

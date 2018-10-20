@@ -17,6 +17,7 @@ import org.matsim.api.core.v01.population.PopulationWriter;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
 import org.matsim.core.config.ConfigWriter;
+import org.matsim.core.config.groups.PlanCalcScoreConfigGroup;
 import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.Tuple;
@@ -120,35 +121,36 @@ public class SubPopulationTry {
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
 		HashMap<String,Double>activityStartTime=ac.getAverageStartingTime(population);
-		ArrayList<String>activityTypes=new ArrayList<>();
+		ArrayList<String>activityTypes=null;
+		activityTypes=new ArrayList<>();
 		activityTypes.addAll(activityDetailsTCS.values());
 		activityTypes.addAll(activityDetailsgvtcs.values());
-		
-		ActivityAnalyzer.addActivityPlanParameter(config.planCalcScore(), activityTypes, activityDuration, activityStartTime, 
+		PlanCalcScoreConfigGroup cp=config.planCalcScore();
+		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime, 
 				15*60, 30*60, 8*60*60, 15*60, 0);
 		
-		
-		for(String s:activityDetailsTCS.values()) {
-			if(activityDuration.containsKey(s)) {
-				if(activityDuration.get(s)==0) {
-					activityDuration.put(s, 1.0);
-				}
-				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,activityDuration.get(s).intValue());
-			}else {
-				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,8*60*60);
-			}
-		}
-		for(String s:activityDetailsgvtcs.values()) {
-			if(activityDuration.containsKey(s)) {
-				if(activityDuration.get(s)==0) {
-					activityDuration.put(s, 1.0);
-				}
-			
-				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,activityDuration.get(s).intValue());
-			}else {
-				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,8*60*60);
-			}
-		}
+		//config.addModule(cp);
+//		for(String s:activityDetailsTCS.values()) {
+//			if(activityDuration.containsKey(s)) {
+//				if(activityDuration.get(s)==0) {
+//					activityDuration.put(s, 1.0);
+//				}
+//				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,activityDuration.get(s).intValue());
+//			}else {
+//				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,8*60*60);
+//			}
+//		}
+//		for(String s:activityDetailsgvtcs.values()) {
+//			if(activityDuration.containsKey(s)) {
+//				if(activityDuration.get(s)==0) {
+//					activityDuration.put(s, 1.0);
+//				}
+//			
+//				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,activityDuration.get(s).intValue());
+//			}else {
+//				TCSExtractor.addActivityPlanParameter(config.planCalcScore(),s,8*60*60);
+//			}
+//		}
 		
 		
 		//ActivityAnalyzer.ActivitySplitter(population, config, "Usual place of work", 60*30.);
