@@ -158,7 +158,7 @@ public class MeasurementsCreator {
 
 		config.qsim().setNumberOfThreads(3);
 		//config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
-
+		config.strategy().setFractionOfIterationsToDisableInnovation(0.8);
 		config.global().setNumberOfThreads(3);
 
 
@@ -182,7 +182,7 @@ public class MeasurementsCreator {
 //				e.printStackTrace();
 //			}
 //		}
-		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+5,"toyScenarioLarge/fabricatedCount_"+5+".xml", true));
+		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+0,"toyScenarioLarge/fabricatedCount_"+0+".xml", true));
 		t.start();
 		try {
 			t.join();

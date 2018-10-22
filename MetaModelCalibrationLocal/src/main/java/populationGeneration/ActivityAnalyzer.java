@@ -245,6 +245,9 @@ public class ActivityAnalyzer {
 				act.setEarliestEndTime(defaultEndTime-earliestEndTimeMin);
 				act.setClosingTime(defaultEndTime);
 			}
+			if(act.getOpeningTime()==0 && act.getClosingTime()==24*3600) {
+				System.out.println(act.getActivityType());
+			}
 			config.addActivityParams(act);
 		}
 	}

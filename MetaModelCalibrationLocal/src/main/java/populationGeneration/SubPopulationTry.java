@@ -129,7 +129,7 @@ public class SubPopulationTry {
 		
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime, 
-				15,15, 8*60*60, 15*60, 0,24*3600);
+				15,15, 8*60*60, 15*60, 8*3600,20*3600);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

@@ -79,13 +79,13 @@ public class ConfigGeneratorLargeToy {
 		configMod.transit().setTransitScheduleFile("data/toyScenarioLargeData/transitSchedule.xml");
 		configMod.vehicles().setVehiclesFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
 		
-		configMod.strategy().addParam("ModuleProbability_1", "0.75");
+		configMod.strategy().addParam("ModuleProbability_1", "0.8");
 		configMod.strategy().addParam("Module_1", "ChangeExpBeta");
 		configMod.strategy().addParam("ModuleProbability_2", "0.1");
 		configMod.strategy().addParam("Module_2", "ReRoute");
 		configMod.strategy().addParam("ModuleProbability_3", "0.05");
 		configMod.strategy().addParam("Module_3", "TimeAllocationMutator");
-		configMod.strategy().addParam("ModuleProbability_4", ".1");
+		configMod.strategy().addParam("ModuleProbability_4", ".05");
 		configMod.strategy().addParam("Module_4", "ChangeTripMode");
 		
 		configMod.plansCalcRoute().setInsertingAccessEgressWalk(false);
