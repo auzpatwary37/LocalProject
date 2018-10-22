@@ -154,12 +154,12 @@ public class MeasurementsCreator {
 		ConfigUtils.loadConfig(config, "data/toyScenarioLargeData/configToyLargeMod.xml");
 
 		//config.plans().setInputFile("data/toyScenarioLargeData/150.plans.xml.gz");
-		config.global().setNumberOfThreads(10);
+		config.global().setNumberOfThreads(3);
 
-		config.qsim().setNumberOfThreads(10);
+		config.qsim().setNumberOfThreads(3);
 		//config.plans().setInputFile("data/toyScenarioLargeData/output_plans_Original.xml.gz");
 
-		config.global().setNumberOfThreads(10);
+		config.global().setNumberOfThreads(3);
 
 
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");

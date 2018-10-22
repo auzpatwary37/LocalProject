@@ -50,8 +50,7 @@ public class SimRunImplToyLarge implements SimRun{
 		config.controler().setWritePlansInterval(50);
 		config.qsim().setStartTime(0.0);
 		config.qsim().setEndTime(28*3600);
-		config.global().setNumberOfThreads(10);
-		config.strategy().setFractionOfIterationsToDisableInnovation(0.95);
+	
 		config.controler().setWriteEventsInterval(20);
 		Scenario scenario = ScenarioUtils.loadScenario(config);
 		

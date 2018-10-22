@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
@@ -121,13 +122,14 @@ public class SubPopulationTry {
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
 		HashMap<String,Double>activityStartTime=ac.getAverageStartingTime(population);
-		ArrayList<String>activityTypes=null;
-		activityTypes=new ArrayList<>();
-		activityTypes.addAll(activityDetailsTCS.values());
-		activityTypes.addAll(activityDetailsgvtcs.values());
+		HashMap<String,Double>activityEndTime=ac.getAverageClosingTime(population);
+		
+		Set<String>activityTypes=null;
+		activityTypes=ac.getActivityTypes(population);
+		
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
-		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime, 
-				15*60, 30*60, 8*60*60, 15*60, 0);
+		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime, 
+				15,15, 8*60*60, 15*60, 0,24*3600);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

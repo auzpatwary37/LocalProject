@@ -3,6 +3,7 @@ package populationGeneration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Set;
 
 import org.matsim.api.core.v01.population.Activity;
 import org.matsim.api.core.v01.population.Person;
@@ -19,6 +20,7 @@ import org.matsim.core.utils.collections.Tuple;
  */
 public class ActivityAnalyzer {
 	private HashMap<String,Tuple<Double,Integer>> averageStartingTimeCalculator=new HashMap<>();
+	private HashMap<String,Tuple<Double,Integer>> averageEndTimeCalculator=new HashMap<>();
 	private HashMap<String,Double>activityDuration=new HashMap<>();
 	/**
 	 * This function finds the average activity duration for each activity inside a popualtion file
@@ -84,6 +86,44 @@ public class ActivityAnalyzer {
 			averageStartingTime.put(s, this.averageStartingTimeCalculator.get(s).getFirst()/this.averageStartingTimeCalculator.get(s).getSecond());
 		}
 		return averageStartingTime;
+	}
+	
+	public HashMap<String, Double> getAverageClosingTime(Population population) {
+		for(Person p:population.getPersons().values()) {
+			for(PlanElement pe:p.getSelectedPlan().getPlanElements()) {
+				if(pe instanceof Activity) {
+					Activity a=(Activity)pe;
+					if(a.getEndTime()!=Double.NEGATIVE_INFINITY) {
+					if(averageEndTimeCalculator.containsKey(a.getType())) {
+						Tuple<Double,Integer>oldTuple=this.averageEndTimeCalculator.get(a.getType());
+						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getEndTime(),oldTuple.getSecond()+1);
+						this.averageEndTimeCalculator.put(a.getType(),newTuple);
+					}else {
+						Tuple<Double,Integer>newTuple=new Tuple<>(a.getEndTime(),1);
+						this.averageEndTimeCalculator.put(a.getType(),newTuple);
+					}
+					}
+				}
+			}
+		}
+		HashMap<String, Double> averageStartingTime=new HashMap<>();
+		for(String s:this.averageStartingTimeCalculator.keySet()) {
+			averageStartingTime.put(s, this.averageStartingTimeCalculator.get(s).getFirst()/this.averageStartingTimeCalculator.get(s).getSecond());
+		}
+		return averageStartingTime;
+	}
+	
+	public Set<String> getActivityTypes(Population population){
+		Set<String> ActivityTypes=new HashSet<String>();
+		for(Person p:population.getPersons().values()) {
+			for(PlanElement pe:p.getSelectedPlan().getPlanElements()) {
+				if(pe instanceof Activity) {
+					Activity a=(Activity)pe;
+					ActivityTypes.add(a.getType());
+				}
+			}
+		}
+		return ActivityTypes;
 	}
 
 	/**
@@ -168,6 +208,43 @@ public class ActivityAnalyzer {
 				act.setOpeningTime(defaultOpenningTime);
 			}
 			act.setClosingTime(26*3600);
+			config.addActivityParams(act);
+		}
+	}
+	
+	public static void addActivityPlanParameter(PlanCalcScoreConfigGroup config,Set<String>activityTypes,HashMap<String,Double>typicalDurations,
+			HashMap<String,Double>typicalStartingTime,HashMap<String,Double>typicalEndTime,int addedlatestStartTimeMin,int earliestEndTimeMin,
+			int defaultTypicalDuration,int defaultTypicalStartingTime,int defaultOpenningTime, int defaultEndTime){
+		
+		for(String s:activityTypes) {
+			ActivityParams act = new ActivityParams(s);
+			if(typicalDurations.get(s)!=null && typicalDurations.get(s)!=0) {
+				act.setTypicalDuration(typicalDurations.get(s));
+			}else {
+				act.setTypicalDuration(defaultTypicalDuration);
+			}
+			if(typicalStartingTime.get(s)!=null) {
+				act.setLatestStartTime(typicalStartingTime.get(s)+addedlatestStartTimeMin*60);
+				if(typicalStartingTime.get(s)-1800<0) {
+					act.setOpeningTime(typicalStartingTime.get(s));
+				}else {
+					act.setOpeningTime(typicalStartingTime.get(s)-1800);
+				}
+			}else {
+				act.setLatestStartTime(defaultTypicalStartingTime);
+				act.setOpeningTime(defaultOpenningTime);
+			}
+			if(typicalEndTime.get(s)!=null) {
+				act.setEarliestEndTime(typicalEndTime.get(s)-earliestEndTimeMin*60);
+				if(typicalEndTime.get(s)+1800>24*3600) {
+					act.setClosingTime(typicalEndTime.get(s));
+				}else {
+					act.setClosingTime(typicalEndTime.get(s)+1800);
+				}
+			}else {
+				act.setEarliestEndTime(defaultEndTime-earliestEndTimeMin);
+				act.setClosingTime(defaultEndTime);
+			}
 			config.addActivityParams(act);
 		}
 	}
