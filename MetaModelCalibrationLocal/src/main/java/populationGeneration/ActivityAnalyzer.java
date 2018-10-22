@@ -223,7 +223,7 @@ public class ActivityAnalyzer {
 			}else {
 				act.setTypicalDuration(defaultTypicalDuration);
 			}
-			if(typicalStartingTime.get(s)!=null) {
+			if(typicalStartingTime.get(s)!=null && !act.getActivityType().equals("Home")) {
 				act.setLatestStartTime(typicalStartingTime.get(s)+addedlatestStartTimeMin*60);
 				if(typicalStartingTime.get(s)-1800<0) {
 					act.setOpeningTime(typicalStartingTime.get(s));
@@ -232,9 +232,11 @@ public class ActivityAnalyzer {
 				}
 			}else {
 				act.setLatestStartTime(defaultTypicalStartingTime);
-				act.setOpeningTime(defaultOpenningTime);
+				if(!act.getActivityType().equals("Home")) {
+					act.setOpeningTime(defaultOpenningTime);
+				}
 			}
-			if(typicalEndTime.get(s)!=null) {
+			if(typicalEndTime.get(s)!=null && !act.getActivityType().equals("Home")) {
 				act.setEarliestEndTime(typicalEndTime.get(s)-earliestEndTimeMin*60);
 				if(typicalEndTime.get(s)+1800>24*3600) {
 					act.setClosingTime(typicalEndTime.get(s));
@@ -243,7 +245,9 @@ public class ActivityAnalyzer {
 				}
 			}else {
 				act.setEarliestEndTime(defaultEndTime-earliestEndTimeMin);
-				act.setClosingTime(defaultEndTime);
+				if(!act.getActivityType().equals("Home")) {
+					act.setClosingTime(defaultEndTime);
+				}
 			}
 			if(act.getOpeningTime()==0 && act.getClosingTime()==24*3600) {
 				System.out.println(act.getActivityType());
