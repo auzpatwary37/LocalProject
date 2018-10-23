@@ -133,8 +133,8 @@ public class MeasurementsCreator {
 	
 	public static LinkedHashMap<String,Double> getOriginalParamSimplified() {
 		LinkedHashMap<String,Double> originalParam=new LinkedHashMap<>();
-		originalParam.put("MarginalUtilityofTravelCar",-25.);
-		originalParam.put("MarginalUtilityofTravelpt",-20.);
+		originalParam.put("MarginalUtilityofTravelCar",-230.);
+		originalParam.put("MarginalUtilityofTravelpt",-210.);
 		
 		return originalParam;
 	}
@@ -162,7 +162,7 @@ public class MeasurementsCreator {
 		config.global().setNumberOfThreads(7);
 
 
-		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
+		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToyLarge.csv");
 		HashMap<Integer,Thread> creators=new HashMap<>();
 //		
 //		for(int i=0;i<2;i++) {
@@ -182,7 +182,7 @@ public class MeasurementsCreator {
 //				e.printStackTrace();
 //			}
 //		}
-		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+3,"toyScenarioLarge/fabricatedCount_"+3+".xml", true));
+		Thread t=new Thread(new VCreator(emptyMeasurements, config, pReader, new SimRunImplToyLarge(100), pReader.ScaleDown(getOriginalParamSimplified()),"Fabricated_"+0,"toyScenarioLarge/fabricatedCount_"+0+".xml", true));
 		t.start();
 		try {
 			t.join();

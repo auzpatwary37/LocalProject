@@ -40,8 +40,8 @@ public class ConfigGeneratorLargeToy {
 		
 		Scenario scenario=ScenarioUtils.loadScenario(config);
 		
-		reducePTCapacity(scenario.getTransitVehicles(),.15);
-		reduceLinkCapacity(scenario.getNetwork(),.15);
+		reducePTCapacity(scenario.getTransitVehicles(),.2);
+		reduceLinkCapacity(scenario.getNetwork(),.2);
 		for(LanesToLinkAssignment l2l:scenario.getLanes().getLanesToLinkAssignments().values()) {
 			for(Lane l: l2l.getLanes().values()) {
 				
