@@ -40,8 +40,8 @@ public class ConfigGeneratorLargeToy {
 		
 		Scenario scenario=ScenarioUtils.loadScenario(config);
 		
-		reducePTCapacity(scenario.getTransitVehicles(),.1);
-		reduceLinkCapacity(scenario.getNetwork(),.1);
+		reducePTCapacity(scenario.getTransitVehicles(),.15);
+		reduceLinkCapacity(scenario.getNetwork(),.15);
 		for(LanesToLinkAssignment l2l:scenario.getLanes().getLanesToLinkAssignments().values()) {
 			for(Lane l: l2l.getLanes().values()) {
 				
@@ -116,7 +116,7 @@ public class ConfigGeneratorLargeToy {
 		configMod.transitRouter().setExtensionRadius(200);
 		configMod.transitRouter().setSearchRadius(500);
 		configMod.travelTimeCalculator().setCalculateLinkToLinkTravelTimes(true);
-		config.planCalcScore().setLateArrival_utils_hr(-25.);
+		config.planCalcScore().setLateArrival_utils_hr(-100.);
 		
 		new ConfigWriter(configMod).writeFileV2("data/toyScenarioLargeData/configToyLargeMod.xml");
 		

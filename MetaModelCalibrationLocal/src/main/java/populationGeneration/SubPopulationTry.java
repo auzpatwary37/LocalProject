@@ -40,8 +40,8 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=0.05;
-	private static final double weightFactorTCS=0.05;
+	private static final double weightFactorgvtcs=0.07;
+	private static final double weightFactorTCS=0.07;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -115,9 +115,9 @@ public class SubPopulationTry {
 		goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation));
 		
 		
-		for(GoodsVehicle gv:goodsVehicles.values()) {
-			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
-		}
+//		for(GoodsVehicle gv:goodsVehicles.values()) {
+//			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
+//		}
 		
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
@@ -129,7 +129,7 @@ public class SubPopulationTry {
 		
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime, 
-				15,15, 8*60*60, 15*60, 8*3600,20*3600);
+				15,15, 8*60*60, 15*60, 8*3600,20*3600, false);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

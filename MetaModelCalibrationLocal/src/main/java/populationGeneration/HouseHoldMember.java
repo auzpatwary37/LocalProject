@@ -356,17 +356,17 @@ public class HouseHoldMember {
 			}
 		}
 		
-		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
-			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
-				vehicles.addVehicleType(t.getSecond().getType());
-			}
-			
-			population.addPerson(t.getFirst());
-			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
-			if(t.getSecond()!=null) {
-				vehicles.addVehicle(t.getSecond());
-			}
-		}
+//		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
+//			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
+//				vehicles.addVehicleType(t.getSecond().getType());
+//			}
+//			
+//			population.addPerson(t.getFirst());
+//			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
+//			if(t.getSecond()!=null) {
+//				vehicles.addVehicle(t.getSecond());
+//			}
+//		}
 		tripPerson+=personsAndVehiclessub2.size();
 		personPerson+=personsAndVehiclessub1.size();
 		//double ratio=personsAndVehiclessub1.size()/(personsAndVehiclessub1.size()+personsAndVehiclessub2.size());

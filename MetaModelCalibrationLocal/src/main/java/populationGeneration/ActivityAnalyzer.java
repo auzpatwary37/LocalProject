@@ -214,7 +214,7 @@ public class ActivityAnalyzer {
 	
 	public static void addActivityPlanParameter(PlanCalcScoreConfigGroup config,Set<String>activityTypes,HashMap<String,Double>typicalDurations,
 			HashMap<String,Double>typicalStartingTime,HashMap<String,Double>typicalEndTime,int addedlatestStartTimeMin,int earliestEndTimeMin,
-			int defaultTypicalDuration,int defaultTypicalStartingTime,int defaultOpenningTime, int defaultEndTime){
+			int defaultTypicalDuration,int defaultTypicalStartingTime,int defaultOpenningTime, int defaultEndTime, boolean addstartandendTime){
 		
 		for(String s:activityTypes) {
 			ActivityParams act = new ActivityParams(s);
@@ -223,6 +223,7 @@ public class ActivityAnalyzer {
 			}else {
 				act.setTypicalDuration(defaultTypicalDuration);
 			}
+			if(addstartandendTime==true) {
 			if(typicalStartingTime.get(s)!=null && !act.getActivityType().equals("Home")) {
 				act.setLatestStartTime(typicalStartingTime.get(s)+addedlatestStartTimeMin*60);
 				if(typicalStartingTime.get(s)-1800<0) {
@@ -251,6 +252,7 @@ public class ActivityAnalyzer {
 			}
 			if(act.getOpeningTime()==0 && act.getClosingTime()==24*3600) {
 				System.out.println(act.getActivityType());
+			}
 			}
 			config.addActivityParams(act);
 		}
