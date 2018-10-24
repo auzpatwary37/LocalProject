@@ -36,7 +36,7 @@ public class CalibrationRunToyLarge {
 		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_0.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
-		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToy.csv");
+		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToyLarge.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
 		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-200,-200});
 		LinkedHashMap<String,Double>params=initialParams;
