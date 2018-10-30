@@ -133,7 +133,7 @@ public class SubPopulationTry {
 		
 //		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
 //				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
-		ac.readActivityTimings("data/toyScenarioLargeData/ActivityTiming.csv", config);
+		ac.readActivityTimings("data/toyScenarioLargeData/AcivityTiming.csv", config);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

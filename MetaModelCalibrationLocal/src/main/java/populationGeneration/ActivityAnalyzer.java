@@ -128,8 +128,8 @@ public class ActivityAnalyzer {
 				Activity startingActivity=(Activity)plan.getPlanElements().get(0);
 				Activity endingActivity=(Activity)plan.getPlanElements().get(plan.getPlanElements().size()-1);
 				
-				startingActivity.setType(startingActivity.getType()+"_StartOrEnd");
-				endingActivity.setType(endingActivity.getType()+"_StartOrEnd");
+				startingActivity.setType(startingActivity.getType()+"_Start");
+				endingActivity.setType(endingActivity.getType()+"_End");
 				activities.add(startingActivity.getType());
 				activities.add(endingActivity.getType());
 			}
@@ -445,18 +445,18 @@ public class ActivityAnalyzer {
 			while((line=bf.readLine())!=null) {
 				String[] part=line.split(",");
 				Map<String,Double> map=new HashMap<>();
-				if(!part[1].equals("")) {
+				if(!part[1].equals("na")) {
 					map.put(openingTimeString, Double.parseDouble(part[1]));
 					map.put(closingTimeString, Double.parseDouble(part[3]));
 					
 				}
-				if(!part[5].equals("")) {
+				if(!part[5].equals("na")) {
 					map.put(typicalDurationString, Double.parseDouble(part[5]));
 				}
-				if(!part[2].equals("")) {
+				if(!part[2].equals("na")) {
 					map.put(latestStartTimeString, Double.parseDouble(part[2]));
 				}
-				if(!part[4].equals("")) {
+				if(!part[4].equals("na")) {
 					map.put(earliestEndTimeString, Double.parseDouble(part[4]));
 				}
 				timings.put(part[0], map);
@@ -475,7 +475,11 @@ public class ActivityAnalyzer {
 				
 			}
 			if(timings.get(s).get(typicalDurationString)!=null) {
-				a.setTypicalDuration(timings.get(s).get(typicalDurationString));
+				if( timings.get(s).get(typicalDurationString)!=0.) {
+					a.setTypicalDuration(timings.get(s).get(typicalDurationString));
+				}else {
+					a.setTypicalDuration(1.);
+				}
 			}else {
 				a.setTypicalDuration(8*3600);
 			}
