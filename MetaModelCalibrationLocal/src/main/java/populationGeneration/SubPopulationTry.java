@@ -40,7 +40,7 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=0.07;
+	private static final double weightFactorgvtcs=0.1;
 	private static final double weightFactorTCS=0.07;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
@@ -126,10 +126,13 @@ public class SubPopulationTry {
 		
 		Set<String>activityTypes=null;
 		activityTypes=ac.getActivityTypes(population);
-		
+		Set<String>startAndEndActivities=ac.getStartOrEndActivityTypes(population);
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
-		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime, 
-				15,15, 8*60*60, 15*60, 8*3600,20*3600, false);
+		//ac.ActivitySplitter(population, config, "Home", 12*3600.);
+		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails.csv","toyScenarioLarge/activityDistributions.csv");
+		
+		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
+				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

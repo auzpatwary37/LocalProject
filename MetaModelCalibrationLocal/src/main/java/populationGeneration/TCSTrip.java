@@ -37,9 +37,15 @@ public class TCSTrip {
 	
 
 	private static double TCStimeConverter(Double time) {
-		return (3600*(time.intValue()/100)+60*(time%100));
+		double outtime=(3600*(time.intValue()/100)+60*(time%100));
+		if(outtime<3*3600) {
+			outtime=outtime+24*3600;
+		}
+		return outtime;
+		
 	}
 	
+	@SuppressWarnings("static-access")
 	public TCSTrip(double qNo,double memNo,double tripNo,double originActivity,double destinationActivity,
 			TPUSB otpusb,TPUSB dtpusb,double departureTime,double arrivalTime,double tripPurpose,double modeHier,double timePeriod,
 			double expansionFactor) {

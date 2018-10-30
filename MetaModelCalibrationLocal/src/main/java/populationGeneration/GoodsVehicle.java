@@ -134,11 +134,19 @@ public class GoodsVehicle implements Vehicle{
 				Activity dAct=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseDestination()), 
 						new Coord(trip.getDtpusb().getSatCoord().getX()+randXY.get(trip.getDtpusb().getTPUSBId()).getFirst(),
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond()));
-				oAct.setEndTime(trip.getDepartureTime()*24*3600);
-				dAct.setStartTime(trip.getArrivalTime()*24*3600);
+				double tripDepartureTime=trip.getDepartureTime()*24*3600;
+				double tripArrivalTime=trip.getArrivalTime()*24*3600;
+				if(tripDepartureTime<3*3600) {
+					tripDepartureTime+=24*3600;
+				}
+				if(tripArrivalTime<3*3600) {
+					tripArrivalTime+=24*3600;
+				}
+				oAct.setEndTime(tripDepartureTime);
+				dAct.setStartTime(tripArrivalTime);
 				Leg leg=popfac.createLeg("car");
-				leg.setDepartureTime(trip.getDepartureTime()*24*3600);
-				leg.setTravelTime(trip.getArrivalTime()*24*3600-trip.getDepartureTime()*24*3600);
+				leg.setDepartureTime(tripDepartureTime);
+				leg.setTravelTime(tripArrivalTime-tripDepartureTime);
 				plan.addActivity(oAct);
 				plan.addLeg(leg);
 				plan.addActivity(dAct);
@@ -184,8 +192,16 @@ public class GoodsVehicle implements Vehicle{
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond());	
 						Activity oact=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseOrigin()),ocoord);
 						Activity dact=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseDestination()),dcoord);
-						oact.setEndTime(trip.getDepartureTime()*24*3600);
-						dact.setStartTime(trip.getArrivalTime()*24*3600);
+						double tripDepartureTime=trip.getDepartureTime()*24*3600;
+						double tripArrivalTime=trip.getArrivalTime()*24*3600;
+						if(tripDepartureTime<3*3600) {
+							tripDepartureTime+=24*3600;
+						}
+						if(tripArrivalTime<3*3600) {
+							tripArrivalTime+=24*3600;
+						}
+						oact.setEndTime(tripDepartureTime);
+						dact.setStartTime(tripArrivalTime);
 						activities.add(oact);
 						activities.add(dact);
 					}else {
@@ -198,30 +214,54 @@ public class GoodsVehicle implements Vehicle{
 						
 						if(!oact.getCoord().equals(activities.get(i).getCoord())) {
 
-							activities.get(i).setEndTime(trip.getDepartureTime()*24*3600);
-							oact.setStartTime(trip.getDepartureTime()*24*3600);
-							oact.setEndTime(trip.getDepartureTime()*24*3600);
-							dact.setStartTime(trip.getDepartureTime()*24*3600);
+							double tripDepartureTime=trip.getDepartureTime()*24*3600;
+							double tripArrivalTime=trip.getArrivalTime()*24*3600;
+							if(tripDepartureTime<3*3600) {
+								tripDepartureTime+=24*3600;
+							}
+							if(tripArrivalTime<3*3600) {
+								tripArrivalTime+=24*3600;
+							}
+							activities.get(i).setEndTime(tripDepartureTime);
+							oact.setStartTime(tripDepartureTime);
+							oact.setEndTime(tripDepartureTime);
+							dact.setStartTime(tripDepartureTime);
 							activities.add(oact);
 							activities.add(dact);
 							i++;
 
 							Leg legDummy=popfac.createLeg("car");
-							legDummy.setDepartureTime(trip.getDepartureTime()*24*3600);
+							legDummy.setDepartureTime(tripDepartureTime);
 							legDummy.setTravelTime(0);
 							tripLegs.add(legDummy);
 
 							//throw new IllegalArgumentException("Discontinuous Trip Chain!!!");
 							//lets think about it later.
 						}else {
-							activities.get(i).setEndTime(trip.getDepartureTime()*24*3600);
-							dact.setStartTime(trip.getArrivalTime()*24*3600);
+							double tripDepartureTime=trip.getDepartureTime()*24*3600;
+							double tripArrivalTime=trip.getArrivalTime()*24*3600;
+							if(tripDepartureTime<3*3600) {
+								tripDepartureTime+=24*3600;
+							}
+							if(tripArrivalTime<3*3600) {
+								tripArrivalTime+=24*3600;
+							}
+							activities.get(i).setEndTime(tripDepartureTime);
+							dact.setStartTime(tripArrivalTime);
 							activities.add(dact);
 						}
 					}
 					Leg leg=popfac.createLeg("car");
-					leg.setDepartureTime(trip.getDepartureTime()*24*3600);
-					leg.setTravelTime(trip.getArrivalTime()*24*3600-trip.getDepartureTime()*24*3600);
+					double tripDepartureTime=trip.getDepartureTime()*24*3600;
+					double tripArrivalTime=trip.getArrivalTime()*24*3600;
+					if(tripDepartureTime<3*3600) {
+						tripDepartureTime+=24*3600;
+					}
+					if(tripArrivalTime<3*3600) {
+						tripArrivalTime+=24*3600;
+					}
+					leg.setDepartureTime(tripDepartureTime);
+					leg.setTravelTime(tripArrivalTime-tripDepartureTime);
 					tripLegs.add(leg);
 					i++;
 				}

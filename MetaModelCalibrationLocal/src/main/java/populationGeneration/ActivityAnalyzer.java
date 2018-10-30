@@ -1,12 +1,18 @@
 package populationGeneration;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.matsim.api.core.v01.population.Activity;
 import org.matsim.api.core.v01.population.Person;
+import org.matsim.api.core.v01.population.Plan;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.api.core.v01.population.Population;
 import org.matsim.core.config.Config;
@@ -112,6 +118,22 @@ public class ActivityAnalyzer {
 		}
 		return averageStartingTime;
 	}
+	public Set<String> getStartOrEndActivityTypes(Population pop){
+		Set<String> activities=new HashSet<String>();
+		for(Person person:pop.getPersons().values()) {
+			for(Plan plan: person.getPlans()) {
+				Activity startingActivity=(Activity)plan.getPlanElements().get(0);
+				Activity endingActivity=(Activity)plan.getPlanElements().get(plan.getPlanElements().size()-1);
+				
+				startingActivity.setType(startingActivity.getType()+"_Start");
+				endingActivity.setType(endingActivity.getType()+"_End");
+				activities.add(startingActivity.getType());
+				activities.add(endingActivity.getType());
+			}
+		}
+		
+		return activities;
+	}
 	
 	public Set<String> getActivityTypes(Population population){
 		Set<String> ActivityTypes=new HashSet<String>();
@@ -162,17 +184,17 @@ public class ActivityAnalyzer {
 				}
 			}
 		}
-		ActivityParams aParams=config.planCalcScore().getActivityParams(activityType);
-		for(String s:activityCounter.keySet()) {
-			if(activityCounter.get(s)!=0) {
-				ActivityParams ap=new ActivityParams(s);
-				ap.setTypicalDuration(activityDurationSum.get(s)/activityCounter.get(s));
-				ap.setClosingTime(aParams.getClosingTime());
-				ap.setLatestStartTime(activities.get(s).getSecond());
-				ap.setOpeningTime(activities.get(s).getFirst());
-				config.planCalcScore().addActivityParams(ap);
-			}
-		}
+//		ActivityParams aParams=config.planCalcScore().getActivityParams(activityType);
+//		for(String s:activityCounter.keySet()) {
+//			if(activityCounter.get(s)!=0) {
+//				ActivityParams ap=new ActivityParams(s);
+//				ap.setTypicalDuration(activityDurationSum.get(s)/activityCounter.get(s));
+//				ap.setClosingTime(aParams.getClosingTime());
+//				ap.setLatestStartTime(activities.get(s).getSecond());
+//				ap.setOpeningTime(activities.get(s).getFirst());
+//				config.planCalcScore().addActivityParams(ap);
+//			}
+//		}
 	}
 	
 	public static void addActivityPlanParameter(PlanCalcScoreConfigGroup config,ArrayList<String>activityTypes,HashMap<String,Double>typicalDurations,
@@ -213,7 +235,7 @@ public class ActivityAnalyzer {
 	}
 	
 	public static void addActivityPlanParameter(PlanCalcScoreConfigGroup config,Set<String>activityTypes,HashMap<String,Double>typicalDurations,
-			HashMap<String,Double>typicalStartingTime,HashMap<String,Double>typicalEndTime,int addedlatestStartTimeMin,int earliestEndTimeMin,
+			HashMap<String,Double>typicalStartingTime,HashMap<String,Double>typicalEndTime,Set<String>startAndEndActivities, int addedlatestStartTimeMin,int earliestEndTimeMin,
 			int defaultTypicalDuration,int defaultTypicalStartingTime,int defaultOpenningTime, int defaultEndTime, boolean addstartandendTime){
 		
 		for(String s:activityTypes) {
@@ -224,7 +246,7 @@ public class ActivityAnalyzer {
 				act.setTypicalDuration(defaultTypicalDuration);
 			}
 			if(addstartandendTime==true) {
-			if(typicalStartingTime.get(s)!=null && !act.getActivityType().equals("Home")) {
+			if(typicalStartingTime.get(s)!=null && !startAndEndActivities.contains(act.getActivityType())) {
 				act.setLatestStartTime(typicalStartingTime.get(s)+addedlatestStartTimeMin*60);
 				if(typicalStartingTime.get(s)-1800<0) {
 					act.setOpeningTime(typicalStartingTime.get(s));
@@ -233,11 +255,11 @@ public class ActivityAnalyzer {
 				}
 			}else {
 				act.setLatestStartTime(defaultTypicalStartingTime);
-				if(!act.getActivityType().equals("Home")) {
+				if(!startAndEndActivities.contains(act.getActivityType())) {
 					act.setOpeningTime(defaultOpenningTime);
 				}
 			}
-			if(typicalEndTime.get(s)!=null && !act.getActivityType().equals("Home")) {
+			if(typicalEndTime.get(s)!=null && !startAndEndActivities.contains(act.getActivityType())) {
 				act.setEarliestEndTime(typicalEndTime.get(s)-earliestEndTimeMin*60);
 				if(typicalEndTime.get(s)+1800>24*3600) {
 					act.setClosingTime(typicalEndTime.get(s));
@@ -246,7 +268,7 @@ public class ActivityAnalyzer {
 				}
 			}else {
 				act.setEarliestEndTime(defaultEndTime-earliestEndTimeMin);
-				if(!act.getActivityType().equals("Home")) {
+				if(!startAndEndActivities.contains(act.getActivityType())) {
 					act.setClosingTime(defaultEndTime);
 				}
 			}
@@ -255,8 +277,157 @@ public class ActivityAnalyzer {
 			}
 			}
 			config.addActivityParams(act);
+			
+			
 		}
 	}
+	
+	
+	public Map<String,Map<String,ArrayList<Double>>> analyzeActivities(Population population,String writeLocation,String distWriteLoc) {
+		//attributes name
+		final String startTimeString="startTime";
+		final String endTimeString="endTime";
+		final String durationString="duration";
+		final String coordString="coord";
+		String[] attributes=new String[] {startTimeString,endTimeString,durationString};
+		
+		Set<String> activityTypes=this.getActivityTypes(population);
+		Map<String,Integer>counter=new HashMap<>();
+		for(String ss:activityTypes) {
+			counter.put(ss, 0);
+		}
+		
+		//the map is Map<activityType,Map<attributes,value>>
+		Map<String,Map<String,ArrayList<Double>>> activityDetails=new HashMap<>();
+		for(String s:activityTypes) {
+			
+			Map<String,ArrayList<Double>> attributeDetails=new HashMap<>();
+			for(String ss:attributes) {
+				attributeDetails.put(ss, new ArrayList<Double>());
+			}
+			activityDetails.put(s,attributeDetails);
+		}
+		
+		for(Person person: population.getPersons().values()) {
+			for(Plan plan:person.getPlans()) {
+				for(PlanElement pe:plan.getPlanElements()) {
+					if(pe instanceof Activity) {
+						Activity a=(Activity) pe;
+						counter.put(a.getType(), counter.get(a.getType())+1);
+						if(a.getStartTime()!=Double.NEGATIVE_INFINITY) {
+						activityDetails.get(a.getType()).get(startTimeString).add(a.getStartTime());
+						}
+						if(a.getEndTime()!=Double.NEGATIVE_INFINITY) {
+						activityDetails.get(a.getType()).get(endTimeString).add(a.getEndTime());
+						}
+						if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY) {
+							if(a.getStartTime()<a.getEndTime()) {
+								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()-a.getStartTime());
+							}else {
+								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()+3600*24-a.getStartTime());
+							}
+						}
+					}else {
+						continue;
+					}
+				}
+			}
+		}
+		List<Double> timeFrq=new ArrayList<>();
+		for(double i=3.5;i<=27;i=i+.5) {
+			timeFrq.add(i*3600);
+		}
+		
+		try {
+			FileWriter fww=new FileWriter(new File(distWriteLoc),false);
+			fww.append("ActivityType,attribute");
+			for(double d: timeFrq) {
+				fww.append(","+d);
+			}
+			fww.append("\n");
+			for(String s:activityDetails.keySet()) {
+				fww.append(s);
+				for(String ss:activityDetails.get(s).keySet()) {
+					fww.append(","+ss);
+					for(int i:this.calcFrequecy(activityDetails.get(s).get(ss), timeFrq).values()) {
+						fww.append(","+i);
+					}
+					fww.append("\n");
+				}
+			}
+			fww.flush();
+			fww.close();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		try {
+			FileWriter fw= new FileWriter(new File(writeLocation),false);
+			//appendHeader
+			fw.append("ActivityType,AverageStartTime,SDStartTime,PercentStartTimeAvailable,AverageEndTime,SDEndTime,PercentEndTimeAvailable,AverageDuration,SDDuration,PercentDurationAvailable,instance\n");
+			for(String s:activityDetails.keySet()) {
+				
+				double averageStartTime=this.calcAverage(activityDetails.get(s).get(startTimeString));
+				double sdStartTime=this.calcSD(activityDetails.get(s).get(startTimeString));
+				//System.out.println(activityDetails.get(s).get(startTimeString).size());
+				double percentageStartTime=activityDetails.get(s).get(startTimeString).size()/(double)counter.get(s)*100;
+				
+				double averageEndTime=this.calcAverage(activityDetails.get(s).get(endTimeString));
+				double sdEndTime=this.calcSD(activityDetails.get(s).get(endTimeString));
+				double percentageEndTime=activityDetails.get(s).get(endTimeString).size()/(double)counter.get(s)*100;
+				
+				double averageDuration=this.calcAverage(activityDetails.get(s).get(durationString));
+				double sdDuration=this.calcSD(activityDetails.get(s).get(durationString));
+				double percentageDuration=activityDetails.get(s).get(durationString).size()/(double)counter.get(s)*100;
+				fw.append(s+","+averageStartTime+","+sdStartTime+","+percentageStartTime+","+averageEndTime+","+sdEndTime+","+percentageEndTime+","+averageDuration+","+sdDuration+","+percentageDuration+","+counter.get(s)+"\n");
+			}
+			fw.flush();
+			fw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return activityDetails;
+	}
+	
+	private double calcAverage(List<Double> a) {
+		double average=0;
+		for(double d:a) {
+			average+=d;
+		}
+		return average/a.size();
+	}
+	private double calcSD(List<Double> a) {
+		double sd=0;
+		double avreage=this.calcAverage(a);
+		for(double d:a) {
+			sd+=(d-avreage)*(d-avreage);
+		}
+		sd=Math.sqrt(sd/a.size());
+		return sd;
+	}
+	
+	private Map<Double,Integer> calcFrequecy(List<Double>dataset,List<Double>x) {
+		Map<Double,Integer> data=new HashMap<>();
+		for(double d:x) {
+			data.put(d, 0);
+		}
+		for(double d:dataset) {
+			for(int i=1;i<x.size();i++) {
+				if(d>=0 && d<=x.get(0)) {
+					data.put(x.get(0), data.get(x.get(0))+1);
+					break;
+				}else if(d>x.get(i-1) && d<=x.get(i)) {
+					data.put(x.get(i), data.get(x.get(i))+1);
+					break;
+				}
+			}
+		}
+		return data;
+	}
+	
 
 }
 
