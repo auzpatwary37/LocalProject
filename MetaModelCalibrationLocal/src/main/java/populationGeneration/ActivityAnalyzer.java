@@ -1,6 +1,9 @@
 package populationGeneration;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -125,8 +128,8 @@ public class ActivityAnalyzer {
 				Activity startingActivity=(Activity)plan.getPlanElements().get(0);
 				Activity endingActivity=(Activity)plan.getPlanElements().get(plan.getPlanElements().size()-1);
 				
-				startingActivity.setType(startingActivity.getType()+"_Start");
-				endingActivity.setType(endingActivity.getType()+"_End");
+				startingActivity.setType(startingActivity.getType()+"_StartOrEnd");
+				endingActivity.setType(endingActivity.getType()+"_StartOrEnd");
 				activities.add(startingActivity.getType());
 				activities.add(endingActivity.getType());
 			}
@@ -321,7 +324,7 @@ public class ActivityAnalyzer {
 						activityDetails.get(a.getType()).get(endTimeString).add(a.getEndTime());
 						}
 						if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY) {
-							if(a.getStartTime()<a.getEndTime()) {
+							if(a.getStartTime()<=a.getEndTime()) {
 								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()-a.getStartTime());
 							}else {
 								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()+3600*24-a.getStartTime());
@@ -334,7 +337,7 @@ public class ActivityAnalyzer {
 			}
 		}
 		List<Double> timeFrq=new ArrayList<>();
-		for(double i=3.5;i<=27;i=i+.5) {
+		for(double i=.5;i<=27;i=i+.5) {
 			timeFrq.add(i*3600);
 		}
 		
@@ -428,6 +431,65 @@ public class ActivityAnalyzer {
 		return data;
 	}
 	
-
+	public Map<String,Map<String,Double>> readActivityTimings(String fileLoc,Config config){
+		Map<String,Map<String,Double>> timings=new HashMap<>();
+		String openingTimeString="openingTime";
+		String closingTimeString="closingTime";
+		String latestStartTimeString="latestStartTime";
+		String earliestEndTimeString="earliestEndTime";
+		String typicalDurationString="typicalDuration";
+		try {
+			BufferedReader bf=new BufferedReader(new FileReader(new File(fileLoc)));
+			String line;
+			bf.readLine();
+			while((line=bf.readLine())!=null) {
+				String[] part=line.split(",");
+				Map<String,Double> map=new HashMap<>();
+				if(!part[1].equals("")) {
+					map.put(openingTimeString, Double.parseDouble(part[1]));
+					map.put(closingTimeString, Double.parseDouble(part[3]));
+					
+				}
+				if(!part[5].equals("")) {
+					map.put(typicalDurationString, Double.parseDouble(part[5]));
+				}
+				if(!part[2].equals("")) {
+					map.put(latestStartTimeString, Double.parseDouble(part[2]));
+				}
+				if(!part[4].equals("")) {
+					map.put(earliestEndTimeString, Double.parseDouble(part[4]));
+				}
+				timings.put(part[0], map);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		for(String s:timings.keySet()) {
+			ActivityParams a=new ActivityParams();
+			a.setActivityType(s);
+			if(timings.get(s).get(openingTimeString)!=null) {
+				a.setOpeningTime(timings.get(s).get(openingTimeString));
+				a.setClosingTime(timings.get(s).get(closingTimeString));
+				
+			}
+			if(timings.get(s).get(typicalDurationString)!=null) {
+				a.setTypicalDuration(timings.get(s).get(typicalDurationString));
+			}else {
+				a.setTypicalDuration(8*3600);
+			}
+			if(timings.get(s).get(earliestEndTimeString)!=null) {
+				a.setEarliestEndTime(timings.get(s).get(earliestEndTimeString));
+				
+			}
+			if(timings.get(s).get(latestStartTimeString)!=null) {
+				a.setLatestStartTime(timings.get(s).get(latestStartTimeString));
+			}
+			config.planCalcScore().addActivityParams(a);
+		}
+		
+		return timings;
+	}
 }
 

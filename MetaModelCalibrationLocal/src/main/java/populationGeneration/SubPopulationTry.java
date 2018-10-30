@@ -129,10 +129,11 @@ public class SubPopulationTry {
 		Set<String>startAndEndActivities=ac.getStartOrEndActivityTypes(population);
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		//ac.ActivitySplitter(population, config, "Home", 12*3600.);
-		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails.csv","toyScenarioLarge/activityDistributions.csv");
+		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails1.csv","toyScenarioLarge/activityDistributions1.csv");
 		
-		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
-				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
+//		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
+//				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
+		ac.readActivityTimings("data/toyScenarioLargeData/ActivityTiming.csv", config);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

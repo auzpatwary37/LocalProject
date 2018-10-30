@@ -33,12 +33,12 @@ public class CalibrationRunToyLarge {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_0.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_2.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToyLarge.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-200,-200});
+		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-220,-220});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
@@ -47,7 +47,7 @@ public class CalibrationRunToyLarge {
 		calibrator.setMaxTrRadius(25.0);
 	
 		
-		SimRun simRun=new SimRunImplToyLarge(100);
+		SimRun simRun=new SimRunImplToyLarge(150);
 		
 		writeRunParam(calibrator, "toyScenarioLarge/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
