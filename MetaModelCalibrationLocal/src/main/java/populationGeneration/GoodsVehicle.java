@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
@@ -134,14 +135,9 @@ public class GoodsVehicle implements Vehicle{
 				Activity dAct=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseDestination()), 
 						new Coord(trip.getDtpusb().getSatCoord().getX()+randXY.get(trip.getDtpusb().getTPUSBId()).getFirst(),
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond()));
-				double tripDepartureTime=trip.getDepartureTime()*24*3600;
-				double tripArrivalTime=trip.getArrivalTime()*24*3600;
-				if(tripDepartureTime<3*3600) {
-					tripDepartureTime+=24*3600;
-				}
-				if(tripArrivalTime<3*3600) {
-					tripArrivalTime+=24*3600;
-				}
+				double tripDepartureTime=trip.getDepartureTime();
+				double tripArrivalTime=trip.getArrivalTime();
+				
 				oAct.setEndTime(tripDepartureTime);
 				dAct.setStartTime(tripArrivalTime);
 				Leg leg=popfac.createLeg("car");
@@ -158,9 +154,28 @@ public class GoodsVehicle implements Vehicle{
 				}
 			}
 		}
+		
 		return personList;
 	}
-	
+	private void checkAndResetTripOrder() {
+		HashMap<Double,FreightTrip> tripsnew=new HashMap<>(this.trips);
+		HashMap<Double,FreightTrip> tripsnew1=new HashMap<>();
+		Map<Double,FreightTrip>tripStartTimes=new HashMap<>();
+		for(FreightTrip tp:tripsnew.values()) {
+			tripStartTimes.put(tp.getDepartureTime(), tp);
+		}
+		ArrayList<Double> startTimes=new ArrayList<>(tripStartTimes.keySet());
+		Collections.sort(startTimes);
+		double j=1;
+		for(Double d:startTimes) {
+			FreightTrip tp=tripStartTimes.get(d);
+			tripsnew1.put(j,tp);
+			j++;
+		}
+		
+		this.trips=tripsnew1;
+		
+	}
 	/**
 	 * This will create plans directly from vehicle 
 	 * @param vehiclesFactory 
@@ -171,10 +186,12 @@ public class GoodsVehicle implements Vehicle{
 		ArrayList<Tuple<Person,Vehicle>> personList=new ArrayList<>();
 		PopulationFactory popfac=populationFactory;
 		VehiclesFactory vf=vehiclesFactory;
+		
 		for(int j=0;j<this.getMinimumVehicleWeight();j++) {
 			HashMap<Id<TPUSB>,Tuple<Double,Double>> randXY=this.generatePersonSpecificRandomNumber();
 			
 			Person person=popfac.createPerson(Id.createPersonId(this.getId().toString()+"_"+j));
+			
 			Vehicle vehicle=vf.createVehicle(Id.createVehicleId(person.getId().toString()), this.vehicleTypeGenearator(this.vehicleType));
 			Plan plan=popfac.createPlan();
 			ArrayList<Activity> activities=new ArrayList<>();
@@ -192,14 +209,9 @@ public class GoodsVehicle implements Vehicle{
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond());	
 						Activity oact=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseOrigin()),ocoord);
 						Activity dact=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseDestination()),dcoord);
-						double tripDepartureTime=trip.getDepartureTime()*24*3600;
-						double tripArrivalTime=trip.getArrivalTime()*24*3600;
-						if(tripDepartureTime<3*3600) {
-							tripDepartureTime+=24*3600;
-						}
-						if(tripArrivalTime<3*3600) {
-							tripArrivalTime+=24*3600;
-						}
+						double tripDepartureTime=trip.getDepartureTime();
+						double tripArrivalTime=trip.getArrivalTime();
+						
 						oact.setEndTime(tripDepartureTime);
 						dact.setStartTime(tripArrivalTime);
 						activities.add(oact);
@@ -214,18 +226,13 @@ public class GoodsVehicle implements Vehicle{
 						
 						if(!oact.getCoord().equals(activities.get(i).getCoord())) {
 
-							double tripDepartureTime=trip.getDepartureTime()*24*3600;
-							double tripArrivalTime=trip.getArrivalTime()*24*3600;
-							if(tripDepartureTime<3*3600) {
-								tripDepartureTime+=24*3600;
-							}
-							if(tripArrivalTime<3*3600) {
-								tripArrivalTime+=24*3600;
-							}
+							double tripDepartureTime=trip.getDepartureTime();
+							double tripArrivalTime=trip.getArrivalTime();
+							
 							activities.get(i).setEndTime(tripDepartureTime);
 							oact.setStartTime(tripDepartureTime);
 							oact.setEndTime(tripDepartureTime);
-							dact.setStartTime(tripDepartureTime);
+							dact.setStartTime(tripArrivalTime);
 							activities.add(oact);
 							activities.add(dact);
 							i++;
@@ -238,28 +245,18 @@ public class GoodsVehicle implements Vehicle{
 							//throw new IllegalArgumentException("Discontinuous Trip Chain!!!");
 							//lets think about it later.
 						}else {
-							double tripDepartureTime=trip.getDepartureTime()*24*3600;
-							double tripArrivalTime=trip.getArrivalTime()*24*3600;
-							if(tripDepartureTime<3*3600) {
-								tripDepartureTime+=24*3600;
-							}
-							if(tripArrivalTime<3*3600) {
-								tripArrivalTime+=24*3600;
-							}
+							double tripDepartureTime=trip.getDepartureTime();
+							double tripArrivalTime=trip.getArrivalTime();
+						
 							activities.get(i).setEndTime(tripDepartureTime);
 							dact.setStartTime(tripArrivalTime);
 							activities.add(dact);
 						}
 					}
 					Leg leg=popfac.createLeg("car");
-					double tripDepartureTime=trip.getDepartureTime()*24*3600;
-					double tripArrivalTime=trip.getArrivalTime()*24*3600;
-					if(tripDepartureTime<3*3600) {
-						tripDepartureTime+=24*3600;
-					}
-					if(tripArrivalTime<3*3600) {
-						tripArrivalTime+=24*3600;
-					}
+					double tripDepartureTime=trip.getDepartureTime();
+					double tripArrivalTime=trip.getArrivalTime();
+					
 					leg.setDepartureTime(tripDepartureTime);
 					leg.setTravelTime(tripArrivalTime-tripDepartureTime);
 					tripLegs.add(leg);
@@ -308,6 +305,7 @@ public class GoodsVehicle implements Vehicle{
 		VehiclesFactory vehiclesFactory=scenario.getVehicles().getFactory();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub1=new ArrayList<>();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub2=new ArrayList<>();
+		this.checkAndResetTripOrder();
 		if(this.trips.size()==0) {
 			return scenario;
 		}

@@ -89,6 +89,10 @@ public class HouseHoldMember {
 	}
 	
 	public void addTrip(TCSTrip trip) {
+		
+		if(trip.getArrivalTime()<trip.getDepartureTime()) {
+			throw new IllegalArgumentException();
+		}
 		this.trips.put(trip.getTripNo(), trip);
 	}
 	public Id<HouseHoldMember> getMemberId() {
@@ -205,29 +209,41 @@ public class HouseHoldMember {
 						Activity oact=popfac.createActivityFromCoord(activityDetails.get(trip.getOriginActivity()),ocoord);
 						Activity dact=popfac.createActivityFromCoord(activityDetails.get(trip.getDestinationActivity()),dcoord);
 						if(!oact.getCoord().equals(activities.get(i).getCoord())) {
-							activities.get(i).setEndTime(trip.getDepartureTime());
-							oact.setStartTime(trip.getDepartureTime());
-							oact.setEndTime(trip.getDepartureTime());
-							dact.setStartTime(trip.getDepartureTime());
+							if(activities.get(i).getStartTime()<=trip.getDepartureTime()) {
+								activities.get(i).setEndTime(trip.getDepartureTime());
+								oact.setStartTime(trip.getDepartureTime());
+								oact.setEndTime(trip.getDepartureTime());
+								dact.setStartTime(trip.getDepartureTime());
+							}else {
+								activities.get(i).setEndTime(activities.get(i).getStartTime());
+								oact.setStartTime(activities.get(i).getEndTime());
+								oact.setEndTime(activities.get(i).getEndTime());
+								dact.setStartTime(activities.get(i).getEndTime()+trip.getArrivalTime()-trip.getDepartureTime());
+							}
 							activities.add(oact);
 							activities.add(dact);
+							
 							i++;
-
 							Leg legDummy=popfac.createLeg("car");
-							legDummy.setDepartureTime(trip.getDepartureTime());
+							legDummy.setDepartureTime(activities.get(i).getEndTime());
 							legDummy.setTravelTime(0);
 							activityConnectorTripLegs.add(legDummy);
-
+							
 							//throw new IllegalArgumentException("Discontinuous Trip Chain!!!");
 							//lets think about it later.
 						}else {
-							activities.get(i).setEndTime(trip.getDepartureTime());
-							dact.setStartTime(trip.getArrivalTime());
+							if(activities.get(i).getStartTime()<=trip.getDepartureTime()) {
+								activities.get(i).setEndTime(trip.getDepartureTime());
+								dact.setStartTime(trip.getArrivalTime());
+							}else {
+								activities.get(i).setEndTime(activities.get(i).getStartTime());
+								dact.setStartTime(activities.get(i).getStartTime()+trip.getArrivalTime()-trip.getDepartureTime());
+							}
 							activities.add(dact);
 						}
 					}
 					Leg leg=popfac.createLeg(trip.getMainMode(modesDetails).getFlatMode());
-					leg.setDepartureTime(trip.getDepartureTime());
+					leg.setDepartureTime(activities.get(i).getEndTime());
 					leg.setTravelTime(trip.getArrivalTime()-trip.getDepartureTime());
 					activityConnectorTripLegs.add(leg);
 					i++;
@@ -238,6 +254,7 @@ public class HouseHoldMember {
 			plan.addActivity(activities.get(0));
 			for(int k=0;k<activities.size()-1;k++) {
 				plan.addLeg(activityConnectorTripLegs.get(k));
+				
 				plan.addActivity(activities.get(k+1));
 				
 			}
@@ -356,17 +373,17 @@ public class HouseHoldMember {
 			}
 		}
 		
-//		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
-//			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
-//				vehicles.addVehicleType(t.getSecond().getType());
-//			}
-//			
-//			population.addPerson(t.getFirst());
-//			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
-//			if(t.getSecond()!=null) {
-//				vehicles.addVehicle(t.getSecond());
-//			}
-//		}
+		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
+			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
+				vehicles.addVehicleType(t.getSecond().getType());
+			}
+			
+			population.addPerson(t.getFirst());
+			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
+			if(t.getSecond()!=null) {
+				vehicles.addVehicle(t.getSecond());
+			}
+		}
 		tripPerson+=personsAndVehiclessub2.size();
 		personPerson+=personsAndVehiclessub1.size();
 		//double ratio=personsAndVehiclessub1.size()/(personsAndVehiclessub1.size()+personsAndVehiclessub2.size());

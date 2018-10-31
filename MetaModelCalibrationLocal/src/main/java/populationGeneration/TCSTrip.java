@@ -49,6 +49,7 @@ public class TCSTrip {
 	public TCSTrip(double qNo,double memNo,double tripNo,double originActivity,double destinationActivity,
 			TPUSB otpusb,TPUSB dtpusb,double departureTime,double arrivalTime,double tripPurpose,double modeHier,double timePeriod,
 			double expansionFactor) {
+		//System.out.println();
 		this.qNo=qNo;
 		this.memNo=memNo;
 		this.tripNo=tripNo;
@@ -63,6 +64,10 @@ public class TCSTrip {
 		this.modeHier=modeHier;
 		this.timePeriod=timePeriod;
 		this.tripExpansionFactor=expansionFactor;
+		if(this.arrivalTime<this.departureTime) {
+			this.arrivalTime=this.arrivalTime+24*3600;
+			//System.out.println("Trip duration cannot be negative!!!");
+		}
 	}
 	public TCSMode getMainMode(HashMap<Double,TCSMode> modesDetails) {
 		double mode=0;

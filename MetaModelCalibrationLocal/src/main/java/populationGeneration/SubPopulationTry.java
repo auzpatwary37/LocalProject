@@ -12,6 +12,7 @@ import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Activity;
 import org.matsim.api.core.v01.population.Person;
+import org.matsim.api.core.v01.population.Plan;
 import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.api.core.v01.population.Population;
 import org.matsim.api.core.v01.population.PopulationWriter;
@@ -40,8 +41,8 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=0.1;
-	private static final double weightFactorTCS=0.07;
+	private static final double weightFactorgvtcs=1;
+	private static final double weightFactorTCS=1;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -61,7 +62,7 @@ public class SubPopulationTry {
 		HashMap<Id<TPUSB>,TPUSB> tpusbs=gvtcsConverter.tpusbCreator(tpusbCoord,tpusb11);
 		HashMap<Double,String> activityDetailsTCS=new HashMap<>();
 		HashMap<Double,TCSMode> modesDetails=new HashMap<>();
-		String activityFileLoc="data/TCSDatabase/ActivityManual.csv";
+		String activityFileLoc="data/TCSDatabase/ActivityManual1.csv";
 		String modeFileLoc="data/TCSDatabase/ModeManualPaper.csv";
 		
 		TCSExtractor.readModeAndActivityTypeManual(activityFileLoc, modeFileLoc, activityDetailsTCS, modesDetails);
@@ -115,10 +116,10 @@ public class SubPopulationTry {
 		goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation));
 		
 		
-//		for(GoodsVehicle gv:goodsVehicles.values()) {
-//			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
-//		}
-		
+		for(GoodsVehicle gv:goodsVehicles.values()) {
+			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
+		}
+		boolean isConsistant = activityConsistancyTester(population);
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
 		HashMap<String,Double>activityStartTime=ac.getAverageStartingTime(population);
@@ -133,7 +134,7 @@ public class SubPopulationTry {
 		
 //		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
 //				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
-		ac.readActivityTimings("data/toyScenarioLargeData/AcivityTiming.csv", config);
+		ac.readActivityTimings("data/toyScenarioLargeData/ActivityTimings.csv", config);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {
@@ -167,10 +168,10 @@ public class SubPopulationTry {
 		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
 		
 		
-		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
-		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
-		configWriter.write("data/toyScenarioLargeData/configPaperactivityParam.xml");
-		//new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/FinalHKITCSandGVTCS/personAttributesHKI.xml");
+		popWriter.write("data/LargeScaleScenario/populationHKI.xml");
+		vehWriter.writeFile("data/LargeScaleScenario/VehiclesHKI.xml");
+		configWriter.write("data/LargeScaleScenario/config_Ashraf.xml");
+		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
 		
 		System.out.println("total Population = "+population.getPersons().size());
 		System.out.println("total Vehicles = "+vehicles.getVehicles().size());
@@ -184,6 +185,26 @@ public class SubPopulationTry {
 		
 		System.out.println("TestLine");
 
+	}
+	
+	public static boolean activityConsistancyTester(Population population) {
+		boolean isConsistant=true;
+		for(Person person:population.getPersons().values()) {
+			for(Plan plan:person.getPlans()) {
+				for(PlanElement pe:plan.getPlanElements()) {
+					if(pe instanceof Activity) {
+						Activity a=(Activity)pe;
+						if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY && a.getStartTime()>a.getEndTime()) {
+							isConsistant=false;
+							return isConsistant;
+						}
+					}else {
+						continue;
+					}
+				}
+			}
+		}
+		return isConsistant;
 	}
 	
 	

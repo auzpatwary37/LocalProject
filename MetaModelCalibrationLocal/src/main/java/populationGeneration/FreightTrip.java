@@ -58,8 +58,17 @@ public class FreightTrip {
 		this.crossBoundaryControlUsed=crossBoundaryControlused;
 		this.timeEnteringHk=timeOfEnteringHk;
 		this.timePeriod=timePeriod;
-
-
+		
+		double dTime=this.departureTime*24*3600;
+		double aTime=this.arrivalTime*24*3600;
+		if(dTime<3*3600) {dTime=dTime+24*3600;}
+		if(aTime<3*3600) {aTime=aTime+24*3600;}
+		if(aTime<dTime) {
+			aTime=aTime+24*3600;
+			//System.out.println("Duration can not be negative!!!");
+		}
+		this.departureTime=dTime;
+		this.arrivalTime=aTime;
 
 	}
 

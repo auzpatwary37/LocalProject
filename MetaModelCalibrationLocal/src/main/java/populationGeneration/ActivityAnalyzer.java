@@ -45,9 +45,9 @@ public class ActivityAnalyzer {
 					Activity a=(Activity)pe;
 					
 					if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY) {
-						if(a.getStartTime()>a.getEndTime()) {
-							a.setEndTime(24*3600);
-						}
+//						if(a.getStartTime()>a.getEndTime()) {
+//							a.setEndTime(24*3600);
+//						}
 						double duration=a.getEndTime()-a.getStartTime();
 						if(duration<0) {
 							throw new IllegalArgumentException("duration can not be negative");
@@ -128,8 +128,8 @@ public class ActivityAnalyzer {
 				Activity startingActivity=(Activity)plan.getPlanElements().get(0);
 				Activity endingActivity=(Activity)plan.getPlanElements().get(plan.getPlanElements().size()-1);
 				
-				startingActivity.setType(startingActivity.getType()+"_Start");
-				endingActivity.setType(endingActivity.getType()+"_End");
+				startingActivity.setType(startingActivity.getType()+"_StartOrEnd");
+				endingActivity.setType(endingActivity.getType()+"_StartOrEnd");
 				activities.add(startingActivity.getType());
 				activities.add(endingActivity.getType());
 			}
@@ -349,8 +349,8 @@ public class ActivityAnalyzer {
 			}
 			fww.append("\n");
 			for(String s:activityDetails.keySet()) {
-				fww.append(s);
 				for(String ss:activityDetails.get(s).keySet()) {
+					fww.append(s);
 					fww.append(","+ss);
 					for(int i:this.calcFrequecy(activityDetails.get(s).get(ss), timeFrq).values()) {
 						fww.append(","+i);
