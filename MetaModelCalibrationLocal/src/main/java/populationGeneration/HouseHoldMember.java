@@ -345,7 +345,7 @@ public class HouseHoldMember {
 		return personsAndVehicles;
 	}
 	
-	public Scenario loadClonedVehicleAndPersons(Scenario scenario,HashMap<Double,String>activityDetails,HashMap<Double,TCSMode>modesDetails,String personGroupName,String tripGroupName,Double tripPerson,Double personPerson){
+	public Scenario loadClonedVehicleAndPersons(Scenario scenario,HashMap<Double,String>activityDetails,HashMap<Double,TCSMode>modesDetails,String personGroupName,String tripGroupName,Double tripPerson,Double personPerson,boolean shouldLoadTripPerson){
 		Population population =scenario.getPopulation();
 		Vehicles vehicles=scenario.getVehicles();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub1=new ArrayList<>();
@@ -354,8 +354,10 @@ public class HouseHoldMember {
 			return scenario;
 		}
 		personsAndVehiclessub1.addAll(this.getMinWeightPersonAndVehicle(modesDetails,activityDetails,population.getFactory(),vehicles.getFactory()));
-		for(TCSTrip trip:this.trips.values()) {
-			personsAndVehiclessub2.addAll(this.getTripPersonAndVehicle(trip, trip.getTripExpansionFactor()-this.getMinimumVehicleWeight(),population.getFactory(),vehicles.getFactory(),activityDetails,modesDetails));
+		if(shouldLoadTripPerson) {
+			for(TCSTrip trip:this.trips.values()) {
+				personsAndVehiclessub2.addAll(this.getTripPersonAndVehicle(trip, trip.getTripExpansionFactor()-this.getMinimumVehicleWeight(),population.getFactory(),vehicles.getFactory(),activityDetails,modesDetails));
+			}
 		}
 		for(Tuple<Person,Vehicle> t:personsAndVehiclessub1) {
 			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
@@ -372,16 +374,17 @@ public class HouseHoldMember {
 				vehicles.addVehicle(t.getSecond());
 			}
 		}
-		
-		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
-			if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
-				vehicles.addVehicleType(t.getSecond().getType());
-			}
-			
-			population.addPerson(t.getFirst());
-			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
-			if(t.getSecond()!=null) {
-				vehicles.addVehicle(t.getSecond());
+		if(shouldLoadTripPerson) {
+			for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
+				if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
+					vehicles.addVehicleType(t.getSecond().getType());
+				}
+				
+				population.addPerson(t.getFirst());
+				population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
+				if(t.getSecond()!=null) {
+					vehicles.addVehicle(t.getSecond());
+				}
 			}
 		}
 		tripPerson+=personsAndVehiclessub2.size();

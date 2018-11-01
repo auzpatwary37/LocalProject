@@ -72,7 +72,7 @@ public class TCSExtractor {
 		
 		for(HouseHoldMember hm:members.values()) {
 			
-			hm.loadClonedVehicleAndPersons(scenario, activityDetails, modesDetails, "person", "trip",tripPerson,personPerson);
+			hm.loadClonedVehicleAndPersons(scenario, activityDetails, modesDetails, "person", "trip",tripPerson,personPerson,true);
 			
 //			for(Tuple<Person,Vehicle>popandveh:hm.getClonedVehicleAndPersons(population.getFactory(), vehicles.getFactory(), activityDetails, modesDetails)) {
 //				population.addPerson(popandveh.getFirst());

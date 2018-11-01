@@ -41,8 +41,8 @@ import com.healthmarketscience.jackcess.Table;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=1;
-	private static final double weightFactorTCS=1;
+	private static final double weightFactorgvtcs=.1;
+	private static final double weightFactorTCS=.1;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -80,7 +80,7 @@ public class SubPopulationTry {
 		
 		for(HouseHoldMember hm:members.values()) {
 
-			hm.loadClonedVehicleAndPersons(scenario, activityDetailsTCS, modesDetails, "person", "trip",tripPerson,personPerson);
+			hm.loadClonedVehicleAndPersons(scenario, activityDetailsTCS, modesDetails, "person", "trip",tripPerson,personPerson,false);
 
 		}
 
@@ -111,14 +111,14 @@ public class SubPopulationTry {
 			//gvtcsConverter.addActivityPlanParameter(config.planCalcScore(),part[1].trim(),30*60);
  		}
 		
-		HashMap<Id<Vehicle>,GoodsVehicle> goodsVehicles=gvtcsConverter.createGovVehicles(govTrip,govVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation);
+		//HashMap<Id<Vehicle>,GoodsVehicle> goodsVehicles=gvtcsConverter.createGovVehicles(govTrip,govVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation);
 		
-		goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation));
+		//goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation));
 		
 		
-		for(GoodsVehicle gv:goodsVehicles.values()) {
-			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
-		}
+//		for(GoodsVehicle gv:goodsVehicles.values()) {
+//			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
+//		}
 		boolean isConsistant = activityConsistancyTester(population);
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
@@ -130,7 +130,7 @@ public class SubPopulationTry {
 		Set<String>startAndEndActivities=ac.getStartOrEndActivityTypes(population);
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		//ac.ActivitySplitter(population, config, "Home", 12*3600.);
-		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails1.csv","toyScenarioLarge/activityDistributions1.csv");
+		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails1.csv","toyScenarioLarge/activityDistributions.csv");
 		
 //		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
 //				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
@@ -170,10 +170,15 @@ public class SubPopulationTry {
 		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
 		
 		
-		popWriter.write("data/LargeScaleScenario/populationHKI.xml");
-		vehWriter.writeFile("data/LargeScaleScenario/VehiclesHKI.xml");
-		configWriter.write("data/LargeScaleScenario/config_Ashraf.xml");
-		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
+//		popWriter.write("data/LargeScaleScenario/populationHKI.xml");
+//		vehWriter.writeFile("data/LargeScaleScenario/VehiclesHKI.xml");
+//		configWriter.write("data/LargeScaleScenario/config_Ashraf.xml");
+//		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
+		
+		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
+		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
+		configWriter.write("data/toyScenarioLargeData/configPaperactivityParam.xml");
+		//new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
 		
 		System.out.println("total Population = "+population.getPersons().size());
 		System.out.println("total Vehicles = "+vehicles.getVehicles().size());
