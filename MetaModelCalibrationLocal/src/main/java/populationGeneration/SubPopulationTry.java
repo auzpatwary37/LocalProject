@@ -63,7 +63,7 @@ public class SubPopulationTry {
 		HashMap<Double,String> activityDetailsTCS=new HashMap<>();
 		HashMap<Double,TCSMode> modesDetails=new HashMap<>();
 		String activityFileLoc="data/TCSDatabase/ActivityManual1.csv";
-		String modeFileLoc="data/TCSDatabase/ModeManualPaper.csv";
+		String modeFileLoc="data/TCSDatabase/ModeManual.csv";
 		
 		TCSExtractor.readModeAndActivityTypeManual(activityFileLoc, modeFileLoc, activityDetailsTCS, modesDetails);
 		
@@ -135,6 +135,8 @@ public class SubPopulationTry {
 //		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
 //				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
 		ac.readActivityTimings("data/toyScenarioLargeData/ActivityTimings.csv", config);
+		
+		ac.ActivitySplitter(population, config, "Usual place of work", 3600., true);
 		
 		//config.addModule(cp);
 //		for(String s:activityDetailsTCS.values()) {

@@ -153,21 +153,26 @@ public class ActivityAnalyzer {
 
 	/**
 	 * This function splits an activity into multiple activity and writes the activityparams on the config file
+	 * Only works for activities that are not start or end activity of the chain
 	 * @param population
 	 * @param config
 	 * @param activityType
 	 * @param timeGapInSecond
 	 */
-	public static void ActivitySplitter(Population population,Config config, String activityType,Double timeGapInSecond) {
+	public void ActivitySplitter(Population population,Config config, String activityType,Double timeGapInSecond,boolean shouldAddearliestEndTimeAndLatestStartTime) {
 		HashMap<String,Tuple<Double,Double>> activities=new HashMap<>();
 		HashMap<String,Integer> activityCounter=new HashMap<>();
-		HashMap<String,Integer> activityDurationSum=new HashMap<>();
-		double startTime=0;
-		double endTime=24*3600;
+		HashMap<String,Double> activityDurationSum=new HashMap<>();
+		HashMap<String,ArrayList<Double>> activityStartTime=new HashMap<>();
+		HashMap<String,ArrayList<Double>> activityEndTime=new HashMap<>();
+		double startTime=3*3600;
+		double endTime=27*3600;
 		for(double d=startTime;d<endTime;d=d+timeGapInSecond) {
 			activities.put(activityType+"_"+d, new Tuple<>(d,d+timeGapInSecond));
 			activityCounter.put(activityType+"_"+d, 0);
-			activityDurationSum.put(activityType+"_"+d, 0);
+			activityDurationSum.put(activityType+"_"+d, 0.);
+			activityStartTime.put(activityType+"_"+d,new ArrayList<>());
+			activityEndTime.put(activityType+"_"+d, new ArrayList<>());
 		}
 
 		for(Person p:population.getPersons().values()) {
@@ -179,7 +184,9 @@ public class ActivityAnalyzer {
 							if(a.getStartTime()>=t.getFirst()&&a.getStartTime()<t.getSecond()&&a.getStartTime()!=Double.NEGATIVE_INFINITY) {
 								a.setType(activityType+"_"+t.getFirst());
 								activityCounter.put(activityType+"_"+t.getFirst(),activityCounter.get(activityType+"_"+t.getFirst())+1);
-								activityDurationSum.put(activityType+"_"+t.getFirst(),activityDurationSum.get(activityType+"_"+t.getFirst())+1);
+								activityDurationSum.put(activityType+"_"+t.getFirst(),activityDurationSum.get(activityType+"_"+t.getFirst())+(a.getEndTime()-a.getStartTime()));
+								activityStartTime.get(activityType+"_"+t.getFirst()).add(a.getStartTime());
+								activityEndTime.get(activityType+"_"+t.getFirst()).add(a.getEndTime());
 								break;
 							}
 						}
@@ -187,17 +194,24 @@ public class ActivityAnalyzer {
 				}
 			}
 		}
-//		ActivityParams aParams=config.planCalcScore().getActivityParams(activityType);
-//		for(String s:activityCounter.keySet()) {
-//			if(activityCounter.get(s)!=0) {
-//				ActivityParams ap=new ActivityParams(s);
-//				ap.setTypicalDuration(activityDurationSum.get(s)/activityCounter.get(s));
-//				ap.setClosingTime(aParams.getClosingTime());
-//				ap.setLatestStartTime(activities.get(s).getSecond());
-//				ap.setOpeningTime(activities.get(s).getFirst());
-//				config.planCalcScore().addActivityParams(ap);
-//			}
-//		}
+		ActivityParams aParams=config.planCalcScore().getActivityParams(activityType);
+		for(String s:activityCounter.keySet()) {
+			if(activityCounter.get(s)!=0) {
+				ActivityParams ap=new ActivityParams(s);
+				if(activityDurationSum.get(s)/activityCounter.get(s)!=0) {
+					ap.setTypicalDuration(activityDurationSum.get(s)/activityCounter.get(s));
+				}else {
+					ap.setTypicalDuration(activityDurationSum.get(s)/activityCounter.get(s)+300);
+				}
+				ap.setClosingTime(Math.ceil((this.calcAverage(activityEndTime.get(s))+this.calcSD(activityEndTime.get(s)))/1800)*1800);
+				if(shouldAddearliestEndTimeAndLatestStartTime) {
+					ap.setLatestStartTime(Math.floor(this.calcAverage(activityStartTime.get(s))/900)*900);
+					ap.setEarliestEndTime(Math.ceil(this.calcAverage(activityEndTime.get(s))/900)*900);
+				}
+				ap.setOpeningTime(Math.floor((this.calcAverage(activityStartTime.get(s))-this.calcSD(activityStartTime.get(s)))/1800)*1800);
+				config.planCalcScore().addActivityParams(ap);
+			}
+		}
 	}
 	
 	public static void addActivityPlanParameter(PlanCalcScoreConfigGroup config,ArrayList<String>activityTypes,HashMap<String,Double>typicalDurations,
