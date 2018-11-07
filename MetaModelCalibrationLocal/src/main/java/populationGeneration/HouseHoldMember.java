@@ -354,7 +354,7 @@ public class HouseHoldMember {
 			return scenario;
 		}
 		personsAndVehiclessub1.addAll(this.getMinWeightPersonAndVehicle(modesDetails,activityDetails,population.getFactory(),vehicles.getFactory()));
-		if(shouldLoadTripPerson) {
+		if(shouldLoadTripPerson==true) {
 			for(TCSTrip trip:this.trips.values()) {
 				personsAndVehiclessub2.addAll(this.getTripPersonAndVehicle(trip, trip.getTripExpansionFactor()-this.getMinimumVehicleWeight(),population.getFactory(),vehicles.getFactory(),activityDetails,modesDetails));
 			}
@@ -374,7 +374,7 @@ public class HouseHoldMember {
 				vehicles.addVehicle(t.getSecond());
 			}
 		}
-		if(shouldLoadTripPerson) {
+		if(shouldLoadTripPerson==true) {
 			for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
 				if(t.getSecond()!=null && !vehicles.getVehicleTypes().containsKey(t.getSecond().getType().getId())) {
 					vehicles.addVehicleType(t.getSecond().getType());

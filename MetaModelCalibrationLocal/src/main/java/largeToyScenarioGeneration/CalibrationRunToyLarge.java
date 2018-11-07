@@ -33,12 +33,12 @@ public class CalibrationRunToyLarge {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCountnew_1.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("toyScenarioLarge/Calibration/simMeasurement0_230210Laptop.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig, "data/toyScenarioLargeData/configToyLargeMod.xml");
 		ParamReader pReader=new ParamReader("src/main/resources/toyScenarioData/paramReaderToyLarge.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
-		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-220,-220});
+		LinkedHashMap<String,Double>initialParams=loadInitialParam(pReader,new double[] {-200,-200});
 		LinkedHashMap<String,Double>params=initialParams;
 		pReader.setInitialParam(initialParams);
 		
@@ -47,7 +47,7 @@ public class CalibrationRunToyLarge {
 		calibrator.setMaxTrRadius(25.0);
 	
 		
-		SimRun simRun=new SimRunImplToyLarge(150);
+		SimRun simRun=new SimRunImplToyLarge(100);
 		
 		writeRunParam(calibrator, "toyScenarioLarge/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModel(calibrationMeasurements.getTimeBean());
@@ -65,9 +65,10 @@ public class CalibrationRunToyLarge {
 			sue.setFileLoc("toyScenarioLarge/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
 					
+			//new MeasurementsWriter(storage.getSimMeasurement(params)).write("toyScenarioLarge/Calibration/Measurement_"+i+".xml");
 			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
 			params=calibrator.generateNewParam(sue, storage.getSimMeasurement(params), gradientFactory, MetaModel.AnalyticalLinearMetaModelName);
-			new MeasurementsWriter(storage.getSimMeasurement(params)).write("toyScenarioLarge/Calibration/Measurement_"+i+".xml");
+			
 		}
 		
 		

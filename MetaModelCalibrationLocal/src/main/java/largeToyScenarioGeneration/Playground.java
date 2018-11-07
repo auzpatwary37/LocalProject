@@ -13,12 +13,13 @@ import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 
 public class Playground {
 public static void main(String[] args) {
-	Measurements m1=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_0.xml");
-	Measurements m2=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCount_1.xml");
-	double d=ObjectiveCalculator.calcObjective(m1, m2, ObjectiveCalculator.TypeMeasurementAndTimeSpecific);
-	System.out.println(d);
-	System.out.println(Math.sqrt(d)/475);
-	
+//	Measurements m1=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCountNew_average1.xml");
+//	Measurements m2=new MeasurementsReader().readMeasurements("toyScenarioLarge/fabricatedCountNew_average2.xml");
+//	double d=ObjectiveCalculator.calcObjective(m1, m2, ObjectiveCalculator.TypeMeasurementAndTimeSpecific);
+//	System.out.println(d);
+//	System.out.println(Math.sqrt(d/475));
+	Measurements m1=new MeasurementsReader().readMeasurements("toyScenarioLarge/Calibration/simMeasurement0.xml");
+	m1.writeCSVMeasurements("toyScenarioLarge/Calibration/simMeasurement0_230210Laptop1.csv");
 //	double[] lamda=new double[] {83.8200929965927,93.9366194814093,86.5268861078996};
 //	double[] ysim=new double[] {103,105,107};
 //	double[][] theta=new double[][] {{-200,-200},{-200.055508572691,-199.613005281576},{-200.764263528660,-196.814626207834}};

@@ -42,7 +42,7 @@ public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=true;
 	private static final double weightFactorgvtcs=.1;
-	private static final double weightFactorTCS=.1;
+	private static final double weightFactorTCS=.07;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {

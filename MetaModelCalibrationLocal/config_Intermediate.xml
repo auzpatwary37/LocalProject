@@ -110,7 +110,7 @@
 		<param name="coordinateSystem" value="arbitrary" />
 		<param name="insistingOnDeprecatedConfigVersion" value="true" />
 		<!-- "global" number of threads.  This number is used, e.g., for replanning, but NOT in the mobsim.  This can typically be set to as many cores as you have available, or possibly even slightly more. -->
-		<param name="numberOfThreads" value="7" />
+		<param name="numberOfThreads" value="12" />
 		<param name="randomSeed" value="4711" />
 	</module>
 <!-- ====================================================================== -->
@@ -248,6 +248,2960 @@
 				<param name="scoringThisActivityAtAll" value="false" />
 				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
 				<param name="typicalDuration" value="undefined" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Test centers" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="19:50:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="19:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:55:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Law firm" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="13:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Residential" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:29:57" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Travel agent" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:45:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Police station / immigration department / other government offices_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Depot / Ship repair yards" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:21:49" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Post office" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:25:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Refuse sorting facilities_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Clubhouses / Yacht clubs / Golf clubs" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:32:03" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Sewage treatment plants" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:12:56" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Government and Community organization_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Homes for the aged / Nursing homes" />
+				<param name="closingTime" value="15:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:12:06" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Slaughterhouses_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Holiday villages / Holiday camp_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Racecourse_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cemeteries / crematoria" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:32:55" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cultural / community center library and arts / museum" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:07:04" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Hospital / medical center / clinic" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:02:21" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Other container terminals (i.e. River trade terminal / Mid-stream site / Private wharf)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Carrying/meeting family_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Securities company / investment center" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:40:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Anywhere in the overseas_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cinema/concert karaoke and other entertainment facilities (includindg nightclubs / bathhouses / massage establishments" />
+				<param name="closingTime" value="24:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:45:22" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Power plants / Electric substations / Bulk infeed substations" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:03:41" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Market / Wholesale market_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Park/playground/sports ground/court/gym centre/swimming pool/beach" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:30:31" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Vehicle scrap yard_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Vehicle repair centers / Vehicle examination centers / Garage / Vehicle cleansing services sites" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:15:20" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Homes for the aged / Nursing homes_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public parking area_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Other container terminals (i.e. River trade terminal / Mid-stream site / Private wharf)" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:33:14" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Labor organization/association_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School/educational institution that other people studied" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:34:36" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Churches" />
+				<param name="closingTime" value="11:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:10:33" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Beauty salon/Barber shop" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:54:36" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Construction site_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Driving / taking a ride" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:12:30" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Market/shopping arcade/shops/ supermarket (excluding restaurant cinema karaoke)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Tutorial center" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="16:23:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="14:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:45:19" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Convention centers / Showrooms_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Kwai Tsing container terminals_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Bus / public light bus terminal / stop / MTR / LRT station / pier (non-transport purpose e.g. settle/get things)" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Depot / Ship repair yards_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Industrial and commercial buildings (non-work purpose)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Tunnels / Bridges / Tolls / Roads / Roadside" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:56:45" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Hotel_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Swimming pools" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:15:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Travel agent_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Clubhouses / Yacht clubs / Golf clubs_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Church / temple_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Open storage and Port back-up facilities" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:54:30" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Dormitory_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Country park / countryside area_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Chek Lap Kok Airport (non-departure or arrival)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Office" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:23:44" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Other places of work_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Petrol station (please specify purpose)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="other" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:37:52" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="19:00:00" />
+				<param name="latestStartTime" value="09:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="09:20:12" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Water treatment works_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Bank" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:52:53" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Others_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Telephone exchange buildings" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:05:25" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Home of family member/relative/friend" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:22:16" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Airport passenger terminal_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Funeral home / cemetery / crematorium / bone ash space_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Petrol station / Oil depots / LPG filling station_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Churches_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Places of work of other people (non-work purpose)" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:51:23" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Sewage treatment plants_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Country park / countryside area" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Funeral parlors" />
+				<param name="closingTime" value="15:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:24:13" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Farms / Fishing grounds / Horticultural sites_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Place nearby to home / downstairs (please specify purpose)" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:00:01" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Telephone exchange buildings_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Market/shopping arcade/shops/ supermarket (excluding restaurant cinema karaoke)" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:52:21" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="On street / roaming the street / no particular destination" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:40:02" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Garage / car repair center_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Ambulance depot_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Examination venue_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Securities company / investment center_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Petrol station (please specify purpose)" />
+				<param name="closingTime" value="23:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public parking area" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:30:12" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Residential_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Airport passenger terminal" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:58:22" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Sports centers / Sports grounds / Pitches / Courts" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:18:40" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Home of family member/relative/friend_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Elderly homes" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:46:50" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Another home / second home (occassional)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Boundary Control Point" />
+				<param name="closingTime" value="23:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="06:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="10:17:32" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Carrying/meeting family" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:08:50" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Food premise: restaurant caf pub etc._StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cemeteries / crematoria_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="On street / roaming the street / no particular destination_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Bus / public light bus terminal / stop / MTR / LRT station / pier (non-transport purpose e.g. settle/get things)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Sports centers / Sports grounds / Pitches / Courts_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Convention centers / Showrooms" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:02:39" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Industrial and commercial buildings (non-work purpose)" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:30:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Farms / Fishing grounds / Horticultural sites" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="04:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:57:49" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Park / Theme park" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:35:42" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Places of work of other people (non-work purpose)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Swimming pools_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Chek Lap Kok Airport (non-departure or arrival)" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:20:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Garage / car repair center" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:17:17" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Other places of work" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:35:09" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Shop / Restaurant_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Logistics centers" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:21:27" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Funeral parlors_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Petrol station / Oil depots / LPG filling station" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:50:14" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Logistics centers_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Office_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Holiday camp" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Newspaper stands_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cultural / community center library and arts / museum_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Food premise: restaurant caf pub etc." />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:52:36" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Police station / immigration department / other government offices" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:08:22" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Bank_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Funeral home / cemetery / crematorium / bone ash space" />
+				<param name="closingTime" value="15:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:24:11" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Hospital / medical center / clinic_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Learning center / learning center" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="12:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:15:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Vehicle scrap yard" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="06:40:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Clinic and Hospital" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:10:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Law firm_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Recorder house" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:32:30" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Anywhere in the Mainland_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Government and Community organization" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:21:24" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public refuse collection Points / Refuse transfer stations / Refuse collection stations" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:41:43" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Warehouse_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Newspaper stands" />
+				<param name="closingTime" value="07:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="05:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Television stations" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:31:40" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Holiday villages / Holiday camp" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:35:09" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Park / Theme park_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Viewing property_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Church / temple" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:29:28" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Refuse sorting facilities" />
+				<param name="closingTime" value="16:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:20:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Test centers_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Hotel" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:45:54" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Warehouse" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:47:26" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Beauty salon/Barber shop_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Examination venue" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="18:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:25:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Factory" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:14:17" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Water treatment works" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:50:46" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Temple_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Holiday camp_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Boundary Control Point_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public refuse collection Points / Refuse transfer stations / Refuse collection stations_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Tunnels / Bridges / Tolls / Roads / Roadside_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Dormitory" />
+				<param name="closingTime" value="11:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:15:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Factory_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School" />
+				<param name="closingTime" value="17:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:05:54" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Learning center / learning center_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School/educational institution that other people studied_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Barbecue sites_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Home" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:09:28" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Television stations_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Home_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Tourist attractions_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Others" />
+				<param name="closingTime" value="26:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="15:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="05:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Power plants / Electric substations / Bulk infeed substations_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Vehicle repair centers / Vehicle examination centers / Garage / Vehicle cleansing services sites_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Barbecue sites" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="04:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Clinic and Hospital_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Elderly homes_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Slaughterhouses" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:07:30" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Pumping station_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Viewing property" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:50:24" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Recorder house_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Post office_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Racecourse" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:14:15" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Cinema/concert karaoke and other entertainment facilities (includindg nightclubs / bathhouses / massage establishments_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public transport stations / stops / piers" />
+				<param name="closingTime" value="24:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:06:52" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Public transport stations / stops / piers_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Open storage and Port back-up facilities_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School/educational institution that oneself studied" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="16:00:00" />
+				<param name="latestStartTime" value="09:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="06:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="07:14:22" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Tutorial center_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Construction site" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:43:42" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Park/playground/sports ground/court/gym centre/swimming pool/beach_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Shop / Restaurant" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:58:51" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Ambulance depot" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:15:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Labor organization/association" />
+				<param name="closingTime" value="18:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:45:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="School/educational institution that oneself studied_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="other_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Place nearby to home / downstairs (please specify purpose)_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Driving / taking a ride_StartOrEnd" />
+				<param name="closingTime" value="undefined" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="undefined" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:00:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Kwai Tsing container terminals" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="undefined" />
+				<param name="latestStartTime" value="undefined" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="09:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="01:28:27" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_39600.0" />
+				<param name="closingTime" value="23:00:00" />
+				<param name="earliestEndTime" value="20:30:00" />
+				<param name="latestStartTime" value="11:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="11:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="09:00:45" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_79200.0" />
+				<param name="closingTime" value="22:30:00" />
+				<param name="earliestEndTime" value="22:15:00" />
+				<param name="latestStartTime" value="22:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="21:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_46800.0" />
+				<param name="closingTime" value="24:00:00" />
+				<param name="earliestEndTime" value="21:00:00" />
+				<param name="latestStartTime" value="13:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="13:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="07:31:16" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_86400.0" />
+				<param name="closingTime" value="24:30:00" />
+				<param name="earliestEndTime" value="24:15:00" />
+				<param name="latestStartTime" value="24:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="23:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_75600.0" />
+				<param name="closingTime" value="22:30:00" />
+				<param name="earliestEndTime" value="21:30:00" />
+				<param name="latestStartTime" value="21:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="20:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:10:03" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_28800.0" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="18:30:00" />
+				<param name="latestStartTime" value="08:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="09:54:45" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_57600.0" />
+				<param name="closingTime" value="24:00:00" />
+				<param name="earliestEndTime" value="20:30:00" />
+				<param name="latestStartTime" value="16:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="16:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="03:56:33" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_68400.0" />
+				<param name="closingTime" value="21:00:00" />
+				<param name="earliestEndTime" value="19:45:00" />
+				<param name="latestStartTime" value="19:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="18:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:22:56" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_18000.0" />
+				<param name="closingTime" value="19:00:00" />
+				<param name="earliestEndTime" value="16:45:00" />
+				<param name="latestStartTime" value="05:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="05:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="11:16:12" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_36000.0" />
+				<param name="closingTime" value="22:00:00" />
+				<param name="earliestEndTime" value="19:30:00" />
+				<param name="latestStartTime" value="10:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="10:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="09:10:49" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_54000.0" />
+				<param name="closingTime" value="24:30:00" />
+				<param name="earliestEndTime" value="21:15:00" />
+				<param name="latestStartTime" value="15:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="14:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="05:45:35" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_14400.0" />
+				<param name="closingTime" value="17:30:00" />
+				<param name="earliestEndTime" value="16:15:00" />
+				<param name="latestStartTime" value="04:30:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="04:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="11:29:10" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_50400.0" />
+				<param name="closingTime" value="24:30:00" />
+				<param name="earliestEndTime" value="21:15:00" />
+				<param name="latestStartTime" value="14:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="14:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="06:40:45" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_90000.0" />
+				<param name="closingTime" value="25:00:00" />
+				<param name="earliestEndTime" value="25:00:00" />
+				<param name="latestStartTime" value="25:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="25:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_10800.0" />
+				<param name="closingTime" value="17:30:00" />
+				<param name="earliestEndTime" value="16:15:00" />
+				<param name="latestStartTime" value="03:30:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="03:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="12:28:10" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_25200.0" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="18:00:00" />
+				<param name="latestStartTime" value="07:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="07:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="10:23:55" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_82800.0" />
+				<param name="closingTime" value="25:00:00" />
+				<param name="earliestEndTime" value="24:00:00" />
+				<param name="latestStartTime" value="23:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="22:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:38:34" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_21600.0" />
+				<param name="closingTime" value="20:00:00" />
+				<param name="earliestEndTime" value="17:15:00" />
+				<param name="latestStartTime" value="06:30:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="06:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="10:32:33" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_61200.0" />
+				<param name="closingTime" value="22:30:00" />
+				<param name="earliestEndTime" value="19:30:00" />
+				<param name="latestStartTime" value="17:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="17:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="02:00:29" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_64800.0" />
+				<param name="closingTime" value="20:30:00" />
+				<param name="earliestEndTime" value="18:45:00" />
+				<param name="latestStartTime" value="18:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="17:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:27:59" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_43200.0" />
+				<param name="closingTime" value="23:30:00" />
+				<param name="earliestEndTime" value="20:15:00" />
+				<param name="latestStartTime" value="12:15:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="12:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="07:53:07" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_32400.0" />
+				<param name="closingTime" value="20:30:00" />
+				<param name="earliestEndTime" value="18:45:00" />
+				<param name="latestStartTime" value="09:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="08:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="09:27:12" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_72000.0" />
+				<param name="closingTime" value="21:30:00" />
+				<param name="earliestEndTime" value="20:30:00" />
+				<param name="latestStartTime" value="20:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="19:30:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:07:55" />
+				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
+				<param name="typicalDurationScoreComputation" value="relative" />
+			</parameterset>
+			<parameterset type="activityParams" >
+				<param name="activityType" value="Usual place of work_93600.0" />
+				<param name="closingTime" value="26:00:00" />
+				<param name="earliestEndTime" value="26:00:00" />
+				<param name="latestStartTime" value="26:00:00" />
+				<param name="minimalDuration" value="undefined" />
+				<param name="openingTime" value="26:00:00" />
+				<param name="priority" value="1.0" />
+				<param name="scoringThisActivityAtAll" value="true" />
+				<!-- typical duration of activity.  needs to be defined and non-zero.  in sec. -->
+				<param name="typicalDuration" value="00:05:00" />
 				<!-- method to compute score at typical duration.  Options: | uniform | relative | Use uniform for backwards compatibility (all activities same score; higher proba to drop long acts). -->
 				<param name="typicalDurationScoreComputation" value="relative" />
 			</parameterset>
@@ -419,7 +3373,7 @@
 	<module name="qsim" >
 		<!-- If set to true, creates a vehicle for each person corresponding to every network mode. However, this will be overridden if vehicle source is fromVehiclesData. -->
 		<param name="creatingVehiclesForAllNetworkModes" value="true" />
-		<param name="endTime" value="28:00:00" />
+		<param name="endTime" value="29:00:00" />
 		<param name="flowCapacityFactor" value="1.0" />
 		<!-- decides if waiting vehicles enter the network after or before the already driving vehicles were moved. Default: false -->
 		<param name="insertingWaitingVehiclesBeforeDrivingVehicles" value="false" />
@@ -436,7 +3390,7 @@
 		<!-- Shortens a link in the visualization, i.e. its start and end point are moved into towards the center. Does not affect traffic flow.  -->
 		<param name="nodeOffset" value="20.0" />
 		<!-- Number of threads used for the QSim.  Note that this setting is independent from the "global" threads setting.  In contrast to earlier versions, the non-parallel special version is no longer there. -->
-		<param name="numberOfThreads" value="7" />
+		<param name="numberOfThreads" value="1" />
 		<!-- Boolean. `true': stuck vehicles are removed, aborting the plan; `false': stuck vehicles are forced into the next link. `false' is probably the better choice. -->
 		<param name="removeStuckVehicles" value="false" />
 		<!-- If link dynamics is set as SeepageQ, set a seep mode. Default is bike. -->
