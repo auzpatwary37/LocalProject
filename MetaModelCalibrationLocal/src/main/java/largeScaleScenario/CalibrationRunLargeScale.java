@@ -7,8 +7,12 @@ import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.matsim.api.core.v01.Scenario;
 import org.matsim.core.config.Config;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.scenario.ScenarioUtils;
+import org.matsim.vehicles.VehicleType;
+import org.matsim.vehicles.Vehicles;
 
 import ust.hk.praisehk.metamodelcalibration.analyticalModel.AnalyticalModel;
 import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModelSubPop;
@@ -30,25 +34,42 @@ public class CalibrationRunLargeScale {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/Output/ATCMeasurementsPeak.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/ATCMeasurementsPeakHKI_3_27.xml");
 		Config initialConfig=ConfigUtils.createConfig();
-		ConfigUtils.loadConfig(initialConfig,"data/LargeScaleScenario/configFinal.xml");
-		ParamReader pReader=new ParamReader("data/LargeScaleScenario/subPopParamAndLimit.csv");
+		ConfigUtils.loadConfig(initialConfig,"data/largeScenario_Config_TCSRun.xml");
+		initialConfig.plans().setInputFile("data/output_plans.xml.gz");
+		initialConfig.strategy().setFractionOfIterationsToDisableInnovation(0.8);
+		initialConfig.global().setNumberOfThreads(22);
+		initialConfig.qsim().setNumberOfThreads(20);
+		ParamReader pReader=new ParamReader("data/subPopParamAndLimit.csv");
 		MeasurementsStorage storage=new MeasurementsStorage(calibrationMeasurements);
 		LinkedHashMap<String,Double>initialParams=pReader.getInitialParam();
 		LinkedHashMap<String,Double>params=initialParams;
 		
-		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"LargeScaleOutput/Calibration/", internalCalibration, pReader,25, 4);
+		Calibrator calibrator=new CalibratorImpl(calibrationMeasurements,"LargeScaleOutput/Calibration/", internalCalibration, pReader,100, 4);
 		
 		calibrator.setMaxTrRadius(75);
 	
+		initialConfig.removeModule("roadpricing");
+		initialConfig.global().setNumberOfThreads(20);
+		initialConfig.qsim().setNumberOfThreads(10);
+		initialConfig.parallelEventHandling().setNumberOfThreads(10);
+		//initialConfig.network().setInputFile("data/output_network.xml");
+//		initialConfig.transit().setTransitScheduleFile("data/output_transitSchedule.xml.gz");
+//		initialConfig.transit().setVehiclesFile("data/output_transitVehicles.xml.gz");
 		
-		SimRun simRun=new SimRunHKI();
+		//initialConfig.plans().setInputFile("data/output_plans.xml.gz");
+		SimRun simRun=new SimRunHKI(100);
 		
-		writeRunParam(calibrator, "toyScenario/Calibration/", params, pReader);
+		writeRunParam(calibrator, "LargeScaleOutput/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModelSubPop(calibrationMeasurements.getTimeBean(),pReader);
 		
 		for(int i=0;i<50;i++) {
+			
+//			if(i>=0) {
+//				
+//			}
+			
 			Config config=pReader.SetParamToConfig(initialConfig, params);
 			
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
