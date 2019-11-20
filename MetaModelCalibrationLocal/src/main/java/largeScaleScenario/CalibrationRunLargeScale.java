@@ -34,7 +34,7 @@ public class CalibrationRunLargeScale {
 		final boolean internalCalibration=false;
 		
 		
-		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/ATCMeasurementsPeakHKI_3_27.xml");
+		Measurements calibrationMeasurements=new MeasurementsReader().readMeasurements("data/ATCMeasurementsPeak_HKI_12_05.xml");
 		Config initialConfig=ConfigUtils.createConfig();
 		ConfigUtils.loadConfig(initialConfig,"data/largeScenario_Config_TCSRun.xml");
 		initialConfig.plans().setInputFile("data/output_plans.xml.gz");
@@ -53,13 +53,13 @@ public class CalibrationRunLargeScale {
 		initialConfig.removeModule("roadpricing");
 		initialConfig.global().setNumberOfThreads(20);
 		initialConfig.qsim().setNumberOfThreads(10);
-		initialConfig.parallelEventHandling().setNumberOfThreads(10);
+		initialConfig.parallelEventHandling().setNumberOfThreads(12);
 		//initialConfig.network().setInputFile("data/output_network.xml");
 //		initialConfig.transit().setTransitScheduleFile("data/output_transitSchedule.xml.gz");
 //		initialConfig.transit().setVehiclesFile("data/output_transitVehicles.xml.gz");
 		
 		//initialConfig.plans().setInputFile("data/output_plans.xml.gz");
-		SimRun simRun=new SimRunHKI(100);
+		SimRun simRun=new SimRunHKI(150);
 		
 		writeRunParam(calibrator, "LargeScaleOutput/Calibration/", params, pReader);
 		AnalyticalModel sue=new CNLSUEModelSubPop(calibrationMeasurements.getTimeBean(),pReader);
@@ -75,7 +75,6 @@ public class CalibrationRunLargeScale {
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
 			sue.setFileLoc("LargeScaleOutput/");
 			simRun.run(sue, config, params, true, Integer.toString(i), storage);
-			
 			
 			//Insert Gradient Calculator
 			SimAndAnalyticalGradientCalculator gradientFactory=new SimAndAnalyticalGradientCalculator(config, storage, simRun, calibrator.getTrRadius()/2/100, "FD", i, false, pReader);
