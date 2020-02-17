@@ -1,6 +1,9 @@
 package largeScaleScenario;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -22,6 +25,7 @@ import org.apache.commons.math3.optim.SimpleBounds;
 import org.apache.commons.math3.optim.nonlinear.scalar.GoalType;
 import org.apache.commons.math3.optim.nonlinear.scalar.ObjectiveFunction;
 import org.apache.commons.math3.optim.nonlinear.scalar.noderiv.BOBYQAOptimizer;
+import org.codehaus.plexus.util.FileUtils;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Population;
@@ -58,6 +62,7 @@ import ust.hk.praisehk.metamodelcalibration.analyticalModel.AnalyticalModel;
 import ust.hk.praisehk.metamodelcalibration.analyticalModel.AnalyticalModelODpair;
 import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModel;
 import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.CNLSUEModelSubPop;
+import ust.hk.praisehk.metamodelcalibration.analyticalModelImpl.ODMultiplierGenerator;
 import ust.hk.praisehk.metamodelcalibration.calibrator.AnalyticalModelOptimizer;
 import ust.hk.praisehk.metamodelcalibration.calibrator.AnalyticalModelOptimizerImpl;
 import ust.hk.praisehk.metamodelcalibration.calibrator.Calibrator;
@@ -67,6 +72,7 @@ import ust.hk.praisehk.metamodelcalibration.calibrator.ParamReader;
 import ust.hk.praisehk.metamodelcalibration.matamodels.MetaModel;
 import ust.hk.praisehk.metamodelcalibration.matamodels.WrappedMetaModel;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurement;
+import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementType;
 import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
 import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsWriter;
@@ -88,7 +94,7 @@ public class FullHKMetaModelTrial {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		
+		Map<String,Map<String,Double>> originbasedMultiplier=readOBasedDemandCalibrationResult("fullHk/Calibration/ObasedDemandCalibration");
 		
 		Map<Id<AnalyticalModelODpair>,Map<String,String>> odMultiplierId=new HashMap<>();
 		
@@ -149,6 +155,9 @@ public class FullHKMetaModelTrial {
 			e.printStackTrace();
 		}
 		for(Entry<String, Measurements> m:timeSplitMeasurements.entrySet()) {
+			if(m.getKey().equals("17")||m.getKey().equals("18")||m.getKey().equals("19")) {
+				continue;
+			}
 			AnalyticalModel sue= new CNLSUEModelSubPop(m.getValue().getTimeBean(), pReader);
 			sue.generateRoutesAndOD(scenario.getPopulation(), scenario.getNetwork(), scenario.getTransitSchedule(), scenario, fareCalculators);
 			sue.setDefaultParameters(pReader.ScaleUp(pReader.getDefaultParam()));
@@ -163,18 +172,34 @@ public class FullHKMetaModelTrial {
 //			}
 
 			LinkedHashMap<String,Double> odMultiplier=new LinkedHashMap<>();
+			LinkedHashMap<String,Double> oMultiplier=new LinkedHashMap<>();
+			LinkedHashMap<String,Double> dMultiplier=new LinkedHashMap<>();
+			Map<String,Double> oMultiplierWithoutSubPop=new HashMap<>();
+			Map<String,Double> dMultiplierWithoutSubPop=new HashMap<>();
 			
 			for(Id<AnalyticalModelODpair> odId:((CNLSUEModel)sue).getOdPairs().getODpairset().keySet()) {
-				if(!odMultiplierId.containsKey(odId)) {
-					odMultiplierId.put(odId, new HashMap<>());
-				}
-				String mId=getODtoODMultiplierIdWithSubPop(odId.toString(),m.getKey(),tpusbs);
-				odMultiplierId.get(odId).put(m.getKey(), getODtoODMultiplierIdWithOutSubPop(odId.toString(),m.getKey(),tpusbs));
-				if(!odMultiplier.containsKey(mId)) {
-					odMultiplier.put(mId, 2.);
-				}
+				//String odmId=ODMultiplierGenerator.ODMultiplier.getODtoODMultiplierIdWithOutSubPop(odId.toString(), m.getKey(), tpusbs);
+				String odmId_S=ODMultiplierGenerator.ODMultiplier.getODtoODMultiplierIdWithSubPop(odId.toString(), m.getKey(), tpusbs);
+				
+				String omId=ODMultiplierGenerator.OMultiplier.getODtoODMultiplierIdWithOutSubPop(odId.toString(), m.getKey(), tpusbs);
+				String omId_S=ODMultiplierGenerator.OMultiplier.getODtoODMultiplierIdWithSubPop(odId.toString(), m.getKey(), tpusbs);
+				
+				String dmId=ODMultiplierGenerator.DMultiplier.getODtoODMultiplierIdWithOutSubPop(odId.toString(), m.getKey(), tpusbs);
+				String dmId_S=ODMultiplierGenerator.DMultiplier.getODtoODMultiplierIdWithSubPop(odId.toString(), m.getKey(), tpusbs);
+				
+				String mId=getOMultiplierIdWithSubPop(odId.toString(),m.getKey(),tpusbs);
+				
+				odMultiplier.put(odmId_S, 2.0);
+				oMultiplier.put(omId_S, Math.sqrt(2));
+				dMultiplier.put(dmId_S, Math.sqrt(2));
+				oMultiplierWithoutSubPop.put(omId, Math.sqrt(2));
+				dMultiplierWithoutSubPop.put(dmId, Math.sqrt(2));
+				
 			}
-			((CNLSUEModel)sue).setOdMultiplierId(odMultiplierId);
+			((CNLSUEModel)sue).setUseSeperateOandDMultiplier(true, true, true, tpusbs);
+			((CNLSUEModel)sue).setOMultiplier(oMultiplierWithoutSubPop, m.getKey());
+			((CNLSUEModel)sue).setDMultiplier(dMultiplierWithoutSubPop, m.getKey());
+			
 			//		
 			//		
 			//		AnalyticalModelOptimizer anaOptimizer=new AnalyticalModelOptimizerImpl(sue, fullHKMeasurements,metaModels, pReader.getInitialParam(), 
@@ -186,17 +211,24 @@ public class FullHKMetaModelTrial {
 			//BOBYQAOptimizer optimizer = new BOBYQAOptimizer(2*odMultiplier.size()+1 , 20, 0.0005);
 
 			int i=0;
-			double[] initial=new double[odMultiplier.size()];
-			double[] lb=new double[odMultiplier.size()];
-			double[] ub=new double[odMultiplier.size()];
+			double[] initial=new double[oMultiplier.size()+dMultiplier.size()];
+			//initial=readX("fullHk\\ODM.csv");
+			double[] lb=new double[initial.length];
+			double[] ub=new double[initial.length];
 
-			for(String key:odMultiplier.keySet()) {
-				initial[i]=odMultiplier.get(key);
+			for(String key:oMultiplier.keySet()) {
+				initial[i]=oMultiplier.get(key);
 				lb[i]=0.1;
 				ub[i]=100;
 				i++;
 			}
 
+			for(String key:dMultiplier.keySet()) {
+				initial[i]=dMultiplier.get(key);
+				lb[i]=0.1;
+				ub[i]=100;
+				i++;
+			}
 //			final PointValuePair optimum
 //			= optimizer.optimize(
 //					new MaxEval(500),
@@ -205,19 +237,24 @@ public class FullHKMetaModelTrial {
 //					new InitialGuess(initial),
 //					//new SimpleBounds(boundaries[0], boundaries[1]));
 //					new SimpleBounds(lb,ub));
+			String writeLoc="fullHk/CalibrationNew/";
 			
-			BobyqaObjective objective=new BobyqaObjective(odMultiplier, pReader, sue, m.getValue(), "fullHk/Calibration/",m.getKey());
+			LinkedHashMap<String,Double> combinedParam=new LinkedHashMap<String,Double>(oMultiplier);
+			combinedParam.putAll(new LinkedHashMap<String,Double>(dMultiplier));
+			
+			BobyqaObjective objective=new BobyqaObjective(combinedParam, pReader, sue, m.getValue(),writeLoc,m.getKey());
 			objective.setLowerBound(lb);
 			objective.setUpperBound(ub);
 			
-//			CobylaExitStatus result1= Cobyla.findMinimum(objective,initial.length, initial.length*2,
-//					initial,25,.01 ,3, 3000);
+			CobylaExitStatus result1= Cobyla.findMinimum(objective,initial.length, initial.length*2,
+					initial,.5,.001 ,3, 3000);
 //			
 			MatlabOptimizer optimizer=new MatlabOptimizer(objective, initial, lb, ub);
-//			MatlabResult result=new MatlabResult(initial,0);
+			MatlabResult result=new MatlabResult(initial,0);
 			
-			MatlabResult result= optimizer.performOptimization();
-			writeMatlabResultInCSV(result,"fullHk/Calibration/",optimizer.getObjective(),m.getKey());
+//			MatlabResult result= optimizer.performOptimization();
+//			writeMatlabResultInCSV(result,"fullHk/Calibration/",optimizer.getObjective(),m.getKey());
+			writeODResultInCSV(result,writeLoc,optimizer.getObjective(),m.getKey(),oMultiplier,dMultiplier);
 			
 			//		
 		}
@@ -252,8 +289,8 @@ public class FullHKMetaModelTrial {
 		String OdistrictId =  Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
 		String dTPU=odId.split("_")[1];
 		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
-		
 		return "All "+OdistrictId+"_"+DdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return "All "+OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
 	}
 	
 	public static String getODtoODMultiplierIdWithOutSubPop(String odId,String timeKey,Map<Id<TPUSB>,TPUSB> tpusbs) {
@@ -261,8 +298,42 @@ public class FullHKMetaModelTrial {
 		String OdistrictId = Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
 		String dTPU=odId.split("_")[1];
 		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
-		
 		return OdistrictId+"_"+DdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+	}
+	public static String getOMultiplierIdWithSubPop(String odId,String timeKey,Map<Id<TPUSB>,TPUSB> tpusbs) {
+		String oTPU=odId.split("_")[0];
+		String OdistrictId =  Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
+		String dTPU=odId.split("_")[1];
+		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
+		return "All "+OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return "All "+OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+	}
+	
+	public static String getOMultiplierIdWithOutSubPop(String odId,String timeKey,Map<Id<TPUSB>,TPUSB> tpusbs) {
+		String oTPU=odId.split("_")[0];
+		String OdistrictId = Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
+		String dTPU=odId.split("_")[1];
+		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
+		return OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+	}
+	public static String getDMultiplierIdWithSubPop(String odId,String timeKey,Map<Id<TPUSB>,TPUSB> tpusbs) {
+		String oTPU=odId.split("_")[0];
+		String OdistrictId =  Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
+		String dTPU=odId.split("_")[1];
+		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
+		return "All "+DdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return "All "+OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+	}
+	
+	public static String getDMultiplierIdWithOutSubPop(String odId,String timeKey,Map<Id<TPUSB>,TPUSB> tpusbs) {
+		String oTPU=odId.split("_")[0];
+		String OdistrictId = Double.toString(tpusbs.get(Id.create(oTPU, TPUSB.class)).getDistrict26Id());
+		String dTPU=odId.split("_")[1];
+		String DdistrictId = Double.toString(tpusbs.get(Id.create(dTPU, TPUSB.class)).getDistrict26Id());
+		return DdistrictId+"_"+timeKey+"_"+"ODMultiplier";
+		//return OdistrictId+"_"+timeKey+"_"+"ODMultiplier";
 	}
 	
 	/**
@@ -280,18 +351,115 @@ public class FullHKMetaModelTrial {
 		try {
 			FileWriter fw=new FileWriter(new File(fileLoc+"/optimizationResult_"+timeId+".csv"));
 			fw.append("Feval,"+result.getFval()+"\n");
-			fw.append("O_district,D_district,timeId,multiplier\n");
+			//fw.append("O_district,D_district,timeId,multiplier\n");
+			fw.append("O_district,timeId,multiplier\n");
 			LinkedHashMap<String,Double> resultingParam=objective.ScaleUp(result.getX());
 			
 			for(Entry<String, Double> entry:resultingParam.entrySet()) {
 				String[] part=entry.getKey().split("_");
-				fw.append(part[1]+","+part[2]+","+part[3]+","+entry.getValue()+"\n");
+				//fw.append(part[1]+","+part[2]+","+part[3]+","+entry.getValue()+"\n");
+				fw.append(part[0].split(" ")[1]+","+part[1]+","+entry.getValue()+"\n");
 			}
 			fw.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	private static void writeODResultInCSV(MatlabResult result,String fileLoc,MatlabObj objective,String timeId,LinkedHashMap<String,Double>oMultiplier, LinkedHashMap<String,Double>dMultiplier) {
+		try {
+			FileWriter fw=new FileWriter(new File(fileLoc+"/optimizationResult_"+timeId+".csv"));
+			fw.append("Feval,"+result.getFval()+"\n");
+			//fw.append("O_district,D_district,timeId,multiplier\n");
+			fw.append("O_or_D_district,timeId,odIdentifier,multiplier\n");
+			LinkedHashMap<String,Double> resultingParam=objective.ScaleUp(result.getX());
+			for(String s:oMultiplier.keySet()) {
+				oMultiplier.put(s, resultingParam.get(s));
+			}
+			for(String s:dMultiplier.keySet()) {
+				dMultiplier.put(s, resultingParam.get(s));
+			}
+			
+			for(Entry<String, Double> entry:oMultiplier.entrySet()) {
+				String[] part=entry.getKey().split("_");
+				//fw.append(part[1]+","+part[2]+","+part[3]+","+entry.getValue()+"\n");
+				fw.append(part[0].split(" ")[1]+","+part[1]+","+"origin"+","+entry.getValue()+"\n");
+			}
+			
+			for(Entry<String, Double> entry:dMultiplier.entrySet()) {
+				String[] part=entry.getKey().split("_");
+				//fw.append(part[1]+","+part[2]+","+part[3]+","+entry.getValue()+"\n");
+				fw.append(part[0].split(" ")[1]+","+part[1]+","+"destination"+","+entry.getValue()+"\n");
+			}
+			
+			fw.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	private static double[] readX(String fileLoc) {
+		ArrayList<Double> x=new ArrayList<Double>();
+		try {
+			BufferedReader bf= new BufferedReader(new FileReader(new File(fileLoc)));
+			String line=null;
+			bf.readLine();
+			while((line=bf.readLine())!=null) {
+				x.add(Double.parseDouble(line.trim()));
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		double[] a=new double[x.size()];
+		for(int i=0;i<x.size();i++) {
+			a[i]=x.get(i);
+		}
+		return a;
+	}
+	
+	/**
+	 * Give folder path
+	 * @param fileLoc
+	 * @return
+	 */
+	public static Map<String, Map<String, Double>> readOBasedDemandCalibrationResult(String fileLoc) {
+		Map<String,Map<String,Double>> originBasedMultiplier = new HashMap<>();
+		File folder = new File(fileLoc);
+		File[] listOfFiles = folder.listFiles();
+		for(File file:listOfFiles) {
+			if(file.isFile() && (FileUtils.getExtension(file.getName())).equals("csv")) {
+				String timeBeanId = file.getName().replaceFirst("[.][^.]+$", "").split("_")[1];
+				originBasedMultiplier.put(timeBeanId, new HashMap<>());
+				Map<String,Double> innermap = originBasedMultiplier.get(timeBeanId);
+				try {
+					BufferedReader bf = new BufferedReader(new FileReader(file));
+					bf.readLine();
+					bf.readLine();
+					String line = null;
+					while((line=bf.readLine()) != null) {
+						String id = line.split(",")[0];
+						double mp = Double.parseDouble(line.split(",")[2]);
+						innermap.put(id, mp);
+					}
+					bf.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+			}
+		}
+		return originBasedMultiplier;
+		
 	}
 }
 
@@ -308,7 +476,7 @@ class BobyqaObjective implements MultivariateFunction, MatlabObj,Calcfc{
 	private final String timeId;
 	private double[] lowerBound=null;
 	private double[] upperBound=null;
-	
+	private LinkedHashMap<String,Double> ParamMultiplier=new LinkedHashMap<>();
 	
 	
 	
@@ -335,11 +503,27 @@ class BobyqaObjective implements MultivariateFunction, MatlabObj,Calcfc{
 		this.measurements=measurements;
 		this.fileLoc=fileLoc;
 		this.timeId=timeId;
+		for(String s:this.initialParam.keySet()) {
+			this.ParamMultiplier.put(s, 1.);
+		}
+	}
+	
+	public BobyqaObjective(LinkedHashMap<String,Double> param,ParamReader pReader,AnalyticalModel sue,Measurements measurements,String fileLoc,String timeId,LinkedHashMap<String,Double> paramMultiplier) {
+		this.initialParam=param;
+		this.pReader=pReader;
+		this.sue=sue;
+		this.measurements=measurements;
+		this.fileLoc=fileLoc;
+		this.timeId=timeId;
+		this.ParamMultiplier=paramMultiplier;
 	}
 	
 	@Override
 	public double value(double[] x) {
 		LinkedHashMap<String, Double>params=ScaleUp(x);
+		for(String s:params.keySet()) {
+			params.put(s,params.get(s)*this.ParamMultiplier.get(s));
+		}
 		this.sue.clearLinkCarandTransitVolume();
 		Measurements anaMeasurements=this.measurements.clone();
 		anaMeasurements=this.sue.perFormSUE(new LinkedHashMap<>(params),anaMeasurements);
@@ -392,6 +576,9 @@ class BobyqaObjective implements MultivariateFunction, MatlabObj,Calcfc{
 	@Override
 	public double evaluateFunction(double[] x) {
 		LinkedHashMap<String, Double>params=ScaleUp(x);
+		for(String s:params.keySet()) {
+			params.put(s,params.get(s)*this.ParamMultiplier.get(s));
+		}
 		this.sue.clearLinkCarandTransitVolume();
 		Measurements anaMeasurements=this.measurements.clone();
 		anaMeasurements=this.sue.perFormSUE(new LinkedHashMap<>(params),anaMeasurements);
@@ -411,12 +598,19 @@ class BobyqaObjective implements MultivariateFunction, MatlabObj,Calcfc{
 	@Override
 	public double compute(int n, int m, double[] x, double[] con) {
 		LinkedHashMap<String, Double>params=ScaleUp(x);
+		for(String s:params.keySet()) {
+			params.put(s,params.get(s)*this.ParamMultiplier.get(s));
+		}
 		this.sue.clearLinkCarandTransitVolume();
 		Measurements anaMeasurements=this.measurements.clone();
 		anaMeasurements=this.sue.perFormSUE(new LinkedHashMap<>(params),anaMeasurements);
+		int highUseLink=((CNLSUEModel)sue).getHighUseLink();
 		new MeasurementsWriter(anaMeasurements).write(fileLoc+"/measurements"+iterCounter+".xml");
 		double Objective=ObjectiveCalculator.calcObjective(this.measurements, anaMeasurements, ObjectiveCalculator.TypeMeasurementAndTimeSpecific);
 		this.logOoptimizationDetails(this.iterCounter, this.fileLoc, params, Objective);
+		if(highUseLink<1)highUseLink=1;
+		Objective=Objective*highUseLink;
+		
 		iterCounter++;
 		
 		int k=0;
@@ -424,10 +618,10 @@ class BobyqaObjective implements MultivariateFunction, MatlabObj,Calcfc{
 			con[k]=x[j]-this.lowerBound[j];
 			con[k+1]=this.upperBound[j]-x[j];
 			k=k+2;
-			j++;
 		}
 		return Objective;
 	}
 }
+
 
 

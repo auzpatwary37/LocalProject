@@ -255,6 +255,8 @@ public class gvtcsConverter {
 					(double)row.get("O454"),
 					(double)row.get("D454"),Double.parseDouble((String)row.get("Q2_Control_Point")),
 					Double.parseDouble((String)row.get("Q2_Control_Point_Time")),(double)row.get("Ti_Pe"));
+				trip.setOtpusb(otpusb);
+				trip.setDtpusb(dtpusb);
 			}else {
 				TPUSB otpusb=tpusbs.get(Id.create(Double.toString((double)row.get("Q2_Origin_Code")),TPUSB.class));
 				TPUSB dtpusb=tpusbs.get(Id.create(Double.toString((double)row.get("Q2_Origin_Code")),TPUSB.class));
@@ -265,6 +267,8 @@ public class gvtcsConverter {
 						(double)row.get("Q2_Land_Use_Origin"),(double)row.get("Q2_Land_Use_Destination"),(double)row.get("Q2_Departure_Time"),
 						(double)row.get("Q2_Arrival_Time"),(double)row.get("Q2_Trip_Purpose"),
 						(double)row.get("WT_TRIP")*weightFactor,(double)row.get("O454"),(double)row.get("D454"),null,null,(double)row.get("TiPer"));
+				trip.setOtpusb(otpusb);
+				trip.setDtpusb(dtpusb);
 			}
 			
 			for(int i=1;i<=12;i++) {

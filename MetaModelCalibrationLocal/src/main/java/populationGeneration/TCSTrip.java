@@ -202,6 +202,12 @@ public class TCSTrip {
 	public void setDtpusb(TPUSB dtpusb) {
 		this.dtpusb = dtpusb;
 	}
+
+	public void setTripExpansionFactor(double tripExpansionFactor) {
+		this.tripExpansionFactor = tripExpansionFactor;
+	}
+	
+	
 }
 
 abstract class TripLeg{

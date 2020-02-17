@@ -196,7 +196,7 @@ public class HouseHoldMember {
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond());
 						Activity oact=popfac.createActivityFromCoord(activityDetails.get(trip.getOriginActivity()),ocoord);
 						Activity dact=popfac.createActivityFromCoord(activityDetails.get(trip.getDestinationActivity()),dcoord);
-						oact.setEndTime(trip.getDepartureTime());
+						oact.setEndTime(trip.getDepartureTime()+(-15+Math.random()*30*60));
 						dact.setStartTime(trip.getArrivalTime());
 						activities.add(oact);
 						activities.add(dact);
@@ -308,10 +308,10 @@ public class HouseHoldMember {
 				Activity dAct=popfac.createActivityFromCoord(activityDetails.get(trip.getDestinationActivity()), 
 						new Coord(trip.getDtpusb().getSatCoord().getX()+randXY.get(trip.getDtpusb().getTPUSBId()).getFirst(),
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond()));
-				oAct.setEndTime(trip.getDepartureTime());
+				oAct.setEndTime(trip.getDepartureTime()+(-15+Math.random()*30*60));
 				dAct.setStartTime(trip.getArrivalTime());
 				Leg leg=popfac.createLeg(trip.getMainMode(modesDetails).getFlatMode());
-				leg.setDepartureTime(trip.getDepartureTime());
+				leg.setDepartureTime(oAct.getEndTime());
 				leg.setTravelTime(trip.getArrivalTime()-trip.getDepartureTime());
 				plan.addActivity(oAct);
 				plan.addLeg(leg);
@@ -399,15 +399,15 @@ public class HouseHoldMember {
 			TPUSB otpusb=trip.getOtpusb();
 			TPUSB dtpusb=trip.getDtpusb();
 			if(!tpusbSpecificRandomXYPair.containsKey(otpusb.getTPUSBId())) {
-				double randx=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+				double randx=(Math.random()*otpusb.getHalfLength());
 				//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-				double randy=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+				double randy=(Math.random()*otpusb.getHalfLength());
 				tpusbSpecificRandomXYPair.put(otpusb.getTPUSBId(), new Tuple<>(randx,randy));
 			}
 			if(!tpusbSpecificRandomXYPair.containsKey(dtpusb.getTPUSBId())) {
-				double randx=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+				double randx=(Math.random()*dtpusb.getHalfLength());
 				//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-				double randy=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+				double randy=(Math.random()*dtpusb.getHalfLength());
 				tpusbSpecificRandomXYPair.put(dtpusb.getTPUSBId(), new Tuple<>(randx,randy));
 			}
 		}
@@ -419,15 +419,15 @@ public class HouseHoldMember {
 		TPUSB otpusb=trip.getOtpusb();
 		TPUSB dtpusb=trip.getDtpusb();
 		
-		double randx=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+		double randx=Math.random()*otpusb.getHalfLength();
 		//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-		double randy=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+		double randy=Math.random()*otpusb.getHalfLength();
 		tpusbSpecificRandomXYPair.put(otpusb.getTPUSBId(), new Tuple<>(randx,randy));
 
 
-		double drandx=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+		double drandx=Math.random()*dtpusb.getHalfLength();
 		//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-		double drandy=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+		double drandy=Math.random()*dtpusb.getHalfLength();
 		tpusbSpecificRandomXYPair.put(dtpusb.getTPUSBId(), new Tuple<>(drandx,drandy));
 
 		

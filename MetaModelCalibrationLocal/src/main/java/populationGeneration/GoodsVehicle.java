@@ -135,7 +135,7 @@ public class GoodsVehicle implements Vehicle{
 				Activity dAct=popfac.createActivityFromCoord(activityDetails.get((Double)trip.getLandUseDestination()), 
 						new Coord(trip.getDtpusb().getSatCoord().getX()+randXY.get(trip.getDtpusb().getTPUSBId()).getFirst(),
 								trip.getDtpusb().getSatCoord().getY()+randXY.get(trip.getDtpusb().getTPUSBId()).getSecond()));
-				double tripDepartureTime=trip.getDepartureTime();
+				double tripDepartureTime=trip.getDepartureTime()+(-15+Math.random()*30*60);
 				double tripArrivalTime=trip.getArrivalTime();
 				
 				oAct.setEndTime(tripDepartureTime);
@@ -434,15 +434,15 @@ public class GoodsVehicle implements Vehicle{
 			TPUSB dtpusb=trip.getDtpusb();
 			if(otpusb!=null && dtpusb!=null) {
 				if(!tpusbSpecificRandomXYPair.containsKey(otpusb.getTPUSBId())) {
-					double randx=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+					double randx=Math.random()*otpusb.getHalfLength();
 					//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-					double randy=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+					double randy=Math.random()*otpusb.getHalfLength();
 					tpusbSpecificRandomXYPair.put(otpusb.getTPUSBId(), new Tuple<>(randx,randy));
 				}
 				if(!tpusbSpecificRandomXYPair.containsKey(dtpusb.getTPUSBId())) {
-					double randx=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+					double randx=Math.random()*dtpusb.getHalfLength();
 					//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-					double randy=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+					double randy=Math.random()*dtpusb.getHalfLength();
 					tpusbSpecificRandomXYPair.put(dtpusb.getTPUSBId(), new Tuple<>(randx,randy));
 				}
 			}
@@ -455,15 +455,15 @@ public class GoodsVehicle implements Vehicle{
 		TPUSB otpusb=trip.getOtpusb();
 		TPUSB dtpusb=trip.getDtpusb();
 		
-		double randx=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+		double randx=Math.random()*otpusb.getHalfLength();
 		//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-		double randy=(Math.random()*otpusb.getHalfLength()-Math.random()*otpusb.getHalfLength())*3.14/4;
+		double randy=Math.random()*otpusb.getHalfLength();
 		tpusbSpecificRandomXYPair.put(otpusb.getTPUSBId(), new Tuple<>(randx,randy));
 
 
-		double drandx=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+		double drandx=Math.random()*dtpusb.getHalfLength();
 		//3.14/4 is taken to convert the square assumption to circle assumption while calculating the half length
-		double drandy=(Math.random()*dtpusb.getHalfLength()-Math.random()*dtpusb.getHalfLength())*3.14/4;
+		double drandy=Math.random()*dtpusb.getHalfLength();
 		tpusbSpecificRandomXYPair.put(dtpusb.getTPUSBId(), new Tuple<>(drandx,drandy));
 
 		

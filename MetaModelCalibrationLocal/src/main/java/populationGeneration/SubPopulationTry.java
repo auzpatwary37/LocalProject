@@ -2,12 +2,17 @@ package populationGeneration;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.maven.shared.utils.io.FileUtils;
 import org.matsim.api.core.v01.Id;
 import org.matsim.api.core.v01.Scenario;
 import org.matsim.api.core.v01.population.Activity;
@@ -32,6 +37,9 @@ import com.healthmarketscience.jackcess.Database;
 import com.healthmarketscience.jackcess.DatabaseBuilder;
 import com.healthmarketscience.jackcess.Table;
 
+import ust.hk.praisehk.metamodelcalibration.measurements.Measurements;
+import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
+
 
 /**
  * 
@@ -40,9 +48,9 @@ import com.healthmarketscience.jackcess.Table;
  */
 public class SubPopulationTry {
 	
-	private static final boolean HkiSeperation=true;
-	private static final double weightFactorgvtcs=.1;
-	private static final double weightFactorTCS=.07;
+	private static final boolean HkiSeperation=false;
+	private static final double weightFactorgvtcs=1.;
+	private static final double weightFactorTCS=1.;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -73,6 +81,31 @@ public class SubPopulationTry {
 		
 		HashMap<Id<HouseHold>,HouseHold> houseHolds=TCSExtractor.createHouseHolds(HH,tpusbs,weightFactorTCS);
 		HashMap<Id<HouseHoldMember>,HouseHoldMember> members=TCSExtractor.createMember(HM,TP,tpusbs,houseHolds,weightFactorTCS);
+		
+		Measurements fullHKMeasurements=new MeasurementsReader().readMeasurements("fullHk/ATCMeasurementsPeak.xml");
+		Map<String,Map<String,Double>> multiplier=prepODMultiplier("optimizedODMultiplier/");
+		
+		Map<String,Tuple<Double,Double>>timeBeans=fullHKMeasurements.getTimeBean();
+		
+		for(HouseHoldMember hm: members.values()) {
+			for(TCSTrip trip:hm.getTrips().values()) {
+				double time=trip.getDepartureTime();
+				if(time>24*3600) {
+					time=time-24*3600;
+				}
+				String timeId=null;
+				for(Entry<String, Tuple<Double, Double>> timeBean:timeBeans.entrySet()) {
+					if(time>timeBean.getValue().getFirst() && time<=timeBean.getValue().getSecond()) {
+						timeId=timeBean.getKey();
+					}
+				}
+				if(timeId!=null) {
+					String odId=trip.getOtpusb().getDistrict26Id()+"_"+trip.getDtpusb().getDistrict26Id();
+					double num=multiplier.get(timeId).get(odId);
+					trip.setTripExpansionFactor(trip.getTripExpansionFactor()*num);
+				}
+			}
+		}
 		
 		if(HkiSeperation) {
 			TCSExtractor.HKITripExtractor(members);
@@ -108,17 +141,36 @@ public class SubPopulationTry {
 		while((line=bf.readLine())!=null) {
 			String[] part=line.split(",");
 			activityDetailsgvtcs.put(Double.parseDouble(part[0].trim()), part[1].trim());
-			//gvtcsConverter.addActivityPlanParameter(config.planCalcScore(),part[1].trim(),30*60);
+			gvtcsConverter.addActivityPlanParameter(config.planCalcScore(),part[1].trim(),30*60);
  		}
 		
-		//HashMap<Id<Vehicle>,GoodsVehicle> goodsVehicles=gvtcsConverter.createGovVehicles(govTrip,govVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation);
+		HashMap<Id<Vehicle>,GoodsVehicle> goodsVehicles=gvtcsConverter.createGovVehicles(govTrip,govVehicle,tpusbs,weightFactorgvtcs,HkiSeperation);
 		
-		//goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,!HkiSeperation));
+		goodsVehicles.putAll(gvtcsConverter.createNonGovVehicles(ngovTrip,ngovVehicle,tpusbs,weightFactorgvtcs,HkiSeperation));
+		
+		for(GoodsVehicle gv: goodsVehicles.values()) {
+			for(FreightTrip trip:gv.getTrips().values()) {
+				double time=trip.getDepartureTime();
+				if(time>24*3600) {
+					time=time-24*3600;
+				}
+				String timeId=null;
+				for(Entry<String, Tuple<Double, Double>> timeBean:timeBeans.entrySet()) {
+					if(time>timeBean.getValue().getFirst() && time<=timeBean.getValue().getSecond()) {
+						timeId=timeBean.getKey();
+					}
+				}
+				if(timeId!=null && trip.getOtpusb()!=null && trip.getDtpusb()!=null) {
+					String odId=trip.getOtpusb().getDistrict26Id()+"_"+trip.getDtpusb().getDistrict26Id();
+					trip.setTripWeight(trip.getTripWeight()*multiplier.get(timeId).get(odId));
+				}
+			}
+		}
 		
 		
-//		for(GoodsVehicle gv:goodsVehicles.values()) {
-//			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
-//		}
+		for(GoodsVehicle gv:goodsVehicles.values()) {
+			gv.loadClonedVehicleAndPersons(scenario, activityDetailsgvtcs, "person", "trip",tripPerson,personPerson);
+		}
 		boolean isConsistant = activityConsistancyTester(population);
 		ActivityAnalyzer ac=new ActivityAnalyzer();
 		HashMap<String,Double>activityDuration= ac.getAverageActivityDuration(population);
@@ -126,19 +178,22 @@ public class SubPopulationTry {
 		HashMap<String,Double>activityEndTime=ac.getAverageClosingTime(population);
 		
 		Set<String>activityTypes=null;
-		activityTypes=ac.getActivityTypes(population);
+		
 		Set<String>startAndEndActivities=ac.getStartOrEndActivityTypes(population);
+		activityTypes=ac.getActivityTypes(population);
+		
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		//ac.ActivitySplitter(population, config, "Home", 12*3600.);
-		ac.analyzeActivities(population, "toyScenarioLarge/activityDetails1.csv","toyScenarioLarge/activityDistributions.csv");
+		ac.analyzeActivities(population, "optimizedODMultiplier/activityDetails1.csv","optimizedODMultiplier/activityDistributions.csv");
 		
-//		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
-//				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
-		ac.readActivityTimings("data/toyScenarioLargeData/ActivityTimings.csv", config);
+		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
+				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
+		
+		//ac.readActivityTimings("optimizedODMultiplier/ActivityTimings.csv", config);
 		
 		ac.ActivitySplitter(population, config, "Usual place of work", 3600., true);
 		
-		//config.addModule(cp);
+		
 //		for(String s:activityDetailsTCS.values()) {
 //			if(activityDuration.containsKey(s)) {
 //				if(activityDuration.get(s)==0) {
@@ -170,14 +225,14 @@ public class SubPopulationTry {
 		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
 		
 		
-//		popWriter.write("data/LargeScaleScenario/populationHKI.xml");
-//		vehWriter.writeFile("data/LargeScaleScenario/VehiclesHKI.xml");
-//		configWriter.write("data/LargeScaleScenario/config_Ashraf.xml");
-//		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
+		popWriter.write("optimizedODMultiplier/populationHKI.xml");
+		vehWriter.writeFile("optimizedODMultiplier/VehiclesHKI.xml");
+		configWriter.write("optimizedODMultiplier/config_Ashraf.xml");
+		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("optimizedODMultiplier/personAttributesHKI.xml");
 		
-		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
-		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
-		configWriter.write("data/toyScenarioLargeData/configPaperactivityParam.xml");
+//		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
+//		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
+//		configWriter.write("data/toyScenarioLargeData/configPaperactivityParam.xml");
 		//new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/LargeScaleScenario/personAttributesHKI.xml");
 		
 		System.out.println("total Population = "+population.getPersons().size());
@@ -214,6 +269,54 @@ public class SubPopulationTry {
 		return isConsistant;
 	}
 	
+	
+	
+	public static Map<String,Map<String,Double>> prepODMultiplier(String fileLoc){
+		Map<String,Map<String,Double>> multiplier=new HashMap<>();
+		File folder = new File(fileLoc);
+		File[] listOfFiles = folder.listFiles();
+		for(File file:listOfFiles) {
+			if(file.isFile() && (FileUtils.getExtension(file.getName())).equals("csv") && file.getName().contains("optimizationResult")) {
+				try {
+					BufferedReader bf = new BufferedReader(new FileReader(file));
+					bf.readLine();
+					bf.readLine();
+					String line=null;
+					String timeId=null;
+					Map<String,Double> origins=new HashMap<>();
+					Map<String,Double> destinations=new HashMap<>();
+					
+					while((line=bf.readLine())!=null) {
+						String[] part = line.split(",");
+						timeId=part[1];
+						if(part[2].equals("origin")) {
+							origins.put(part[0], Double.parseDouble(part[3]));
+						}else {
+							destinations.put(part[0], Double.parseDouble(part[3]));
+						}
+					}
+					bf.close();
+					multiplier.put(timeId, new HashMap<>());
+					Map<String,Double> innerMap = multiplier.get(timeId);
+					
+					for(Entry<String, Double> o:origins.entrySet()) {
+						for(Entry<String, Double> d:destinations.entrySet()) {
+							innerMap.put(Double.parseDouble(o.getKey())+"_"+Double.parseDouble(d.getKey()), o.getValue()*d.getValue()/2);
+						}
+					}
+					
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return multiplier;	
+	}
 	
 }
 

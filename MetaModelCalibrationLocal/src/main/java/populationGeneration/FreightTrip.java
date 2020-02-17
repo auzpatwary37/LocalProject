@@ -72,6 +72,14 @@ public class FreightTrip {
 
 	}
 
+	
+	
+	public void setTripWeight(double tripWeight) {
+		this.tripWeight = tripWeight;
+	}
+
+
+
 	public void addTollFacilityUsed(Double tollFacility) {
 		this.tunnelOrTollUsed.add(tollFacility);
 	}
