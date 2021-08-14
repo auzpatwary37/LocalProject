@@ -93,7 +93,7 @@ public class TCSExtractor {
 		new ConfigWriter(config).write("TCS/TCSConfig.xml");
 		new PopulationWriter(population).write("TCS/TCSpopulation.xml");
 		new VehicleWriterV1(vehicles).writeFile("TCS/TCSvehicles.xml");
-		new ObjectAttributesXmlWriter(scenario.getPopulation().getPersonAttributes()).writeFile("TCS/TCSPersonAttributes.xml");
+
 		
 		System.out.println("TestLine");
 	}

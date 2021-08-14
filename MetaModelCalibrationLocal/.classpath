@@ -12,9 +12,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MetaModelCalibration"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/matsim"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/MATSim-HK"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/signals"/>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
 			<attribute name="test" value="true"/>
@@ -22,7 +20,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-13">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>

@@ -29,6 +29,7 @@ import org.matsim.core.config.groups.PlanCalcScoreConfigGroup.ActivityParams;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.Tuple;
 import org.matsim.utils.objectattributes.ObjectAttributesXmlWriter;
+import org.matsim.vehicles.MatsimVehicleWriter;
 import org.matsim.vehicles.Vehicle;
 import org.matsim.vehicles.VehicleWriterV1;
 import org.matsim.vehicles.Vehicles;
@@ -49,8 +50,8 @@ import ust.hk.praisehk.metamodelcalibration.measurements.MeasurementsReader;
 public class SubPopulationTry {
 	
 	private static final boolean HkiSeperation=false;
-	private static final double weightFactorgvtcs=1.;
-	private static final double weightFactorTCS=1.;
+	private static final double weightFactorgvtcs=1;
+	private static final double weightFactorTCS=1;
 	private static Double tripPerson=0.;
 	private static Double personPerson=0.;
 	public static void main(String[] args) throws IOException {
@@ -83,7 +84,7 @@ public class SubPopulationTry {
 		HashMap<Id<HouseHoldMember>,HouseHoldMember> members=TCSExtractor.createMember(HM,TP,tpusbs,houseHolds,weightFactorTCS);
 		
 		Measurements fullHKMeasurements=new MeasurementsReader().readMeasurements("fullHk/ATCMeasurementsPeak.xml");
-		Map<String,Map<String,Double>> multiplier=prepODMultiplier("optimizedODMultiplier/");
+		Map<String,Map<String,Double>> multiplier=prepOAndDMultiplier("fullHk/seperateODMultiplier_GradBased/");
 		
 		Map<String,Tuple<Double,Double>>timeBeans=fullHKMeasurements.getTimeBean();
 		
@@ -100,8 +101,19 @@ public class SubPopulationTry {
 					}
 				}
 				if(timeId!=null) {
-					String odId=trip.getOtpusb().getDistrict26Id()+"_"+trip.getDtpusb().getDistrict26Id();
-					double num=multiplier.get(timeId).get(odId);
+					String odId=trip.getOtpusb().getTPUSBId().toString()+"_"+trip.getDtpusb().getTPUSBId().toString();
+					double num=0;
+					if(multiplier==null) {
+						num=1;
+					}else {
+						if(multiplier.get(timeId).get(odId)==null) {
+							System.out.println(odId);
+							num=1;
+						}else {
+							num=multiplier.get(timeId).get(odId);
+						}
+					}
+					
 					trip.setTripExpansionFactor(trip.getTripExpansionFactor()*num);
 				}
 			}
@@ -113,7 +125,7 @@ public class SubPopulationTry {
 		
 		for(HouseHoldMember hm:members.values()) {
 
-			hm.loadClonedVehicleAndPersons(scenario, activityDetailsTCS, modesDetails, "person", "trip",tripPerson,personPerson,false);
+			hm.loadClonedVehicleAndPersons(scenario, activityDetailsTCS, modesDetails, "person", "trip",tripPerson,personPerson,true);
 
 		}
 
@@ -161,8 +173,19 @@ public class SubPopulationTry {
 					}
 				}
 				if(timeId!=null && trip.getOtpusb()!=null && trip.getDtpusb()!=null) {
-					String odId=trip.getOtpusb().getDistrict26Id()+"_"+trip.getDtpusb().getDistrict26Id();
-					trip.setTripWeight(trip.getTripWeight()*multiplier.get(timeId).get(odId));
+					String odId=trip.getOtpusb().getTPUSBId().toString()+"_"+trip.getDtpusb().getTPUSBId().toString();
+					double num=0;
+					if(multiplier==null) {
+						num=1;
+					}else {
+						if(multiplier.get(timeId).get(odId)==null) {
+							System.out.println(odId);
+							num=1;
+						}else {
+							num=multiplier.get(timeId).get(odId);
+						}
+					}
+					trip.setTripWeight(trip.getTripWeight()*num);
 				}
 			}
 		}
@@ -184,7 +207,7 @@ public class SubPopulationTry {
 		
 		PlanCalcScoreConfigGroup cp=config.planCalcScore();
 		//ac.ActivitySplitter(population, config, "Home", 12*3600.);
-		ac.analyzeActivities(population, "optimizedODMultiplier/activityDetails1.csv","optimizedODMultiplier/activityDistributions.csv");
+		ac.analyzeActivities(population, "fullHk/NewResultODMultiplier/activityDetails1.csv","fullHk/NewResultODMultiplier/activityDistributions.csv");
 		
 		ActivityAnalyzer.addActivityPlanParameter(cp, activityTypes, activityDuration, activityStartTime,activityEndTime,startAndEndActivities, 
 				15,15, 8*60*60, 15*60, 8*3600,20*3600, true);
@@ -222,13 +245,13 @@ public class SubPopulationTry {
 		
 		ConfigWriter configWriter=new ConfigWriter(config);
 		PopulationWriter popWriter=new PopulationWriter(population);
-		VehicleWriterV1 vehWriter=new VehicleWriterV1(vehicles);
+		MatsimVehicleWriter vehWriter=new MatsimVehicleWriter(vehicles);
 		
 		
-		popWriter.write("optimizedODMultiplier/populationHKI.xml");
-		vehWriter.writeFile("optimizedODMultiplier/VehiclesHKI.xml");
-		configWriter.write("optimizedODMultiplier/config_Ashraf.xml");
-		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("optimizedODMultiplier/personAttributesHKI.xml");
+		popWriter.write("fullHk/seperateODMultiplier_GradBased/populationHK.xml");
+		vehWriter.writeFile("fullHk/seperateODMultiplier_GradBased/VehiclesHK.xml");
+		configWriter.write("fullHk/seperateODMultiplier_GradBased/config_Ashraf.xml");
+
 		
 //		popWriter.write("data/toyScenarioLargeData/populationHKIPaper.xml");
 //		vehWriter.writeFile("data/toyScenarioLargeData/VehiclesHKIPaper.xml");
@@ -256,7 +279,7 @@ public class SubPopulationTry {
 				for(PlanElement pe:plan.getPlanElements()) {
 					if(pe instanceof Activity) {
 						Activity a=(Activity)pe;
-						if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY && a.getStartTime()>a.getEndTime()) {
+						if(a.getStartTime().isDefined() && a.getEndTime().isDefined() && a.getStartTime().seconds()>a.getEndTime().seconds()) {
 							isConsistant=false;
 							return isConsistant;
 						}
@@ -272,8 +295,12 @@ public class SubPopulationTry {
 	
 	
 	public static Map<String,Map<String,Double>> prepODMultiplier(String fileLoc){
+		
 		Map<String,Map<String,Double>> multiplier=new HashMap<>();
 		File folder = new File(fileLoc);
+		if(!folder.exists()) {
+			return null;
+		}
 		File[] listOfFiles = folder.listFiles();
 		for(File file:listOfFiles) {
 			if(file.isFile() && (FileUtils.getExtension(file.getName())).equals("csv") && file.getName().contains("optimizationResult")) {
@@ -317,6 +344,58 @@ public class SubPopulationTry {
 		}
 		return multiplier;	
 	}
+	
+	public static Map<String,Map<String,Double>> prepOAndDMultiplier(String fileLoc){
+		
+		Map<String,Map<String,Double>> multiplier=new HashMap<>();
+		File folder = new File(fileLoc);
+		if(!folder.exists()) {
+			return null;
+		}
+		File[] listOfFiles = folder.listFiles();
+		for(File file:listOfFiles) {
+			if(file.isFile() && (FileUtils.getExtension(file.getName())).equals("csv") && file.getName().contains("gradAndParam")) {
+				String timeId = file.getName().split("_")[1];
+				try {
+					BufferedReader bf = new BufferedReader(new FileReader(file));
+					bf.readLine();
+					bf.readLine();
+					String line=null;
+
+					Map<String,Double> origins=new HashMap<>();
+					Map<String,Double> destinations=new HashMap<>();
+					
+					while((line=bf.readLine())!=null) {
+						String[] part = line.split(",");
+						if(part[0].contains("origin")) {
+							origins.put(part[0].split("___")[1], Double.parseDouble(part[1]));
+						}else {
+							destinations.put(part[0].split("___")[1], Double.parseDouble(part[1]));
+						}
+					}
+					bf.close();
+					multiplier.put(timeId, new HashMap<>());
+					Map<String,Double> innerMap = multiplier.get(timeId);
+					
+					for(Entry<String, Double> o:origins.entrySet()) {
+						for(Entry<String, Double> d:destinations.entrySet()) {
+							innerMap.put(Double.parseDouble(o.getKey())+"_"+Double.parseDouble(d.getKey()), o.getValue()*d.getValue()/2);
+						}
+					}
+					
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		}
+		return multiplier;	
+	}
+
 	
 }
 

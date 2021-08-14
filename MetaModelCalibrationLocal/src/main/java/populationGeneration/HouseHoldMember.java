@@ -3,6 +3,7 @@ package populationGeneration;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.matsim.api.core.v01.Coord;
 import org.matsim.api.core.v01.Id;
@@ -13,11 +14,17 @@ import org.matsim.api.core.v01.population.Person;
 import org.matsim.api.core.v01.population.Plan;
 import org.matsim.api.core.v01.population.Population;
 import org.matsim.api.core.v01.population.PopulationFactory;
+import org.matsim.core.config.groups.PlanCalcScoreConfigGroup;
+import org.matsim.core.config.groups.PlansConfigGroup;
+import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.utils.collections.Tuple;
 import org.matsim.vehicles.Vehicle;
 import org.matsim.vehicles.VehicleType;
+import org.matsim.vehicles.VehicleUtils;
 import org.matsim.vehicles.Vehicles;
 import org.matsim.vehicles.VehiclesFactory;
+
+import com.google.common.collect.Maps;
 
 
 
@@ -209,41 +216,41 @@ public class HouseHoldMember {
 						Activity oact=popfac.createActivityFromCoord(activityDetails.get(trip.getOriginActivity()),ocoord);
 						Activity dact=popfac.createActivityFromCoord(activityDetails.get(trip.getDestinationActivity()),dcoord);
 						if(!oact.getCoord().equals(activities.get(i).getCoord())) {
-							if(activities.get(i).getStartTime()<=trip.getDepartureTime()) {
+							if(activities.get(i).getStartTime().seconds()<=trip.getDepartureTime()) {
 								activities.get(i).setEndTime(trip.getDepartureTime());
 								oact.setStartTime(trip.getDepartureTime());
 								oact.setEndTime(trip.getDepartureTime());
 								dact.setStartTime(trip.getDepartureTime());
 							}else {
-								activities.get(i).setEndTime(activities.get(i).getStartTime());
-								oact.setStartTime(activities.get(i).getEndTime());
-								oact.setEndTime(activities.get(i).getEndTime());
-								dact.setStartTime(activities.get(i).getEndTime()+trip.getArrivalTime()-trip.getDepartureTime());
+								activities.get(i).setEndTime(activities.get(i).getStartTime().seconds());
+								oact.setStartTime(activities.get(i).getEndTime().seconds());
+								oact.setEndTime(activities.get(i).getEndTime().seconds());
+								dact.setStartTime(activities.get(i).getEndTime().seconds()+trip.getArrivalTime()-trip.getDepartureTime());
 							}
 							activities.add(oact);
 							activities.add(dact);
 							
 							i++;
 							Leg legDummy=popfac.createLeg("car");
-							legDummy.setDepartureTime(activities.get(i).getEndTime());
+							legDummy.setDepartureTime(activities.get(i).getEndTime().seconds());
 							legDummy.setTravelTime(0);
 							activityConnectorTripLegs.add(legDummy);
 							
 							//throw new IllegalArgumentException("Discontinuous Trip Chain!!!");
 							//lets think about it later.
 						}else {
-							if(activities.get(i).getStartTime()<=trip.getDepartureTime()) {
+							if(activities.get(i).getStartTime().seconds()<=trip.getDepartureTime()) {
 								activities.get(i).setEndTime(trip.getDepartureTime());
 								dact.setStartTime(trip.getArrivalTime());
 							}else {
-								activities.get(i).setEndTime(activities.get(i).getStartTime());
-								dact.setStartTime(activities.get(i).getStartTime()+trip.getArrivalTime()-trip.getDepartureTime());
+								activities.get(i).setEndTime(activities.get(i).getStartTime().seconds());
+								dact.setStartTime(activities.get(i).getStartTime().seconds()+trip.getArrivalTime()-trip.getDepartureTime());
 							}
 							activities.add(dact);
 						}
 					}
 					Leg leg=popfac.createLeg(trip.getMainMode(modesDetails).getFlatMode());
-					leg.setDepartureTime(activities.get(i).getEndTime());
+					leg.setDepartureTime(activities.get(i).getEndTime().seconds());
 					leg.setTravelTime(trip.getArrivalTime()-trip.getDepartureTime());
 					activityConnectorTripLegs.add(leg);
 					i++;
@@ -311,7 +318,7 @@ public class HouseHoldMember {
 				oAct.setEndTime(trip.getDepartureTime()+(-15+Math.random()*30*60));
 				dAct.setStartTime(trip.getArrivalTime());
 				Leg leg=popfac.createLeg(trip.getMainMode(modesDetails).getFlatMode());
-				leg.setDepartureTime(oAct.getEndTime());
+				leg.setDepartureTime(oAct.getEndTime().seconds());
 				leg.setTravelTime(trip.getArrivalTime()-trip.getDepartureTime());
 				plan.addActivity(oAct);
 				plan.addLeg(leg);
@@ -347,6 +354,7 @@ public class HouseHoldMember {
 	
 	public Scenario loadClonedVehicleAndPersons(Scenario scenario,HashMap<Double,String>activityDetails,HashMap<Double,TCSMode>modesDetails,String personGroupName,String tripGroupName,Double tripPerson,Double personPerson,boolean shouldLoadTripPerson){
 		Population population =scenario.getPopulation();
+		PlansConfigGroup plansConfigGroup = scenario.getConfig().plans(); 
 		Vehicles vehicles=scenario.getVehicles();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub1=new ArrayList<>();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub2=new ArrayList<>();
@@ -366,12 +374,17 @@ public class HouseHoldMember {
 			
 			population.addPerson(t.getFirst());
 			if(this.personsWithCar.contains(t.getFirst().getId())) {
-				population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", personGroupName+"_TCS"+"withCar");
+				PopulationUtils.putSubpopulation(t.getFirst(), personGroupName+"_TCS"+"withCar");
+				
 			}else {
-				population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", personGroupName+"_TCS"+"withoutCar");
+				PopulationUtils.putSubpopulation(t.getFirst(), personGroupName+"_TCS"+"withoutCar");
 			}
 			if(t.getSecond()!=null) {
-				vehicles.addVehicle(t.getSecond());
+				Id<Vehicle> vehId = Id.create(t.getFirst().getId().toString(), Vehicle.class);
+				Map<String, Id<Vehicle>> modeToVehicle = Maps.newHashMap();
+				modeToVehicle.put("taxi", vehId);
+				if(this.personsWithCar.contains(t.getFirst().getId()))modeToVehicle.put("car", vehId);
+				VehicleUtils.insertVehicleIdsIntoAttributes(t.getFirst(), modeToVehicle);
 			}
 		}
 		if(shouldLoadTripPerson==true) {
@@ -381,9 +394,13 @@ public class HouseHoldMember {
 				}
 				
 				population.addPerson(t.getFirst());
-				population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_TCS");
+				PopulationUtils.putSubpopulation(t.getFirst(), tripGroupName+"_TCS");
 				if(t.getSecond()!=null) {
-					vehicles.addVehicle(t.getSecond());
+					Id<Vehicle> vehId = Id.create(t.getFirst().getId().toString(), Vehicle.class);
+					Map<String, Id<Vehicle>> modeToVehicle = Maps.newHashMap();
+					modeToVehicle.put("taxi", vehId);
+					modeToVehicle.put("car", vehId);
+					VehicleUtils.insertVehicleIdsIntoAttributes(t.getFirst(), modeToVehicle);
 				}
 			}
 		}

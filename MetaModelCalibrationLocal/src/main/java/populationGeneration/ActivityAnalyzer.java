@@ -44,11 +44,11 @@ public class ActivityAnalyzer {
 				if(pe instanceof Activity) {
 					Activity a=(Activity)pe;
 					
-					if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY) {
+					if(a.getStartTime().isDefined() && a.getEndTime().isDefined()) {
 //						if(a.getStartTime()>a.getEndTime()) {
 //							a.setEndTime(24*3600);
 //						}
-						double duration=a.getEndTime()-a.getStartTime();
+						double duration=a.getEndTime().seconds()-a.getStartTime().seconds();
 						if(duration<0) {
 							throw new IllegalArgumentException("duration can not be negative");
 						}
@@ -77,13 +77,13 @@ public class ActivityAnalyzer {
 			for(PlanElement pe:p.getSelectedPlan().getPlanElements()) {
 				if(pe instanceof Activity) {
 					Activity a=(Activity)pe;
-					if(a.getStartTime()!=Double.NEGATIVE_INFINITY) {
+					if(a.getStartTime().isDefined()) {
 					if(averageStartingTimeCalculator.containsKey(a.getType())) {
 						Tuple<Double,Integer>oldTuple=this.averageStartingTimeCalculator.get(a.getType());
-						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getStartTime(),oldTuple.getSecond()+1);
+						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getStartTime().seconds(),oldTuple.getSecond()+1);
 						this.averageStartingTimeCalculator.put(a.getType(),newTuple);
 					}else {
-						Tuple<Double,Integer>newTuple=new Tuple<>(a.getStartTime(),1);
+						Tuple<Double,Integer>newTuple=new Tuple<>(a.getStartTime().seconds(),1);
 						this.averageStartingTimeCalculator.put(a.getType(),newTuple);
 					}
 					}
@@ -102,13 +102,13 @@ public class ActivityAnalyzer {
 			for(PlanElement pe:p.getSelectedPlan().getPlanElements()) {
 				if(pe instanceof Activity) {
 					Activity a=(Activity)pe;
-					if(a.getEndTime()!=Double.NEGATIVE_INFINITY) {
+					if(a.getEndTime().isDefined()) {
 					if(averageEndTimeCalculator.containsKey(a.getType())) {
 						Tuple<Double,Integer>oldTuple=this.averageEndTimeCalculator.get(a.getType());
-						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getEndTime(),oldTuple.getSecond()+1);
+						Tuple<Double,Integer>newTuple=new Tuple<>(oldTuple.getFirst()+a.getEndTime().seconds(),oldTuple.getSecond()+1);
 						this.averageEndTimeCalculator.put(a.getType(),newTuple);
 					}else {
-						Tuple<Double,Integer>newTuple=new Tuple<>(a.getEndTime(),1);
+						Tuple<Double,Integer>newTuple=new Tuple<>(a.getEndTime().seconds(),1);
 						this.averageEndTimeCalculator.put(a.getType(),newTuple);
 					}
 					}
@@ -181,12 +181,12 @@ public class ActivityAnalyzer {
 					Activity a=(Activity)pe;
 					if(a.getType().equals(activityType)) {
 						for(Tuple<Double,Double>t:activities.values()) {
-							if(a.getStartTime()>=t.getFirst()&&a.getStartTime()<t.getSecond()&&a.getStartTime()!=Double.NEGATIVE_INFINITY) {
+							if(a.getStartTime().isDefined() && a.getStartTime().seconds()>=t.getFirst()&&a.getStartTime().seconds()<t.getSecond()) {
 								a.setType(activityType+"_"+t.getFirst());
 								activityCounter.put(activityType+"_"+t.getFirst(),activityCounter.get(activityType+"_"+t.getFirst())+1);
-								activityDurationSum.put(activityType+"_"+t.getFirst(),activityDurationSum.get(activityType+"_"+t.getFirst())+(a.getEndTime()-a.getStartTime()));
-								activityStartTime.get(activityType+"_"+t.getFirst()).add(a.getStartTime());
-								activityEndTime.get(activityType+"_"+t.getFirst()).add(a.getEndTime());
+								activityDurationSum.put(activityType+"_"+t.getFirst(),activityDurationSum.get(activityType+"_"+t.getFirst())+(a.getEndTime().seconds()-a.getStartTime().seconds()));
+								activityStartTime.get(activityType+"_"+t.getFirst()).add(a.getStartTime().seconds());
+								activityEndTime.get(activityType+"_"+t.getFirst()).add(a.getEndTime().seconds());
 								break;
 							}
 						}
@@ -289,8 +289,9 @@ public class ActivityAnalyzer {
 					act.setClosingTime(defaultEndTime);
 				}
 			}
-			if(act.getOpeningTime()==0 && act.getClosingTime()==24*3600) {
-				System.out.println(act.getActivityType());
+			if(act.getOpeningTime().isUndefined() ) {act.setOpeningTime(0.0);}
+			if(act.getClosingTime().isUndefined()&& !act.getActivityType().contains("home") && !act.getActivityType().contains("Home")) {
+				act.setClosingTime(24*3600);
 			}
 			}
 			config.addActivityParams(act);
@@ -331,17 +332,17 @@ public class ActivityAnalyzer {
 					if(pe instanceof Activity) {
 						Activity a=(Activity) pe;
 						counter.put(a.getType(), counter.get(a.getType())+1);
-						if(a.getStartTime()!=Double.NEGATIVE_INFINITY) {
-						activityDetails.get(a.getType()).get(startTimeString).add(a.getStartTime());
+						if(a.getStartTime().isDefined()) {
+						activityDetails.get(a.getType()).get(startTimeString).add(a.getStartTime().seconds());
 						}
-						if(a.getEndTime()!=Double.NEGATIVE_INFINITY) {
-						activityDetails.get(a.getType()).get(endTimeString).add(a.getEndTime());
+						if(a.getEndTime().isDefined()) {
+						activityDetails.get(a.getType()).get(endTimeString).add(a.getEndTime().seconds());
 						}
-						if(a.getStartTime()!=Double.NEGATIVE_INFINITY && a.getEndTime()!=Double.NEGATIVE_INFINITY) {
-							if(a.getStartTime()<=a.getEndTime()) {
-								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()-a.getStartTime());
+						if(a.getStartTime().isDefined() && a.getEndTime().isDefined()) {
+							if(a.getStartTime().seconds()<=a.getEndTime().seconds()) {
+								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime().seconds()-a.getStartTime().seconds());
 							}else {
-								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime()+3600*24-a.getStartTime());
+								activityDetails.get(a.getType()).get(durationString).add(a.getEndTime().seconds()+3600*24-a.getStartTime().seconds());
 							}
 						}
 					}else {

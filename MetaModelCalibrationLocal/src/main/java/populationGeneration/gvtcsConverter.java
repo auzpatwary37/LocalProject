@@ -123,7 +123,6 @@ public class gvtcsConverter {
 		
 		popWriter.write("data/GVTCS Database/populationGVTCS.xml");
 		vehWriter.writeFile("data/GVTCS Database/VehiclesGVTCS.xml");
-		new ObjectAttributesXmlWriter(population.getPersonAttributes()).writeFile("data/GVTCS Database/personAttributesGvtcs.xml");
   		
 		System.out.println("TestLine");
 	}

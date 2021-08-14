@@ -17,12 +17,17 @@ import org.matsim.api.core.v01.population.PlanElement;
 import org.matsim.api.core.v01.population.Population;
 import org.matsim.api.core.v01.population.PopulationFactory;
 import org.matsim.core.config.ConfigUtils;
+import org.matsim.core.config.groups.PlansConfigGroup;
+import org.matsim.core.population.PopulationUtils;
 import org.matsim.core.scenario.ScenarioUtils;
 import org.matsim.core.utils.collections.Tuple;
 import org.matsim.vehicles.Vehicle;
 import org.matsim.vehicles.VehicleType;
+import org.matsim.vehicles.VehicleUtils;
 import org.matsim.vehicles.Vehicles;
 import org.matsim.vehicles.VehiclesFactory;
+
+import com.google.common.collect.Maps;
 /**
  * 
  * @author Ashraf
@@ -89,9 +94,7 @@ public class GoodsVehicle implements Vehicle{
 	 * @param type
 	 * @return
 	 */
-	private VehicleType vehicleTypeGenearator(double type) {
-		Vehicles vehicles=ScenarioUtils.createScenario(ConfigUtils.createConfig()).getVehicles();
-		VehiclesFactory vf=vehicles.getFactory();
+	private VehicleType vehicleTypeGenearator(double type, VehiclesFactory vf) {
 		VehicleType vt=vf.createVehicleType(Id.create(""+type, VehicleType.class));
 		String desc;
 		if(type==1) {
@@ -147,7 +150,7 @@ public class GoodsVehicle implements Vehicle{
 				plan.addLeg(leg);
 				plan.addActivity(dAct);
 				person.addPlan(plan);
-				Vehicle vehicle=vf.createVehicle(Id.createVehicleId(person.getId().toString()), this.vehicleTypeGenearator(this.vehicleType));
+				Vehicle vehicle=vf.createVehicle(Id.createVehicleId(person.getId().toString()), this.vehicleTypeGenearator(this.vehicleType,vf));
 				personList.add(new Tuple<Person,Vehicle>(person,vehicle));
 				if(i==500) {
 					break;
@@ -192,7 +195,7 @@ public class GoodsVehicle implements Vehicle{
 			
 			Person person=popfac.createPerson(Id.createPersonId(this.getId().toString()+"_"+j));
 			
-			Vehicle vehicle=vf.createVehicle(Id.createVehicleId(person.getId().toString()), this.vehicleTypeGenearator(this.vehicleType));
+			Vehicle vehicle=vf.createVehicle(Id.createVehicleId(person.getId().toString()), this.vehicleTypeGenearator(this.vehicleType,vf));
 			Plan plan=popfac.createPlan();
 			ArrayList<Activity> activities=new ArrayList<>();
 			ArrayList<Leg> tripLegs=new ArrayList<>();
@@ -301,6 +304,8 @@ public class GoodsVehicle implements Vehicle{
 	}
 	
 	public Scenario loadClonedVehicleAndPersons(Scenario scenario,HashMap<Double,String>activityDetails,String personGroupName,String tripGroupName,Double tripPerson,Double personPerson){
+		
+		PlansConfigGroup plansConfigGroup = scenario.getConfig().plans();
 		PopulationFactory populationFactory=scenario.getPopulation().getFactory();
 		VehiclesFactory vehiclesFactory=scenario.getVehicles().getFactory();
 		ArrayList<Tuple<Person,Vehicle>> personsAndVehiclessub1=new ArrayList<>();
@@ -323,8 +328,12 @@ public class GoodsVehicle implements Vehicle{
 			}
 			
 			population.addPerson(t.getFirst());
-			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", personGroupName+"_GV");
-			vehicles.addVehicle(t.getSecond());
+			
+			PopulationUtils.putSubpopulation(t.getFirst(), personGroupName+"_GV");
+			Id<Vehicle> vehId = Id.create(t.getFirst().getId().toString(), Vehicle.class);
+			Map<String, Id<Vehicle>> modeToVehicle = Maps.newHashMap();
+			modeToVehicle.put("car", vehId);
+			VehicleUtils.insertVehicleIdsIntoAttributes(t.getFirst(), modeToVehicle);
 		}
 		
 		for(Tuple<Person,Vehicle> t:personsAndVehiclessub2) {
@@ -333,8 +342,12 @@ public class GoodsVehicle implements Vehicle{
 			}
 			
 			population.addPerson(t.getFirst());
-			population.getPersonAttributes().putAttribute(t.getFirst().getId().toString(), "SUBPOP_ATTRIB_NAME", tripGroupName+"_GV");
-			vehicles.addVehicle(t.getSecond());
+			
+			PopulationUtils.putSubpopulation(t.getFirst(), tripGroupName+"_GV");
+			Id<Vehicle> vehId = Id.create(t.getFirst().getId().toString(), Vehicle.class);
+			Map<String, Id<Vehicle>> modeToVehicle = Maps.newHashMap();
+			modeToVehicle.put("car", vehId);
+			VehicleUtils.insertVehicleIdsIntoAttributes(t.getFirst(), modeToVehicle);
 		}
 		personPerson+=personsAndVehiclessub1.size();
 		tripPerson+=personsAndVehiclessub2.size();
@@ -347,7 +360,7 @@ public class GoodsVehicle implements Vehicle{
 	 * @return
 	 */
 	public VehicleType getType() {
-		return vehicleTypeGenearator(vehicleType);
+		return vehicleTypeGenearator(vehicleType,VehicleUtils.createVehiclesContainer().getFactory());
 	}
 
 
@@ -415,13 +428,13 @@ public class GoodsVehicle implements Vehicle{
 		for(PlanElement pe:plan.getPlanElements()) {
 			if(pe instanceof Activity) {
 				Activity act=popfac.createActivityFromCoord(new String(((Activity)pe).getType()), new Coord(((Activity)pe).getCoord().getX(),((Activity)pe).getCoord().getY()));
-				act.setStartTime(((Activity)pe).getStartTime());
-				act.setEndTime(((Activity)pe).getEndTime());
+				if(((Activity) pe).getStartTime().isDefined())act.setStartTime(((Activity)pe).getStartTime().seconds());
+				if(((Activity) pe).getEndTime().isDefined())act.setEndTime(((Activity)pe).getEndTime().seconds());
 				clonedPlan.addActivity(act);
 			}else {
 				Leg leg=popfac.createLeg(new String(((Leg)pe).getMode()));
-				leg.setDepartureTime(((Leg)pe).getDepartureTime());
-				leg.setTravelTime(((Leg)pe).getTravelTime());
+				leg.setDepartureTime(((Leg)pe).getDepartureTime().seconds());
+				leg.setTravelTime(((Leg)pe).getTravelTime().seconds());
 				clonedPlan.addLeg(leg);
 			}
 		}
